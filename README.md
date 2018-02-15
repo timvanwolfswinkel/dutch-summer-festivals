@@ -1,6 +1,6 @@
 # Dutch Summer Festivals
 
-> This website contains a overview of a selected number of festivals in the Netherlands.
+> This website contains a overview of a selected number of festivals in the Netherlands. Connected to contentful API for managing content.
 
 ## Build Setup
 
