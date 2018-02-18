@@ -5,7 +5,14 @@ import App from "./App";
 import store from "./store/store";
 import router from "./router";
 
+const moment = require("moment");
+
 Vue.config.productionTip = false;
+
+const dateFormat = date =>
+  date ? moment(date, "YYYY-MM-DD").format("ll") : "N/A";
+
+Vue.filter("date", dateFormat);
 
 /* eslint-disable no-new */
 new Vue({

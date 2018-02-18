@@ -3,11 +3,13 @@
     <h1 class="heading">{{ header }}</h1>
     <div v-if="!loading">
       <div class="festivals" v-for="festival in festivals" :key="festival.name">
-        <div class="festival">
-          <router-link :to=" {name: 'Detail', params: { festivalId : festival.sys.id } }" >
-            {{ festival.fields.name }}
-          </router-link>
-        </div>
+        <router-link class="link" :to=" {name: 'Detail', params: { festivalId : festival.sys.id } }" >
+          <div class="festival">    
+            <h2 class="festival__heading">{{ festival.fields.name }}</h2>
+            <p class="festival__date">{{ festival.fields.date | date }}</p>
+          </div>
+        </router-link>
+
       </div>
     </div>
   </div>
@@ -48,5 +50,12 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
+}
+.link {
+  color: black;
+  text-decoration: none;
+}
+.festival {
+  margin-bottom: 50px;
 }
 </style>
