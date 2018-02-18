@@ -5,7 +5,7 @@
       <div class="festivals" v-for="festival in festivals" :key="festival.name">
         <router-link class="link" :to=" {name: 'Detail', params: { festivalId : festival.sys.id } }" >
           <div class="festival">    
-            <h2 class="festival__heading">{{ festival.fields.name }}</h2>
+            <h2 class="festival__heading">{{ festival.fields.name | uppercase }}</h2>
             <p class="festival__date">{{ festival.fields.date | date }}</p>
           </div>
         </router-link>

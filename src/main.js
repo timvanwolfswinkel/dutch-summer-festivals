@@ -12,7 +12,10 @@ Vue.config.productionTip = false;
 const dateFormat = date =>
   date ? moment(date, "YYYY-MM-DD").format("ll") : "N/A";
 
+const uppercase = message => message.toUpperCase();
+
 Vue.filter("date", dateFormat);
+Vue.filter("uppercase", uppercase);
 
 /* eslint-disable no-new */
 new Vue({
