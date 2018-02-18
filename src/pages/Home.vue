@@ -3,7 +3,7 @@
     <h1 class="heading">{{ header }}</h1>
     <div v-if="!loading">
       <div class="festivals" v-for="festival in festivals" :key="festival.name">
-        <router-link class="festival__link" :to=" {name: 'Detail', params: { festivalId : festival.sys.id } }" >
+        <router-link class="festival__link" :to=" {name: 'Festival', params: { festivalId : festival.sys.id } }" >
           <div class="festival">    
             <h2 class="festival__heading">{{ festival.fields.name | uppercase }}</h2>
             <p class="festival__date">{{ festival.fields.date | date }}</p>
@@ -38,5 +38,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/home.scss";
+@import "../scss/pages/home.scss";
 </style>

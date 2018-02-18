@@ -13,7 +13,7 @@ import store from "../store/store";
 
 export default {
   store,
-  name: "Detail",
+  name: "Festival",
   computed: {
     festival() {
       const festivals = this.$store.getters.festivals;
