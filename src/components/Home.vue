@@ -9,7 +9,6 @@
             <p class="festival__date">{{ festival.fields.date | date }}</p>
           </div>
         </router-link>
-
       </div>
     </div>
   </div>
