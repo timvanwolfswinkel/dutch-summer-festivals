@@ -1,11 +1,13 @@
 <template>
-    <div class="container">
-        <div class="festival" v-if="festival">
-            <h1>{{ festival.name }}</h1>
-            <h2>{{ festival.slogan }}</h2>
-            <p>{{ festival.description }}</p>
-        </div>
+  <div class="container">
+    <div 
+      class="festival" 
+      v-if="festival">
+      <h1>{{ festival.name }}</h1>
+      <h2>{{ festival.slogan }}</h2>
+      <p>{{ festival.description }}</p>
     </div>
+  </div>
 </template>
 
 <script>

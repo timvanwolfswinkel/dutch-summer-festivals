@@ -2,13 +2,18 @@
   <div class="container">
     <h1 class="heading">{{ header }}</h1>
     <div v-if="!loading">
-      <div class="festivals" v-for="festival in festivals" :key="festival.name">
-        <router-link class="festival__link" :to=" {name: 'Festival', params: { festivalId : festival.sys.id } }" >
-          <div class="festival">    
-            <h2 class="festival__heading">{{ festival.fields.name | uppercase }}</h2>
-            <p class="festival__date">{{ festival.fields.date | date }}</p>
-          </div>
-        </router-link>
+      <div 
+        class="festivals-list" 
+        v-for="festival in festivals" 
+        :key="festival.name">
+        <div class="festival-list__item">
+          <router-link 
+            class="festival-list__link" 
+            :to=" {name: 'Festival', params: { festivalId : festival.sys.id } }" >
+            <h2 class="festival-list__heading">{{ festival.fields.name | uppercase }}</h2>
+            <p class="festival-list__date">{{ festival.fields.date | date }}</p>
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -16,6 +21,8 @@
 
 <script>
 import Vuex from "vuex";
+
+// const basicScroll = require("basicscroll");
 
 const mapState = Vuex.mapState;
 
