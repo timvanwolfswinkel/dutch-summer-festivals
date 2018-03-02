@@ -2,12 +2,15 @@
 @import "../settings/typography";
 
 .festivals-list {
+    max-width: 500px;
+    margin: 0 auto;
+    transform: translateX(75px);
+
     &__item {
         position: relative;
         left: 50%;
         margin-bottom: 150px;
         padding: 20px 50px;
-        background-color: lightgray;
         max-width: 200px;
         transform: translateX(-50%);
 

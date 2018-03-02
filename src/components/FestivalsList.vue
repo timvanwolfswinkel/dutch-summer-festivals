@@ -10,7 +10,8 @@
             class="festivals-list__link" 
             :to=" {name: 'Festival', params: { festivalId : festival.sys.id } }" >
             <h2 class="festivals-list__heading">{{ festival.fields.name | uppercase }}</h2>
-            <p class="festivals-list__date">{{ festival.fields.date | date }}</p>
+            <p class="festivals-list__start-date">{{ festival.fields.startDate | dateDay }}</p>
+            <p class="festivals-list__end-date">{{ festival.fields.endDate | dateDayMonth }}</p>
           </router-link>
         </div>
       </div>
