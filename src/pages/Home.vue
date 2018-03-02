@@ -1,31 +1,23 @@
 <template>
-  <div class="container">
+  <div class="home">
     <h1 class="heading">{{ header }}</h1>
-    <div v-if="!loading">
-      <div 
-        class="festivals-list" 
-        v-for="festival in festivals" 
-        :key="festival.name">
-        <div class="festival-list__item">
-          <router-link 
-            class="festival-list__link" 
-            :to=" {name: 'Festival', params: { festivalId : festival.sys.id } }" >
-            <h2 class="festival-list__heading">{{ festival.fields.name | uppercase }}</h2>
-            <p class="festival-list__date">{{ festival.fields.date | date }}</p>
-          </router-link>
-        </div>
-      </div>
-    </div>
+    <festivals-list 
+      :festivals="festivals" 
+      :loading="loading"/>
   </div>
 </template>
 
 <script>
 import Vuex from "vuex";
+import FestivalsList from "../components/FestivalsList";
 
 const mapState = Vuex.mapState;
 
 export default {
   name: "Home",
+  components: {
+    FestivalsList
+  },
   data() {
     return {
       header: "Festivals"
