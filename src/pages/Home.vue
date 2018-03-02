@@ -22,8 +22,6 @@
 <script>
 import Vuex from "vuex";
 
-// const basicScroll = require("basicscroll");
-
 const mapState = Vuex.mapState;
 
 export default {

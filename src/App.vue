@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <app-sidebar/>
     <transition name="fade">
       <router-view/>
     </transition>
@@ -7,8 +8,13 @@
 </template>
 
 <script>
+import SideBar from "./components/SideBar";
+
 export default {
-  name: "App"
+  name: "App",
+  components: {
+    "app-sidebar": SideBar
+  }
 };
 </script>
 
