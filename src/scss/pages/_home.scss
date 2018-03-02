@@ -1,3 +1,6 @@
+@import "../settings/colors";
+@import "../settings/typography";
+
 .festival-list {
   &__item {
     position: relative;
@@ -18,7 +21,8 @@
   }
 
   &__heading {
-    color: black;
+    @include font-heading();
+    color: $black;
   }
 
   &__date {

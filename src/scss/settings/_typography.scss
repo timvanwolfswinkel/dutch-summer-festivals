@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+@import url('//fast.fonts.net/cssapi/52ab2e00-a6db-4d35-8f32-8ba53c86881c.css');
+
+// Font stacks
+@mixin font-heading() {
+    font-family: 'Lato', sans-serif;
+}
+
+@mixin font-body() {
+    font-family: 'AvenirNextLTW01-Medium', sans-serif;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+}
+
+@mixin font-body-italic() {
+    font-family: 'Avenir Next Cyr W00 Italic', sans-serif;
+    font-weight: normal;
+}
+
+@mixin font-body-bold() {
+    font-family: 'Avenir Next Cyr W00 Bold', sans-serif;
+    font-weight: normal;
+}
