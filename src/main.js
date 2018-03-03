@@ -7,6 +7,8 @@ import router from "./router";
 
 const moment = require("moment");
 
+moment.locale("nl-be");
+
 Vue.config.productionTip = false;
 
 const dateFormat = date =>
