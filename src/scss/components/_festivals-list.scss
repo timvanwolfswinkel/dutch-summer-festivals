@@ -2,34 +2,46 @@
 @import "../settings/typography";
 
 .festivals-list {
-    max-width: 500px;
+    max-width: 650px;
     margin: 0 auto;
-    transform: translateX(75px);
 
     &__item {
+        display: block;
         position: relative;
         left: 50%;
-        margin-bottom: 150px;
+        margin-bottom: 75px;
         padding: 20px 50px;
         max-width: 200px;
         transform: translateX(-50%);
-
         opacity: var(--opacity);
         will-change: opacity;
     }
 
-    &__link {
-        color: $black;
-        text-decoration: none;
-    }
-
-    &__heading {
+    &__start-date {
         @include font-heading();
-        color: $black;
+        font-size: 17px;
+        font-weight: bold;
+        margin-bottom: 5px;
     }
 
-    &__date {
-        margin-bottom: 0;
+    &__divider {
+        height: 2px;
+        width: 15px;
+        background-color: $black;
+        margin-left: 10px;
+        margin-bottom: 5px;
+    }
+
+    &__end-date {
+        @include font-heading();
+        font-size: 17px;
+        font-weight: bold;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    &__logo {
+        max-width: 250px;
     }
 }
 

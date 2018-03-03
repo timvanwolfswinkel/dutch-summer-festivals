@@ -1,21 +1,19 @@
 <template>
-  <div class="festivals-list">
-    <div v-if="!loading">
-      <div 
-        class="festivals-list__list" 
-        v-for="festival in festivals" 
-        :key="festival.name">
-        <div class="festivals-list__item">
-          <router-link 
-            class="festivals-list__link" 
-            :to=" {name: 'Festival', params: { festivalId : festival.sys.id } }" >
-            <h2 class="festivals-list__heading">{{ festival.fields.name | uppercase }}</h2>
-            <p class="festivals-list__start-date">{{ festival.fields.startDate | dateDay }}</p>
-            <p class="festivals-list__end-date">{{ festival.fields.endDate | dateDayMonth }}</p>
-          </router-link>
-        </div>
-      </div>
-    </div>
+  <div 
+    class="festivals-list" 
+    v-if="!loading">
+    <router-link 
+      class="festivals-list__item" 
+      v-for="festival in festivals" 
+      :key="festival.name"
+      :to=" {name: 'Festival', params: { festivalId : festival.sys.id } }" >
+      <p class="festivals-list__start-date">{{ festival.fields.startDate | dateDay }}</p>
+      <p class="festivals-list__divider"/>
+      <p class="festivals-list__end-date">{{ festival.fields.endDate | dateDayMonth | uppercase }}</p>
+      <img 
+        class="festivals-list__logo" 
+        src="~@/assets/lowlands.png">
+    </router-link>
   </div>
 </template>
 
