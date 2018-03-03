@@ -2,7 +2,8 @@
   <div 
     class="festivals-list" 
     v-if="!loading">
-    <router-link 
+    <router-link
+      v-scroll-reveal="{ delay: 500 }" 
       class="festivals-list__item" 
       v-for="festival in festivals" 
       :key="festival.name"
