@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1 class="heading">{{ header }}</h1>
     <festivals-list 
       :festivals="festivals" 
       :loading="loading"/>
@@ -17,11 +16,6 @@ export default {
   name: "Home",
   components: {
     FestivalsList
-  },
-  data() {
-    return {
-      header: "Festivals"
-    };
   },
   computed: {
     ...mapState(["loading"]),
