@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="app">
     <app-sidebar/>
     <transition name="fade">
       <router-view/>

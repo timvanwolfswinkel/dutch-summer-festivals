@@ -29,5 +29,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/pages/home.scss";
+@import "../scss/components/home.scss";
 </style>
