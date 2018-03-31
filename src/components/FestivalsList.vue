@@ -1,14 +1,14 @@
 <template>
-  <div 
-    class="festivals-list" 
-    v-if="!loading">
+  <div
+    v-if="!loading" 
+    class="festivals-list">
     <div 
-      class="festivals-list__item" 
       v-for="festival in festivals" 
-      :key="festival.name">
+      :key="festival.name"
+      class="festivals-list__item">
       <div v-scroll-reveal="{ delay: 500 }">
         <router-link 
-          :to=" {name: 'Festival', params: { festivalId : festival.sys.id } }" 
+          :to=" {name: 'Festival', params: { festivalId : festival.fields.url } }" 
         >
           <p class="festivals-list__start-date">{{ festival.fields.startDate | dateDay }}</p>
           <p class="festivals-list__divider"/>

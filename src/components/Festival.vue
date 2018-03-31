@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div 
-      class="festival" 
-      v-if="festival">
+      v-if="festival"
+      class="festival">
       <h1>{{ festival.name }}</h1>
       <h2>{{ festival.slogan }}</h2>
       <p>{{ festival.description }}</p>
@@ -20,7 +20,7 @@ export default {
     festival() {
       const festivals = this.$store.getters.festivals;
       const festivalId = this.$route.params.festivalId;
-      const festival = festivals.filter(key => key.sys.id === festivalId);
+      const festival = festivals.filter(key => key.fields.url === festivalId);
 
       return festival.length !== 0 ? festival[0].fields : {};
     }

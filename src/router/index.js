@@ -6,6 +6,7 @@ import Festival from "@/components/Festival";
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/",
@@ -13,7 +14,7 @@ export default new Router({
       component: Home
     },
     {
-      path: "/:festivalId",
+      path: "/festival/:festivalId",
       name: "Festival",
       component: Festival
     }
