@@ -1,8 +1,9 @@
 <template>
-  <div class="container">
+  <div class="festival">
+    <page-transition/>
     <div 
       v-if="festival"
-      class="festival">
+      class="festival__item">
       <h1>{{ festival.name }}</h1>
       <h2>{{ festival.slogan }}</h2>
       <p>{{ festival.description }}</p>
@@ -12,10 +13,14 @@
 
 <script>
 import store from "../store/store";
+import PageTransition from "../components/PageTransition";
 
 export default {
   store,
   name: "Festival",
+  components: {
+    PageTransition
+  },
   computed: {
     festival() {
       const festivals = this.$store.getters.festivals;
@@ -28,19 +33,6 @@ export default {
 };
 </script>
 
-<style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+<style lang="scss" scoped>
+@import "../scss/pages/festival.scss";
 </style>

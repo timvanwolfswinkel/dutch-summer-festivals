@@ -32,5 +32,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/components/home.scss";
+@import "../scss/pages/home.scss";
 </style>

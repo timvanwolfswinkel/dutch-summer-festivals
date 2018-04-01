@@ -1,0 +1,8 @@
+.festival {
+    float: right;
+    width: calc(100% - 150px);
+
+    &__item {
+        padding: 5px;
+    }
+}
