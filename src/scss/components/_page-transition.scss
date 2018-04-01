@@ -1,13 +1,12 @@
 @import "../settings/colors";
 
 .page-transition {
-    &__container {
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 0;
-        height: 100%;
-        width: 0;
-        background-color: $purple;
-    }
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: 100% 0;
+    background-color: $purple;
 }
