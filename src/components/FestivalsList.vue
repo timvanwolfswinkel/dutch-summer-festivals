@@ -13,9 +13,9 @@
           <p class="festivals-list__start-date">{{ festival.fields.startDate | dateDay }}</p>
           <p class="festivals-list__divider"/>
           <p class="festivals-list__end-date">{{ festival.fields.endDate | dateDayMonth | uppercase }}</p>
-          <img 
-            class="festivals-list__logo" 
-            src="~@/assets/lowlands.png">
+          <img
+            :src="'/static/' + festival.fields.url + '/art-small.png'" 
+            class="festivals-list__logo">
         </router-link>
       </div>
     </div>
