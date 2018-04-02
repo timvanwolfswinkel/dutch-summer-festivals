@@ -1,48 +1,7 @@
-@import "../settings/colors";
-@import "../settings/typography";
-
 .festivals-list {
+    position: relative;
     max-width: 650px;
-    margin: 0 auto;
-
-    &__item {
-        display: block;
-        position: relative;
-        left: 50%;
-        margin-top: 150px;
-        margin-bottom: 150px;
-        padding: 20px 50px;
-        max-width: 200px;
-        transform: translateX(-50%);
-        opacity: var(--opacity);
-        will-change: opacity;
-    }
-
-    &__start-date {
-        @include font-heading();
-        font-size: 17px;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    &__divider {
-        height: 2px;
-        width: 15px;
-        background-color: $black;
-        margin-left: 10px;
-        margin-bottom: 5px;
-    }
-
-    &__end-date {
-        @include font-heading();
-        font-size: 17px;
-        font-weight: bold;
-        margin-left: 20px;
-        margin-bottom: 10px;
-    }
-
-    &__logo {
-        max-width: 250px;
-    }
+    margin: 150px auto 0;
+    z-index: 2;
 }
 

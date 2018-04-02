@@ -1,0 +1,41 @@
+@import "../settings/colors";
+@import "../settings/typography";
+
+.festival-item {
+    display: block;
+    margin: 0 auto 150px;
+    max-width: 250px;
+    cursor: pointer;
+
+    &__content {
+        display: block;
+    }
+
+    &__start-date {
+        @include font-heading();
+        font-size: 17px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    &__divider {
+        height: 2px;
+        width: 15px;
+        background-color: $black;
+        margin-left: 10px;
+        margin-bottom: 5px;
+    }
+    
+    &__end-date {
+        @include font-heading();
+        font-size: 17px;
+        font-weight: bold;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+    
+    &__logo {
+        max-width: 250px;
+    }    
+}
+
