@@ -24,7 +24,9 @@
             class="festival__header-image">
         </div>
         <div v-scroll-reveal>
-          <p class="festival__description">{{ festival.description }}</p>
+          <p 
+            class="festival__description"
+            v-html="festival.description">{{ festival.description }}</p>
         </div>
       </div>
     </div>
