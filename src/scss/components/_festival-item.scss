@@ -5,9 +5,9 @@
     display: block;
     margin: 0 auto 150px;
     max-width: 250px;
-    cursor: pointer;
 
     &__content {
+        position: relative;
         display: block;
     }
 
@@ -15,14 +15,14 @@
         @include font-heading();
         font-size: 17px;
         font-weight: bold;
-        margin-bottom: 5px;
+        padding-bottom: 5px;
     }
     
     &__divider {
         height: 2px;
         width: 15px;
         background-color: $black;
-        margin-left: 10px;
+        padding-left: 10px;
         margin-bottom: 5px;
     }
     
@@ -30,8 +30,8 @@
         @include font-heading();
         font-size: 17px;
         font-weight: bold;
-        margin-left: 20px;
-        margin-bottom: 10px;
+        padding-left: 20px;
+        padding-bottom: 10px;
     }
     
     &__logo {

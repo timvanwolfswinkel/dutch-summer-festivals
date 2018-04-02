@@ -1,24 +1,37 @@
 <template>
   <div v-scroll-reveal="{ delay: 500 }">
     <div class="festival-item">
-      <router-link
+      <div 
         :style="itemOffset" 
-        :to=" {name: 'Festival', params: { festivalId : festival.fields.url } }"
-        class="festival-item__content">
-        <p class="festival-item__start-date">{{ festival.fields.startDate | dateDay }}</p>
-        <p class="festival-item__divider"/>
-        <p class="festival-item__end-date">{{ festival.fields.endDate | dateDayMonth | uppercase }}</p>
-        <img
-          :src="'/static/' + festival.fields.url + '/art-small.png'" 
-          class="festival-item__logo">
-      </router-link>
+        class="festival-item__content"
+        @mouseover="toggleImage"
+        @mouseout="toggleImage">
+        <festival-item-image 
+          v-show="showImage" 
+          :position="margin"
+          :url="festival.fields.url"/>
+        <router-link
+          :to=" {name: 'Festival', params: { festivalId : festival.fields.url } }">
+          <p class="festival-item__start-date">{{ festival.fields.startDate | dateDay }}</p>
+          <p class="festival-item__divider"/>
+          <p class="festival-item__end-date">{{ festival.fields.endDate | dateDayMonth | uppercase }}</p>
+          <img
+            :src="'/static/' + festival.fields.url + '/art-small.png'" 
+            class="festival-item__logo">
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import FestivalItemImage from "../components/FestivalItemImage";
+
 export default {
   name: "FestivalItem",
+  components: {
+    FestivalItemImage
+  },
   props: {
     festival: {
       type: Object,
@@ -35,6 +48,11 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      showImage: false
+    };
+  },
   computed: {
     itemOffset(margin) {
       const amount = Math.floor(Math.random() * (150 - 25 + 1)) + 25;
@@ -43,6 +61,11 @@ export default {
         : `margin-left: ${amount}px`;
 
       return offset;
+    }
+  },
+  methods: {
+    toggleImage() {
+      this.showImage = !this.showImage;
     }
   }
 };
