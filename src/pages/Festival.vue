@@ -1,6 +1,7 @@
 <template>
   <div>
     <page-transition/>
+    <back-button/>
     <div class="festival">
       <div 
         v-if="festival"
@@ -36,12 +37,14 @@
 <script>
 import store from "../store/store";
 import PageTransition from "../components/PageTransition";
+import BackButton from "../components/BackButton";
 
 export default {
   store,
   name: "Festival",
   components: {
-    PageTransition
+    PageTransition,
+    BackButton
   },
   computed: {
     festival() {

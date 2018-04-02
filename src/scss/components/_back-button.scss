@@ -1,0 +1,9 @@
+@import "../settings/colors";
+
+.back-button {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: $white;
+    z-index: 9999;
+}
