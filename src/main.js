@@ -28,7 +28,9 @@ Vue.filter("dateDayMonth", dateDayMonth);
 Vue.filter("dateDay", dateDay);
 Vue.filter("uppercase", uppercase);
 
-Vue.use(VueScrollReveal);
+Vue.use(VueScrollReveal, {
+  scale: { direction: "up", power: "50%" }
+});
 
 /* eslint-disable no-new */
 new Vue({

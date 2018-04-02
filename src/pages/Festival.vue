@@ -1,12 +1,32 @@
 <template>
-  <div class="festival">
+  <div>
     <page-transition/>
-    <div 
-      v-if="festival"
-      class="festival__item">
-      <h1>{{ festival.name }}</h1>
-      <h2>{{ festival.slogan }}</h2>
-      <p>{{ festival.description }}</p>
+    <div class="festival">
+      <div 
+        v-if="festival"
+        class="festival__item">
+        <div class="festival__header">
+          <div v-scroll-reveal="{ delay: 1000 }">
+            <img 
+              :src="'/static/' + festival.url + '/art-header.jpg'"
+              class="festival__art-header">
+          </div>
+          <div v-scroll-reveal="{ delay: 1200 }">
+            <span class="festival__date">{{ festival.startDate | dateDay }} - {{ festival.endDate | dateDayMonth | uppercase }}</span>
+          </div>
+        </div>
+        <div v-scroll-reveal="{ delay: 1500 }">
+          <p class="festival__short-description">{{ festival.shortDescription }}</p>
+        </div>
+        <div v-scroll-reveal="{ delay: 1750 }">
+          <img 
+            :src="'/static/' + festival.url + '/header-image.jpg'"
+            class="festival__header-image">
+        </div>
+        <div v-scroll-reveal>
+          <p class="festival__description">{{ festival.description }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -29,6 +49,9 @@ export default {
 
       return festival.length !== 0 ? festival[0].fields : {};
     }
+  },
+  created() {
+    window.scrollTo(0, 0); // reset scroll position
   }
 };
 </script>
