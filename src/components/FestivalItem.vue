@@ -2,22 +2,24 @@
   <div class="festival-item">
     <div 
       :style="itemOffset" 
-      class="festival-item__content"
-      @mouseover="toggleImage"
-      @mouseout="toggleImage">
+      class="festival-item__content">
       <festival-item-image 
-        v-show="showImage" 
+        :show-image="showImage" 
         :position="margin"
         :url="festival.fields.url"/>
-      <router-link
-        :to=" {name: 'Festival', params: { festivalId : festival.fields.url } }">
-        <p class="festival-item__start-date">{{ festival.fields.startDate | dateDay }}</p>
-        <p class="festival-item__divider"/>
-        <p class="festival-item__end-date">{{ festival.fields.endDate | dateDayMonth | uppercase }}</p>
-        <img
-          :src="'/static/' + festival.fields.url + '/art-small.png'" 
-          class="festival-item__logo">
-      </router-link>
+      <div 
+        @mouseover="toggleImage"
+        @mouseout="toggleImage">
+        <router-link
+          :to=" {name: 'Festival', params: { festivalId : festival.fields.url } }">
+          <p class="festival-item__start-date">{{ festival.fields.startDate | dateDay }}</p>
+          <p class="festival-item__divider"/>
+          <p class="festival-item__end-date">{{ festival.fields.endDate | dateDayMonth | uppercase }}</p>
+          <img
+            :src="'/static/' + festival.fields.url + '/art-small.png'" 
+            class="festival-item__logo">
+        </router-link>
+      </div>
     </div>
   </div>
 </template>

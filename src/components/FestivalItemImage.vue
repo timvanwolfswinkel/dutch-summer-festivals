@@ -2,16 +2,31 @@
   <div
     :style="imagePosition"
     class="festival-item-image">
-    <img 
-      :src="'/static/' + url + '/header-image.jpg'"
-      class="festival-item-image__image">
+    <image-transition>
+      <img
+        v-if="showImage" 
+        :src="'/static/' + url + '/list-item.jpg'"
+        class="festival-item-image__image">
+    </image-transition>
   </div>
 </template>
 
 <script>
+import ImageTransition from "../components/ImageTransition";
+
 export default {
   name: "FestivalItemImage",
+  components: {
+    ImageTransition
+  },
   props: {
+    showImage: {
+      type: Boolean,
+      required: true,
+      validate(value) {
+        return [value];
+      }
+    },
     url: {
       type: String,
       required: true,
