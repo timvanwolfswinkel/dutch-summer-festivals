@@ -23,7 +23,7 @@ export default {
   },
   props: {
     festivals: {
-      type: Array,
+      type: Array || Promise,
       required: true,
       validate(value) {
         return [value];
