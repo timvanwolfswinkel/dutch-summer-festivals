@@ -6,28 +6,18 @@
         v-if="festival"
         class="festival__item">
         <div class="festival__header">
-          <div v-scroll-reveal="{ delay: 1000 }">
-            <img 
-              :src="'/static/' + festival.url + '/art-header.jpg'"
-              class="festival__art-header">
-          </div>
-          <div v-scroll-reveal="{ delay: 1200 }">
-            <span class="festival__date">{{ festival.startDate | dateDay }} - {{ festival.endDate | dateDayMonth | uppercase }}</span>
-          </div>
-        </div>
-        <div v-scroll-reveal="{ delay: 1500 }">
-          <p class="festival__short-description">{{ festival.shortDescription }}</p>
-        </div>
-        <div v-scroll-reveal="{ delay: 1750 }">
           <img 
-            :src="'/static/' + festival.url + '/header-image.jpg'"
-            class="festival__header-image">
+            :src="'/static/' + festival.url + '/art-header.jpg'"
+            class="festival__art-header">
+          <span class="festival__date">{{ festival.startDate | dateDay }} - {{ festival.endDate | dateDayMonth | uppercase }}</span>
         </div>
-        <div v-scroll-reveal>
-          <p 
-            class="festival__description"
-            v-html="festival.description">{{ festival.description }}</p>
-        </div>
+        <p class="festival__short-description">{{ festival.shortDescription }}</p>
+        <img 
+          :src="'/static/' + festival.url + '/header-image.jpg'"
+          class="festival__header-image">
+        <p 
+          class="festival__description"
+          v-html="festival.description">{{ festival.description }}</p>
       </div>
     </div>
   </div>

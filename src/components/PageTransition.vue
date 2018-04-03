@@ -1,8 +1,18 @@
 <template>
-  <div 
-    ref="pageTransition"
-    class="page-transition"
-    style="transform:scaleX(0)"/>
+  <div>
+    <div 
+      ref="purpleOverlay" 
+      class="app__overlay app__overlay--purple" 
+      style="transform:scaleX(0)"/>
+    <transition 
+      :css="false"
+      @beforeEnter="setOpacity"
+      @enter="animateOverlay"
+      @afterEnter="fadeIn"
+      @leave="fadeOut">
+      <slot/>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -10,57 +20,57 @@ import anime from "animejs";
 
 export default {
   name: "PageTransition",
-  mounted() {
-    this.animate();
-  },
-  beforeDestroy() {
-    // TODO: animate before destroy (or load transition into homepage and fire only when not initial pageload)
-    this.animate();
-  },
   methods: {
-    animate() {
+    setOpacity(el) {
+      const element = el;
+
+      element.style.opacity = 0;
+    },
+    animateOverlay(el, done) {
       const animatedTransition = anime.timeline();
-      const el = this.$refs.pageTransition;
+      const purpleOverlay = this.$refs.purpleOverlay;
 
       animatedTransition
         .add({
-          targets: el,
-          duration: 600,
+          targets: purpleOverlay,
+          duration: 500,
           delay: 500,
           scaleX: 1,
           easing: "easeOutExpo",
           complete() {
-            el.style.transformOrigin = "0 100%";
+            purpleOverlay.style.transformOrigin = "0 100%";
           }
         })
         .add({
-          targets: el,
-          duration: 600,
+          targets: purpleOverlay,
+          duration: 500,
           delay: 50,
           scaleX: 0,
           easing: "easeOutExpo",
           complete() {
-            el.style.transformOrigin = "100% 0";
+            purpleOverlay.style.transformOrigin = "100% 0";
+            done();
           }
         });
-      // --------- TODO: ANIMATE A SECOND TIME (IF WANTED) ---------
-      // .add({
-      //   targets: el,
-      //   duration: 600,
-      //   delay: 10,
-      //   scaleX: 1,
-      //   easing: "easeOutExpo",
-      //   complete() {
-      //     el.style.transformOrigin = "0 100%";
-      //   }
-      // })
-      // .add({
-      //   targets: el,
-      //   duration: 600,
-      //   delay: 50,
-      //   scaleX: 0,
-      //   easing: "easeOutExpo"
-      // });
+    },
+    fadeIn(el) {
+      anime({
+        targets: el,
+        duration: 1000,
+        opacity: 1,
+        easing: "easeOutExpo"
+      });
+    },
+    fadeOut(el, done) {
+      anime({
+        targets: el,
+        duration: 500,
+        opacity: 0,
+        easing: "easeOutExpo",
+        complete() {
+          done();
+        }
+      });
     }
   }
 };
