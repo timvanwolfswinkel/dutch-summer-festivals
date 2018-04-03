@@ -43,9 +43,6 @@ export default {
 
       return festival.length !== 0 ? festival[0].fields : {};
     }
-  },
-  created() {
-    window.scrollTo(0, 0); // reset scroll position
   }
 };
 </script>

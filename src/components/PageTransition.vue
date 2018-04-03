@@ -68,6 +68,7 @@ export default {
         opacity: 0,
         easing: "easeOutExpo",
         complete() {
+          window.scrollTo(0, 0);
           done();
         }
       });
