@@ -1,6 +1,5 @@
 <template>
   <div>
-    <page-transition/>
     <back-button/>
     <div class="festival">
       <div 

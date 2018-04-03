@@ -1,0 +1,22 @@
+@import "settings/colors";
+
+.app {
+    &__overlay {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        transform-origin: 100% 0;
+        z-index: 10;
+
+        &--white {
+            background-color: $white;
+        }
+
+        &--purple {
+            background-color: $purple;
+        }
+    }   
+}

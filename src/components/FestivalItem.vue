@@ -1,5 +1,5 @@
 <template>
-  <div v-scroll-reveal="{ delay: 500 }">
+  <div v-scroll-reveal="{ delay: 1200 }">
     <div class="festival-item">
       <div 
         :style="itemOffset" 

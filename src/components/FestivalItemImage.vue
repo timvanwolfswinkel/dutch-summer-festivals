@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     :style="imagePosition"
     class="festival-item-image">
     <img 
