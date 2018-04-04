@@ -20,6 +20,10 @@
 <script>
 import anime from "animejs";
 
+// on enter fire a event to set a value which disables mouse over
+// after leave fire a event to set the default value which enables mouse over again
+// in parent fire event on mouse over only if value is false
+
 export default {
   name: "ImageTransition",
   methods: {

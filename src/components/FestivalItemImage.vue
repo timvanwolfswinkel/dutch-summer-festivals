@@ -14,6 +14,8 @@
 <script>
 import ImageTransition from "../components/ImageTransition";
 
+// move festival item image component back to parent
+
 export default {
   name: "FestivalItemImage",
   components: {
