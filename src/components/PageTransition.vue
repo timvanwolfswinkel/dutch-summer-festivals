@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="page-transition">
     <div 
       ref="purpleOverlay" 
-      class="app__overlay app__overlay--purple" 
+      class="page-transition__overlay" 
       style="transform:scaleX(0)"/>
     <transition 
       :css="false"
