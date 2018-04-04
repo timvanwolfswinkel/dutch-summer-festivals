@@ -78,5 +78,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/components/page-transition.scss";
+@import "src/assets/scss/components/page-transition.scss";
 </style>

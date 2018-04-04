@@ -55,5 +55,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/components/festival-item-image.scss";
+@import "src/assets/scss/components/festival-item-image.scss";
 </style>

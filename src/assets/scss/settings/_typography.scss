@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
 @import url('//fast.fonts.net/cssapi/52ab2e00-a6db-4d35-8f32-8ba53c86881c.css');
 
+@font-face {
+    font-family: KorolevBold;
+    src: url('/fonts/KorolevBold.otf');
+}
+
+@font-face {
+    font-family: KorolevHeavy;
+    src: url('/fonts/KorolevHeavy.otf');
+}
+
 // Font stacks
 @mixin font-heading() {
-    font-family: 'Lato', sans-serif;
+    font-family: 'KorolevHeavy', sans-serif;
 }
 
 @mixin font-body() {

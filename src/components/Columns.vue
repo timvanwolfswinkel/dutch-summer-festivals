@@ -15,5 +15,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/components/columns.scss";
+@import "src/assets/scss/components/columns.scss";
 </style>

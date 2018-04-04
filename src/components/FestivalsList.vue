@@ -41,5 +41,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/components/festivals-list.scss";
+@import "src/assets/scss/components/festivals-list.scss";
 </style>

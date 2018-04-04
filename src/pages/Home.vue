@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <span class="home__heading">YOUR COMPLETE FESTIVAL OVERVIEW.</span>
     <columns/>
     <festivals-list 
       :festivals="festivals" 
@@ -32,5 +33,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/pages/home.scss";
+@import "src/assets/scss/pages/home.scss";
 </style>

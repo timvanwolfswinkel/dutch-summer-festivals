@@ -72,5 +72,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/components/festival-item.scss";
+@import "src/assets/scss/components/festival-item.scss";
 </style>

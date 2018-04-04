@@ -1,0 +1,17 @@
+@import "../settings/colors";
+@import "../settings/typography";
+
+.home {
+  float: right;
+  width: calc(100% - 150px);
+
+  &__heading {
+    @include font-heading();
+    display: block;
+    margin-top: 30px;
+    max-width: 356px;
+    color: $white;
+    font-size: 48px;
+  }
+
+}

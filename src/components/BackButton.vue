@@ -11,5 +11,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/components/back-button.scss";
+@import "src/assets/scss/components/back-button.scss";
 </style>

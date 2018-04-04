@@ -48,5 +48,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/pages/festival.scss";
+@import "src/assets/scss/pages/festival.scss";
 </style>
