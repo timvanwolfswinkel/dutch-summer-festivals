@@ -2,13 +2,15 @@
 @import "../settings/typography";
 
 .festival-item {
-    display: block;
-    margin: 0 auto 150px;
-    max-width: 250px;
-
     &__content {
         position: relative;
         display: block;
+    }
+
+    &__heading {
+        @include font-heading();
+        text-transform: uppercase;
+        color: $white;
     }
 
     &__image-container {

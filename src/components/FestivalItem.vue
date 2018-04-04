@@ -1,8 +1,6 @@
 <template>
   <div class="festival-item">
-    <div 
-      :style="itemOffset" 
-      class="festival-item__content">
+    <div class="festival-item__content">
       <div
         :style="imagePosition"
         class="festival-item__image-container">
@@ -18,12 +16,10 @@
         @mouseout="toggleImage">
         <router-link
           :to=" {name: 'Festival', params: { festivalId : festival.fields.url } }">
+          <h2 class="festival-item__heading">{{ festival.fields.name }}</h2>
           <p class="festival-item__start-date">{{ festival.fields.startDate | dateDay }}</p>
           <p class="festival-item__divider"/>
           <p class="festival-item__end-date">{{ festival.fields.endDate | dateDayMonth | uppercase }}</p>
-          <img
-            :src="require(`@/assets/img/${festival.fields.url}/art-small.png`)"
-            class="festival-item__logo">
         </router-link>
       </div>
     </div>
@@ -60,14 +56,6 @@ export default {
     };
   },
   computed: {
-    itemOffset(margin) {
-      const amount = Math.floor(Math.random() * (150 - 25 + 1)) + 25;
-      const offset = margin.margin.value
-        ? `margin-left: -${amount}px`
-        : `margin-left: ${amount}px`;
-
-      return offset;
-    },
     imagePosition(margin) {
       const imagePosition = margin.margin.value
         ? "left: -100px"

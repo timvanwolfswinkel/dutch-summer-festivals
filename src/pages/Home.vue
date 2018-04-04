@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <span class="home__heading">YOUR COMPLETE FESTIVAL OVERVIEW.</span>
-    <columns/>
     <festivals-list 
       :festivals="festivals" 
       :loading="loading"/>
@@ -10,7 +8,6 @@
 
 <script>
 import Vuex from "vuex";
-import Columns from "../components/Columns";
 import FestivalsList from "../components/FestivalsList";
 
 const mapState = Vuex.mapState;
@@ -18,7 +15,6 @@ const mapState = Vuex.mapState;
 export default {
   name: "Home",
   components: {
-    Columns,
     FestivalsList
   },
   computed: {

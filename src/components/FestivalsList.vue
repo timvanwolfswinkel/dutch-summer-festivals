@@ -2,6 +2,7 @@
   <div
     v-if="!loading" 
     class="festivals-list">
+    <columns/>
     <div 
       v-for="(festival, index) in festivals" 
       :key="festival.name"
@@ -14,11 +15,13 @@
 </template>
 
 <script>
+import Columns from "../components/Columns";
 import FestivalItem from "../components/FestivalItem";
 
 export default {
   name: "FestivalsList",
   components: {
+    Columns,
     FestivalItem
   },
   props: {
