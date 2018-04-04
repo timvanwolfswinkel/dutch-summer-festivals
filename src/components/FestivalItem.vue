@@ -3,10 +3,16 @@
     <div 
       :style="itemOffset" 
       class="festival-item__content">
-      <festival-item-image 
-        :show-image="showImage" 
-        :position="margin"
-        :url="festival.fields.url"/>
+      <div
+        :style="imagePosition"
+        class="festival-item__image-container">
+        <image-transition>
+          <img
+            v-if="showImage" 
+            :src="'/static/' + festival.fields.url + '/list-item.jpg'"
+            class="festival-item__image">
+        </image-transition>
+      </div>
       <div 
         @mouseover="toggleImage"
         @mouseout="toggleImage">
@@ -25,12 +31,12 @@
 </template>
 
 <script>
-import FestivalItemImage from "../components/FestivalItemImage";
+import ImageTransition from "../components/ImageTransition";
 
 export default {
   name: "FestivalItem",
   components: {
-    FestivalItemImage
+    ImageTransition
   },
   props: {
     festival: {
@@ -61,6 +67,13 @@ export default {
         : `margin-left: ${amount}px`;
 
       return offset;
+    },
+    imagePosition(margin) {
+      const imagePosition = margin.margin.value
+        ? "left: -100px"
+        : "right: -100px";
+
+      return imagePosition;
     }
   },
   methods: {

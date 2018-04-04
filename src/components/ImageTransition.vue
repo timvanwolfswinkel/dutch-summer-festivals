@@ -3,7 +3,7 @@
     <div 
       ref="blackOverlay"
       class="image-transition__overlay image-transition__overlay--black"
-      style="transform:scaleX(1)"/>
+      style="transform:scaleX(0)"/>
     <div 
       ref="purpleOverlay"
       class="image-transition__overlay image-transition__overlay--purple"
@@ -66,7 +66,7 @@ export default {
 
       animatedTransition
         .add({
-          targets: [purpleOverlay, blackOverlay],
+          targets: purpleOverlay,
           duration: 600,
           delay: 500,
           scaleY: 1,
@@ -77,7 +77,7 @@ export default {
           }
         })
         .add({
-          targets: purpleOverlay,
+          targets: [purpleOverlay, blackOverlay],
           duration: 600,
           delay: 50,
           scaleY: 0,

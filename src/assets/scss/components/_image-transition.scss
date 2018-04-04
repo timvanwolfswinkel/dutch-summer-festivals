@@ -12,12 +12,12 @@
 
         &--black {
             background-color: $black;
-            z-index: 2;
+            z-index: 999;
         }
 
         &--purple {
             background-color: $purple;
-            z-index: 3;
+            z-index: 999;
         }
     }
 }

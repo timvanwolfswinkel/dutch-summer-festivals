@@ -11,6 +11,23 @@
         display: block;
     }
 
+    &__image-container {
+        display: block;
+        position: absolute;
+        bottom: -300px;
+        height: 343px;
+        width: 200px;
+        transform-origin: bottom left;
+        z-index: -1;
+    }
+
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%; 
+    }
+
     &__overlay {
         display: block;
         position: absolute;
