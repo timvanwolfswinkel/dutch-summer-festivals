@@ -9,7 +9,7 @@
         <image-transition>
           <img
             v-if="showImage" 
-            :src="'/static/' + festival.fields.url + '/list-item.jpg'"
+            :src="require(`@/assets/img/${festival.fields.url}/list-item.jpg`)"
             class="festival-item__image">
         </image-transition>
       </div>
@@ -22,7 +22,7 @@
           <p class="festival-item__divider"/>
           <p class="festival-item__end-date">{{ festival.fields.endDate | dateDayMonth | uppercase }}</p>
           <img
-            :src="'/static/' + festival.fields.url + '/art-small.png'" 
+            :src="require(`@/assets/img/${festival.fields.url}/art-small.png`)"
             class="festival-item__logo">
         </router-link>
       </div>

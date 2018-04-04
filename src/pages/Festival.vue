@@ -7,13 +7,13 @@
         class="festival__item">
         <div class="festival__header">
           <img 
-            :src="'/static/' + festival.url + '/art-header.jpg'"
+            :src="require(`@/assets/img/${festival.url}/art-header.jpg`)"
             class="festival__art-header">
           <span class="festival__date">{{ festival.startDate | dateDay }} - {{ festival.endDate | dateDayMonth | uppercase }}</span>
         </div>
         <p class="festival__short-description">{{ festival.shortDescription }}</p>
         <img 
-          :src="'/static/' + festival.url + '/header-image.jpg'"
+          :src="require(`@/assets/img/${festival.url}/header-image.jpg`)"
           class="festival__header-image">
         <p 
           class="festival__description"
