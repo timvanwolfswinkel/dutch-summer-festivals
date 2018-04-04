@@ -4,8 +4,8 @@ html {
 
 body {
     @include font-body();
-    background: $white;
-    color: $black;
+    background: $black;
+    color: $white;
     line-height: 1.35;
     font-size: 15px;
     padding: 0;
@@ -23,6 +23,6 @@ img {
 }
 
 a {
-    color: $black;
+    color: $white;
     text-decoration: none;
 }

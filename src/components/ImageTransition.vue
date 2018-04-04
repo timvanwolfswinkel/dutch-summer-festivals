@@ -1,8 +1,8 @@
 <template>
   <div>
     <div 
-      ref="whiteOverlay"
-      class="image-transition__overlay image-transition__overlay--white"
+      ref="blackOverlay"
+      class="image-transition__overlay image-transition__overlay--black"
       style="transform:scaleX(1)"/>
     <div 
       ref="purpleOverlay"
@@ -25,7 +25,7 @@ export default {
   methods: {
     animateIn(el, done) {
       const animatedTransition = anime.timeline();
-      const whiteOverlay = this.$refs.whiteOverlay;
+      const blackOverlay = this.$refs.blackOverlay;
       const purpleOverlay = this.$refs.purpleOverlay;
 
       purpleOverlay.style.scaleX = 0;
@@ -40,11 +40,11 @@ export default {
           complete() {
             console.log("purple-overlay-complete");
             purpleOverlay.style.transformOrigin = "0 100%";
-            whiteOverlay.style.transformOrigin = "0 100%";
+            blackOverlay.style.transformOrigin = "0 100%";
           }
         })
         .add({
-          targets: [purpleOverlay, whiteOverlay],
+          targets: [purpleOverlay, blackOverlay],
           duration: 600,
           delay: 50,
           scaleY: 0,
@@ -57,19 +57,19 @@ export default {
     },
     animateOut(el, done) {
       const animatedTransition = anime.timeline();
-      const whiteOverlay = this.$refs.whiteOverlay;
+      const blackOverlay = this.$refs.blackOverlay;
       const purpleOverlay = this.$refs.purpleOverlay;
 
       animatedTransition
         .add({
-          targets: [purpleOverlay, whiteOverlay],
+          targets: [purpleOverlay, blackOverlay],
           duration: 600,
           delay: 500,
           scaleY: 1,
           easing: "easeOutExpo",
           complete() {
             purpleOverlay.style.transformOrigin = "0 100%";
-            whiteOverlay.style.transformOrigin = "0 100%";
+            blackOverlay.style.transformOrigin = "0 100%";
           }
         })
         .add({
@@ -80,7 +80,7 @@ export default {
           easing: "easeOutExpo",
           complete() {
             purpleOverlay.style.transformOrigin = "100% 0";
-            whiteOverlay.style.transformOrigin = "100% 0";
+            blackOverlay.style.transformOrigin = "100% 0";
             done();
           }
         });
