@@ -9,6 +9,8 @@
     left: 0;
     overflow-y: hidden;
     z-index: 1;
+    pointer-events: none;
+    user-select: none;
 
     &__column {
         display: inline-block;
