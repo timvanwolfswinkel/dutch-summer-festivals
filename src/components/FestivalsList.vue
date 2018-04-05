@@ -3,6 +3,12 @@
     v-if="!loading" 
     class="festivals-list">
     <columns/>
+    <div class="festivals-list__intro">
+      <div class="festivals-list__intro-container">
+        <h1 class="festivals-list__header">Your complete festival overview.</h1>
+        <span class="festivals-list__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+      </div>
+    </div>
     <div 
       v-for="(festival, index) in festivals" 
       :key="festival.name"

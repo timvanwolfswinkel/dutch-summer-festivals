@@ -5,6 +5,19 @@
     <div class="columns__column"/>
     <div class="columns__column"/>
     <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
+    <div class="columns__column"/>
   </div>
 </template>
 
