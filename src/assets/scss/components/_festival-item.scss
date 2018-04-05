@@ -2,15 +2,13 @@
 @import "../settings/typography";
 
 .festival-item {
-    &__content {
+    position: relative;
+    display: block;
+    
+    &__container {
         position: relative;
         display: block;
-    }
-
-    &__heading {
-        @include font-heading();
-        text-transform: uppercase;
-        color: $white;
+        z-index: 2;
     }
 
     &__image-container {
@@ -30,23 +28,20 @@
         width: 100%; 
     }
 
-    &__overlay {
-        display: block;
+    &__content {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-        transform-origin: 0 0;
+        left: 150px;
+        top: 150px;
+    }
 
-        &--white {
-            background-color: $black;
-        }
-
-        &--purple {
-            background-color: $purple;
-        }
+    &__heading {
+        @include font-heading();
+        font-size: 55px;
+        max-width: 350px;
+        line-height: 50px;
+        text-transform: uppercase;
+        color: $white;
+        margin: 0;
     }
 
     &__start-date {
@@ -61,6 +56,7 @@
         width: 15px;
         background-color: $white;
         padding-left: 10px;
+        margin-left: 8px;
         margin-bottom: 5px;
     }
     

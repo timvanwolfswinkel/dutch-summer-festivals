@@ -1,6 +1,7 @@
 <template>
   <div class="festival-item">
-    <div class="festival-item__content">
+    <columns/>
+    <div class="festival-item__container">
       <div
         :style="imagePosition"
         class="festival-item__image-container">
@@ -12,6 +13,7 @@
         </image-transition>
       </div>
       <div 
+        class="festival-item__content"
         @mouseover="toggleImage"
         @mouseout="toggleImage">
         <router-link
@@ -27,11 +29,13 @@
 </template>
 
 <script>
+import Columns from "../components/Columns";
 import ImageTransition from "../components/ImageTransition";
 
 export default {
   name: "FestivalItem",
   components: {
+    Columns,
     ImageTransition
   },
   props: {

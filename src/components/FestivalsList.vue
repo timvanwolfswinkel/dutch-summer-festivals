@@ -2,7 +2,6 @@
   <div
     v-if="!loading" 
     class="festivals-list">
-    <columns/>
     <div class="festivals-list__intro">
       <div class="festivals-list__intro-container">
         <h1 class="festivals-list__header">Your complete festival overview.</h1>
@@ -21,13 +20,11 @@
 </template>
 
 <script>
-import Columns from "../components/Columns";
 import FestivalItem from "../components/FestivalItem";
 
 export default {
   name: "FestivalsList",
   components: {
-    Columns,
     FestivalItem
   },
   props: {
