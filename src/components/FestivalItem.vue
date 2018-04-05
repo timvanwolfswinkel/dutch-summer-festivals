@@ -62,8 +62,8 @@ export default {
   computed: {
     imagePosition(margin) {
       const imagePosition = margin.margin.value
-        ? "left: -100px"
-        : "right: -100px";
+        ? "left: -25px"
+        : "right: -25px";
 
       return imagePosition;
     }
