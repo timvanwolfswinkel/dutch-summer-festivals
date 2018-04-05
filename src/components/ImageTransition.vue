@@ -5,8 +5,8 @@
       class="image-transition__overlay image-transition__overlay--black"
       style="transform:scaleX(0)"/>
     <div 
-      ref="purpleOverlay"
-      class="image-transition__overlay image-transition__overlay--purple"
+      ref="orangeOverlay"
+      class="image-transition__overlay image-transition__overlay--orange"
       style="transform:scaleX(0)"/>
     <transition 
       :css="false"
@@ -30,31 +30,31 @@ export default {
     animateIn(el, done) {
       const animatedTransition = anime.timeline();
       const blackOverlay = this.$refs.blackOverlay;
-      const purpleOverlay = this.$refs.purpleOverlay;
+      const orangeOverlay = this.$refs.orangeOverlay;
 
-      purpleOverlay.style.scaleX = 0;
+      orangeOverlay.style.scaleX = 0;
 
       animatedTransition
         .add({
-          targets: purpleOverlay,
+          targets: orangeOverlay,
           duration: 600,
           delay: 250,
           scaleY: 1,
           easing: "easeOutExpo",
           complete() {
             console.log("purple-overlay-complete");
-            purpleOverlay.style.transformOrigin = "0 100%";
+            orangeOverlay.style.transformOrigin = "0 100%";
             blackOverlay.style.transformOrigin = "0 100%";
           }
         })
         .add({
-          targets: [purpleOverlay, blackOverlay],
+          targets: [orangeOverlay, blackOverlay],
           duration: 600,
           delay: 50,
           scaleY: 0,
           easing: "easeOutExpo",
           complete() {
-            purpleOverlay.style.transformOrigin = "100% 0";
+            orangeOverlay.style.transformOrigin = "100% 0";
             done();
           }
         });
@@ -62,28 +62,28 @@ export default {
     animateOut(el, done) {
       const animatedTransition = anime.timeline();
       const blackOverlay = this.$refs.blackOverlay;
-      const purpleOverlay = this.$refs.purpleOverlay;
+      const orangeOverlay = this.$refs.orangeOverlay;
 
       animatedTransition
         .add({
-          targets: purpleOverlay,
+          targets: orangeOverlay,
           duration: 600,
           delay: 500,
           scaleY: 1,
           easing: "easeOutExpo",
           complete() {
-            purpleOverlay.style.transformOrigin = "0 100%";
+            orangeOverlay.style.transformOrigin = "0 100%";
             blackOverlay.style.transformOrigin = "0 100%";
           }
         })
         .add({
-          targets: [purpleOverlay, blackOverlay],
+          targets: [orangeOverlay, blackOverlay],
           duration: 600,
           delay: 50,
           scaleY: 0,
           easing: "easeOutExpo",
           complete() {
-            purpleOverlay.style.transformOrigin = "100% 0";
+            orangeOverlay.style.transformOrigin = "100% 0";
             blackOverlay.style.transformOrigin = "100% 0";
             done();
           }
