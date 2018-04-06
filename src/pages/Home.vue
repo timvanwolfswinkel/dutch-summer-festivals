@@ -2,7 +2,8 @@
   <div class="home">
     <festivals-list 
       :festivals="festivals" 
-      :loading="loading"/>
+      :loading="loading"
+      :show-info-panel="showInfoPanel"/>
   </div>
 </template>
 
@@ -19,6 +20,7 @@ export default {
   },
   computed: {
     ...mapState(["loading"]),
+    ...mapState(["showInfoPanel"]),
     festivals() {
       return this.$store.state.festivals.length > 0
         ? this.$store.state.festivals

@@ -7,10 +7,12 @@ Vue.use(Vuex);
 
 const LIST_OF_FESTIVALS = "LIST_OF_FESTIVALS";
 const SET_LOADING = "SET_LOADING";
+const TOGGLE_INFO_PANEL = "TOGGLE_INFO_PANEL";
 
 const initialState = {
   festivals: [],
-  loading: false
+  loading: false,
+  showInfoPanel: false
 };
 
 const getters = {
@@ -28,6 +30,10 @@ const mutations = {
   },
   [SET_LOADING](state, loading) {
     state.loading = loading;
+  },
+  [TOGGLE_INFO_PANEL](state) {
+    state.showInfoPanel = !state.showInfoPanel;
+    console.log(state.showInfoPanel);
   }
 };
 
@@ -38,6 +44,9 @@ const actions = {
       commit(LIST_OF_FESTIVALS, response.data.items);
       commit(SET_LOADING, false);
     });
+  },
+  toggleInfoPanel({ commit }) {
+    commit(TOGGLE_INFO_PANEL);
   }
 };
 

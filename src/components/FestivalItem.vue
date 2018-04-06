@@ -14,15 +14,11 @@
       </div>
       <div 
         class="festival-item__content"
-        @mouseover="toggleImage"
-        @mouseout="toggleImage">
-        <router-link
-          :to=" {name: 'Festival', params: { festivalId : festival.fields.url } }">
-          <h2 class="festival-item__heading">{{ festival.fields.name }}</h2>
-          <p class="festival-item__start-date">{{ festival.fields.startDate | dateDay }}</p>
-          <p class="festival-item__divider"/>
-          <p class="festival-item__end-date">{{ festival.fields.endDate | dateDayMonth | uppercase }}</p>
-        </router-link>
+        @click="toggleShowInfoPanel">
+        <h2 class="festival-item__heading">{{ festival.fields.name }}</h2>
+        <p class="festival-item__start-date">{{ festival.fields.startDate | dateDay }}</p>
+        <p class="festival-item__divider"/>
+        <p class="festival-item__end-date">{{ festival.fields.endDate | dateDayMonth | uppercase }}</p>
       </div>
     </div>
   </div>
@@ -71,6 +67,9 @@ export default {
   methods: {
     toggleImage() {
       this.showImage = !this.showImage;
+    },
+    toggleShowInfoPanel() {
+      this.$store.dispatch("toggleInfoPanel");
     }
   }
 };
