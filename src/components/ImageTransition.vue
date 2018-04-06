@@ -26,6 +26,7 @@ import anime from "animejs";
 export default {
   name: "ImageTransition",
   methods: {
+    // TODO: Disable toggle image when animating the elements in/out (state)
     setStyles(el) {
       const orangeOverlay = this.$refs.orangeOverlay;
       const element = el;
