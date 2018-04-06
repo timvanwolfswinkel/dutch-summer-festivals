@@ -9,6 +9,8 @@ export default function fetchFestivals() {
   return axios.get(
     `${process.env.API_URL}/spaces/${
       process.env.SPACE_ID
-    }/entries?access_token=${process.env.ACCESS_TOKEN}&content_type=festival`
+    }/entries?access_token=${
+      process.env.ACCESS_TOKEN
+    }&order=fields.startDate&content_type=festival`
   );
 }

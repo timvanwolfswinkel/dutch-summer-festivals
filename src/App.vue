@@ -1,38 +1,22 @@
 <template>
-  <div id="app">
-    <transition name="fade">
+  <div class="app">
+    <page-transition>
       <router-view/>
-    </transition>
+    </page-transition>
   </div>
 </template>
 
 <script>
+import PageTransition from "./components/PageTransition";
+
 export default {
-  name: "App"
+  name: "App",
+  components: {
+    PageTransition
+  }
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition-property: opacity;
-  transition-duration: 0.25s;
-}
-
-.fade-enter-active {
-  transition-delay: 0.25s;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-}
+<style lang="scss">
+@import "src/assets/scss/global.scss";
 </style>

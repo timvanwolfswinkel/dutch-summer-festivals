@@ -1,11 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "@/components/Home";
-import Detail from "@/components/Detail";
+import Home from "@/pages/Home";
+import Festival from "@/pages/Festival";
 
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/",
@@ -13,9 +14,9 @@ export default new Router({
       component: Home
     },
     {
-      path: "/:festivalId",
-      name: "Detail",
-      component: Detail
+      path: "/festival/:festivalId",
+      name: "Festival",
+      component: Festival
     }
   ]
 });

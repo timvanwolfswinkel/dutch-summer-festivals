@@ -16,6 +16,9 @@ const initialState = {
 const getters = {
   festivals(state) {
     return state.festivals;
+  },
+  festival(state, id) {
+    return state.festivals.filter(festival => festival.id === id);
   }
 };
 

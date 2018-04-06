@@ -10,7 +10,7 @@ module.exports = {
   },
   // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
   // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ['plugin:vue/essential', 'airbnb-base', 'prettier'],
+  extends: ['plugin:vue/recommended', 'airbnb-base', 'prettier'],
   // required to lint *.vue files
   plugins: [
     'vue',
@@ -31,6 +31,7 @@ module.exports = {
       js: 'never',
       vue: 'never'
     }],
+    'no-console': 'off', // disable no console statement error
     // disallow reassignment of function parameters
     // disallow parameter object manipulation except for specific exclusions
     'no-param-reassign': ['error', {
