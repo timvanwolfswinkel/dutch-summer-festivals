@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="80px" viewBox="0 0 96 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M56,80 C78.09139,80 96,62.09139 96,40 C96,17.90861 78.09139,0 56,0 C33.90861,0 16,17.90861 16,40 C16,62.09139 33.90861,80 56,80 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="80" height="80" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-2" transform="translate(-1177.000000, -586.000000)">
+            <g id="Group-2" transform="translate(1000.000000, 0.000000)">
+                <g id="Group-6" transform="translate(57.000000, 134.000000)">
+                    <g id="Group-5" transform="translate(0.000000, 452.000000)">
+                        <g id="Group-7" transform="translate(120.000000, 0.000000)">
+                            <use id="Oval-3" stroke="#0008BF" mask="url(#mask-2)" stroke-width="12" stroke-dasharray="3,8,3,8" xlink:href="#path-1"></use>
+                            <g id="Group-4" transform="translate(0.000000, 33.000000)" fill="#0008BF">
+                                <polygon id="Rectangle" points="50 0 62 8 50 15"></polygon>
+                                <rect id="Rectangle-14" x="0" y="6" width="50" height="3"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

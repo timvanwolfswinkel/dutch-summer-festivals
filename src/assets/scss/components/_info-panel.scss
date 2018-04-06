@@ -20,12 +20,21 @@
     }
 
     &__close {
+        display: flex;
         position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 25px;
-        height: 25px;
-        background-color: $white;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: $dark-orange;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__close-icon {
+        display: block;
+        width: 17px;
+        height: 17px;
     }
 
     &__heading {
@@ -54,6 +63,11 @@
         font-size: 20px;
         text-transform: uppercase;
         margin-bottom: 10px;
+
+        &--inline {
+            padding-top: 15px;
+            display: inline-block;
+        }
     }
 
     &__description {
@@ -62,5 +76,15 @@
         color: $black;
         font-size: 15px;
         padding-left: 15px;
+        margin-bottom: 60px;
+    }
+
+    &__learn-more {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon {
+        margin-left: 10px;
     }
 }
