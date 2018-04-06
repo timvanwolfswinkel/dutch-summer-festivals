@@ -14,7 +14,7 @@
       </div>
       <div 
         class="festival-item__content"
-        @click="toggleShowInfoPanel">
+        @click="prepareInfoPanel">
         <h2 class="festival-item__heading">{{ festival.fields.name }}</h2>
         <p class="festival-item__start-date">{{ festival.fields.startDate | dateDay }}</p>
         <p class="festival-item__divider"/>
@@ -52,7 +52,8 @@ export default {
   },
   data() {
     return {
-      showImage: false
+      showImage: false,
+      infoPanelIsOpen: this.$store.state.showInfoPanel
     };
   },
   computed: {
@@ -67,6 +68,19 @@ export default {
   methods: {
     toggleImage() {
       this.showImage = !this.showImage;
+    },
+    prepareInfoPanel() {
+      if (!this.$store.state.showInfoPanel) {
+        this.setFestivalId();
+        this.toggleShowInfoPanel();
+      } else if (this.festival.sys.id === this.$store.state.festivalId) {
+        this.toggleShowInfoPanel();
+      }
+    },
+    setFestivalId() {
+      this.$store.dispatch("setFestivalId", {
+        festivalId: this.festival.sys.id
+      });
     },
     toggleShowInfoPanel() {
       this.$store.dispatch("toggleInfoPanel");

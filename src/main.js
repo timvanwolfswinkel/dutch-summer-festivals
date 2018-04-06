@@ -18,6 +18,9 @@ const dateFormat = date =>
 const dateDayMonth = date =>
   date ? moment(date, "YYYY-MM-DD").format("DD MMM") : "N/A";
 
+const dateDayMonthFull = date =>
+  date ? moment(date, "YYYY-MM-DD").format("DD MMMM") : "N/A";
+
 const dateDay = date =>
   date ? moment(date, "YYYY-MM-DD").format("DD") : "N/A";
 
@@ -25,6 +28,7 @@ const uppercase = message => message.toUpperCase();
 
 Vue.filter("date", dateFormat);
 Vue.filter("dateDayMonth", dateDayMonth);
+Vue.filter("dateDayMonthFull", dateDayMonthFull);
 Vue.filter("dateDay", dateDay);
 Vue.filter("uppercase", uppercase);
 

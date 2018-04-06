@@ -41,7 +41,7 @@ export default {
   },
   props: {
     festivals: {
-      type: Array || Promise,
+      type: [Array, Promise],
       required: true,
       validate(value) {
         return [value];
@@ -75,7 +75,6 @@ export default {
       });
     },
     animateInfoPanelOut(el, done) {
-      console.log("animateOut");
       anime({
         targets: el,
         duration: 500,

@@ -42,7 +42,6 @@ export default {
           scaleY: 1,
           easing: "easeOutExpo",
           complete() {
-            console.log("purple-overlay-complete");
             orangeOverlay.style.transformOrigin = "0 100%";
             blackOverlay.style.transformOrigin = "0 100%";
           }

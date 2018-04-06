@@ -8,32 +8,36 @@ Vue.use(Vuex);
 const LIST_OF_FESTIVALS = "LIST_OF_FESTIVALS";
 const SET_LOADING = "SET_LOADING";
 const TOGGLE_INFO_PANEL = "TOGGLE_INFO_PANEL";
+const SET_FESTIVAL_ID = "SET_FESTIVAL_ID";
 
 const initialState = {
   festivals: [],
   loading: false,
-  showInfoPanel: false
+  showInfoPanel: false,
+  festivalId: null
 };
 
 const getters = {
   festivals(state) {
     return state.festivals;
   },
-  festival(state, id) {
-    return state.festivals.filter(festival => festival.id === id);
-  }
+  getFestivalById: state => id =>
+    state.festivals.filter(festival => festival.sys.id === id)
 };
 
 const mutations = {
   [LIST_OF_FESTIVALS](state, festivals) {
     state.festivals = festivals;
+    state.festivalId = festivals[0].sys.id;
   },
   [SET_LOADING](state, loading) {
     state.loading = loading;
   },
   [TOGGLE_INFO_PANEL](state) {
     state.showInfoPanel = !state.showInfoPanel;
-    console.log(state.showInfoPanel);
+  },
+  [SET_FESTIVAL_ID](state, festivalId) {
+    state.festivalId = festivalId.festivalId;
   }
 };
 
@@ -47,6 +51,9 @@ const actions = {
   },
   toggleInfoPanel({ commit }) {
     commit(TOGGLE_INFO_PANEL);
+  },
+  setFestivalId({ commit }, festivalId) {
+    commit(SET_FESTIVAL_ID, festivalId);
   }
 };
 
