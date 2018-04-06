@@ -63,6 +63,7 @@ export default {
     }
   },
   methods: {
+    // TODO: disable clicking on element during animation (state)
     animateInfoPanelIn(el, done) {
       anime({
         targets: el,
