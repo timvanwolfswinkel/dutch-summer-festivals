@@ -14,6 +14,8 @@
       </div>
       <div 
         class="festival-item__content"
+        @mouseover="toggleImage"
+        @mouseout="toggleImage"
         @click="prepareInfoPanel">
         <h2 class="festival-item__heading">{{ festival.fields.name }}</h2>
         <p class="festival-item__start-date">{{ festival.fields.startDate | dateDay }}</p>
