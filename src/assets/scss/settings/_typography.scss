@@ -4,6 +4,11 @@
 $font_path: '~@/assets/fonts/';
 
 @font-face {
+    font-family: KorolevMedium;
+    src: url($font_path + 'KorolevMedium.otf');
+}
+
+@font-face {
     font-family: KorolevBold;
     src: url('/fonts/KorolevBold.otf');
 }
@@ -16,10 +21,12 @@ $font_path: '~@/assets/fonts/';
 // Font stacks
 @mixin font-heading() {
     font-family: 'KorolevHeavy', sans-serif;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
 }
 
 @mixin font-body() {
-    font-family: 'AvenirNextLTW01-Medium', sans-serif;
+    font-family: 'KorolevMedium', sans-serif;
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
 }

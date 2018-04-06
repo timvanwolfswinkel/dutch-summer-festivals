@@ -1,31 +1,34 @@
 <template>
-  <div
-    v-if="!loading" 
-    class="festivals-list">
-    <div class="festivals-list__intro">
-      <div class="festivals-list__intro-container">
-        <h1 class="festivals-list__header">Your complete festival overview.</h1>
-        <span class="festivals-list__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+    <div
+      v-if="!loading" 
+      class="festivals-list">
+      <info-panel/>
+      <div class="festivals-list__intro">
+        <div class="festivals-list__intro-container">
+          <h1 class="festivals-list__header">Your complete festival overview.</h1>
+          <span class="festivals-list__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+        </div>
+      </div>
+      <div 
+        v-for="(festival, index) in festivals" 
+        :key="festival.name"
+        class="festivals-list__item">
+        <festival-item 
+          :festival="festival" 
+          :margin="{value: !(index % 2)}"/> <!-- use even/odd for handling left or right margin -->
       </div>
     </div>
-    <div 
-      v-for="(festival, index) in festivals" 
-      :key="festival.name"
-      class="festivals-list__item">
-      <festival-item 
-        :festival="festival" 
-        :margin="{value: !(index % 2)}"/> <!-- use even/odd for handling left or right margin -->
-    </div>
-  </div>
 </template>
 
 <script>
 import FestivalItem from "../components/FestivalItem";
+import InfoPanel from "../components/InfoPanel";
 
 export default {
   name: "FestivalsList",
   components: {
-    FestivalItem
+    FestivalItem,
+    InfoPanel
   },
   props: {
     festivals: {
