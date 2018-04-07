@@ -1,17 +1,15 @@
 <template>
   <div>
     <div 
-      ref="orangeOverlay"
-      class="image-transition__overlay image-transition__overlay--orange"
+      ref="overlay"
+      class="image-transition__overlay"
       style="transform:scaleY(0)"/>
     <transition 
       :css="false"
       @beforeEnter="setStyles"
       @enter="animateIn"
       @leave="animateOut">
-      <slot 
-        class="image-transition__image" 
-        style="opacity: 0"/>
+      <slot/>
     </transition>
   </div>
 </template>
@@ -28,24 +26,24 @@ export default {
   methods: {
     // TODO: Disable toggle image when animating the elements in/out (state)
     setStyles(el) {
-      const orangeOverlay = this.$refs.orangeOverlay;
+      const overlay = this.$refs.overlay;
       const element = el;
 
-      orangeOverlay.style.scaleY = 0;
+      overlay.style.scaleY = 0;
       element.style.opacity = 0;
     },
     animateIn(el, done) {
       const animatedTransition = anime.timeline();
-      const orangeOverlay = this.$refs.orangeOverlay;
+      const overlay = this.$refs.overlay;
 
       animatedTransition
         .add({
-          targets: orangeOverlay,
+          targets: overlay,
           duration: 300,
           scaleY: 1,
           easing: "easeInOutQuad",
           complete() {
-            orangeOverlay.style.transformOrigin = "0 100%";
+            overlay.style.transformOrigin = "0 100%";
           }
         })
         .add({
@@ -55,28 +53,28 @@ export default {
           easing: "easeInQuad"
         })
         .add({
-          targets: orangeOverlay,
+          targets: overlay,
           duration: 300,
           scaleY: 0,
           easing: "easeInOutQuad",
           complete() {
-            orangeOverlay.style.transformOrigin = "100% 0";
+            overlay.style.transformOrigin = "100% 0";
             done();
           }
         });
     },
     animateOut(el, done) {
       const animatedTransition = anime.timeline();
-      const orangeOverlay = this.$refs.orangeOverlay;
+      const overlay = this.$refs.overlay;
 
       animatedTransition
         .add({
-          targets: orangeOverlay,
+          targets: overlay,
           duration: 300,
           scaleY: 1,
           easing: "easeInOutQuad",
           complete() {
-            orangeOverlay.style.transformOrigin = "0 100%";
+            overlay.style.transformOrigin = "0 100%";
           }
         })
         .add({
@@ -86,12 +84,12 @@ export default {
           easing: "easeInQuad"
         })
         .add({
-          targets: orangeOverlay,
+          targets: overlay,
           duration: 300,
           scaleY: 0,
           easing: "easeInOutQuad",
           complete() {
-            orangeOverlay.style.transformOrigin = "100% 0";
+            overlay.style.transformOrigin = "100% 0";
             done();
           }
         });
