@@ -13,6 +13,7 @@
         </image-transition>
       </div>
       <div 
+        :style="elementPosition" 
         class="festival-item__content"
         @mouseover="toggleImage"
         @mouseout="toggleImage"
@@ -55,14 +56,22 @@ export default {
   data() {
     return {
       showImage: false,
-      infoPanelIsOpen: this.$store.state.showInfoPanel
+      infoPanelIsOpen: this.$store.state.showInfoPanel,
+      randomInt: Math.floor(Math.random() * (30 - 15 + 1)) + 15
     };
   },
   computed: {
+    elementPosition(margin) {
+      const elementPosition = margin.margin.value
+        ? `top: ${this.randomInt}%`
+        : `bottom: ${this.randomInt}%`;
+
+      return elementPosition;
+    },
     imagePosition(margin) {
       const imagePosition = margin.margin.value
-        ? "left: -25px"
-        : "right: -25px";
+        ? `left: 35px; top: calc(${this.randomInt}% + 20px)`
+        : `right: 35px; bottom: calc(${this.randomInt}% - 60px)`;
 
       return imagePosition;
     }
