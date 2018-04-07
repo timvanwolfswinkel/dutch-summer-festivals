@@ -99,6 +99,7 @@ export default {
       this.$store.dispatch("toggleInfoPanel");
     },
     // TODO: disable clicking on element during animation (state)
+    // TODO: before route leave set panel to false
     animateInfoPanelIn(el, done) {
       anime({
         targets: el,
