@@ -9,12 +9,14 @@ const LIST_OF_FESTIVALS = "LIST_OF_FESTIVALS";
 const SET_LOADING = "SET_LOADING";
 const TOGGLE_INFO_PANEL = "TOGGLE_INFO_PANEL";
 const SET_FESTIVAL_ID = "SET_FESTIVAL_ID";
+const SET_IMAGE_ANIMATING = "SET_IMAGE_ANIMATING";
 
 const initialState = {
   festivals: [],
   loading: false,
   showInfoPanel: false,
-  festivalId: null
+  festivalId: null,
+  imageAnimating: false
 };
 
 const getters = {
@@ -38,6 +40,9 @@ const mutations = {
   },
   [SET_FESTIVAL_ID](state, festivalId) {
     state.festivalId = festivalId.festivalId;
+  },
+  [SET_IMAGE_ANIMATING](state) {
+    state.imageAnimating = !state.imageAnimating;
   }
 };
 
@@ -54,6 +59,9 @@ const actions = {
   },
   setFestivalId({ commit }, festivalId) {
     commit(SET_FESTIVAL_ID, festivalId);
+  },
+  setImageAnimating({ commit }) {
+    commit(SET_IMAGE_ANIMATING);
   }
 };
 

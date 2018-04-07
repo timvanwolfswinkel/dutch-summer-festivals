@@ -69,7 +69,9 @@ export default {
   },
   methods: {
     toggleImage() {
-      this.showImage = !this.showImage;
+      if (!this.$store.state.imageAnimating) {
+        this.showImage = !this.showImage;
+      }
     },
     prepareInfoPanel() {
       if (!this.$store.state.showInfoPanel) {

@@ -6,9 +6,12 @@
       style="transform:scaleY(0)"/>
     <transition 
       :css="false"
-      @beforeEnter="setStyles"
+      @beforeEnter="prepareAnimation"
       @enter="animateIn"
-      @leave="animateOut">
+      @afterEnter="updateImageAnimating"
+      @beforeLeave="updateImageAnimating"
+      @leave="animateOut"
+      @afterLeave="updateImageAnimating">
       <slot/>
     </transition>
   </div>
@@ -24,8 +27,9 @@ import anime from "animejs";
 export default {
   name: "ImageTransition",
   methods: {
-    // TODO: Disable toggle image when animating the elements in/out (state)
-    setStyles(el) {
+    prepareAnimation(el) {
+      this.updateImageAnimating();
+
       const overlay = this.$refs.overlay;
       const element = el;
 
@@ -93,6 +97,9 @@ export default {
             done();
           }
         });
+    },
+    updateImageAnimating() {
+      this.$store.dispatch("setImageAnimating");
     }
   }
 };
