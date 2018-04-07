@@ -46,6 +46,7 @@
         text-transform: uppercase;
         color: $white;
         margin: 0;
+        user-select: none;
     }
 
     &__start-date {
