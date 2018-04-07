@@ -37,16 +37,25 @@
         left: 50%;
         transform: translateX(-50%);
         width: 340px;
+        text-align: right;
     }
 
     &__heading {
         @include font-heading();
-        font-size: 55px;
-        line-height: 50px;
+        font-size: 4em;
+        line-height: 1em;
         text-transform: uppercase;
         color: $white;
         margin: 0;
         user-select: none;
+        display: inline;
+    }
+
+    &__countdown {
+        @include font-heading();
+        font-size: 20px;
+        color: $grey;
+        text-transform: uppercase;
     }
 
     &__start-date {

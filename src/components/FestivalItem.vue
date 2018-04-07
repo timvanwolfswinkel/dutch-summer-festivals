@@ -18,10 +18,10 @@
         @mouseover="toggleImage"
         @mouseout="toggleImage"
         @click="prepareInfoPanel">
-        <h2 class="festival-item__heading">{{ festival.fields.name }}</h2>
-        <p class="festival-item__start-date">{{ festival.fields.startDate | dateDay }}</p>
-        <p class="festival-item__divider"/>
-        <p class="festival-item__end-date">{{ festival.fields.endDate | dateDayMonth | uppercase }}</p>
+        <h2 class="festival-item__heading">
+          {{ festival.fields.name }}
+        </h2>
+        <p class="festival-item__countdown">In {{ getDaysUntilFestival }} days</p>
       </div>
     </div>
   </div>
@@ -61,6 +61,17 @@ export default {
     };
   },
   computed: {
+    getDaysUntilFestival(festival) {
+      const oneDay = 24 * 60 * 60 * 1000;
+      const currentDate = new Date();
+      const festivalDate = new Date(festival.festival.fields.startDate);
+
+      const daysUntilFestival = Math.round(
+        Math.abs((currentDate.getTime() - festivalDate.getTime()) / oneDay)
+      );
+
+      return daysUntilFestival;
+    },
     elementPosition(margin) {
       const elementPosition = margin.margin.value
         ? `top: ${this.randomInt}%`
