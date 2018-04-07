@@ -2,14 +2,7 @@
   <div
     v-if="!loading" 
     class="festivals-list">
-    <transition 
-      :css="false"
-      @enter="animateInfoPanelIn"
-      @leave="animateInfoPanelOut">
-      <info-panel 
-        v-show="showInfoPanel" 
-        style="transform: translateX(440px)"/>
-    </transition>
+    <info-panel :show-info-panel="showInfoPanel"/>
     <div class="festivals-list__intro">
       <div class="festivals-list__intro-container">
         <h1 class="festivals-list__header">Your complete festival overview.</h1>
@@ -28,8 +21,6 @@
 </template>
 
 <script>
-import anime from "animejs";
-
 import FestivalItem from "../components/FestivalItem";
 import InfoPanel from "../components/InfoPanel";
 
@@ -60,31 +51,6 @@ export default {
       validate(value) {
         return [value];
       }
-    }
-  },
-  methods: {
-    // TODO: disable clicking on element during animation (state)
-    animateInfoPanelIn(el, done) {
-      anime({
-        targets: el,
-        duration: 500,
-        translateX: 0,
-        easing: "easeOutExpo",
-        complete() {
-          done();
-        }
-      });
-    },
-    animateInfoPanelOut(el, done) {
-      anime({
-        targets: el,
-        duration: 500,
-        translateX: 440,
-        easing: "easeOutExpo",
-        complete() {
-          done();
-        }
-      });
     }
   }
 };
