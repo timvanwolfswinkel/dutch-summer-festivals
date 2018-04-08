@@ -109,7 +109,7 @@ export default {
 
           anime({
             targets: [elements],
-            duration: 250,
+            duration: 450,
             delay: 750,
             scaleY: "1",
             easing: "easeOutExpo",
@@ -123,7 +123,7 @@ export default {
         } else {
           anime({
             targets: [elements],
-            duration: 250,
+            duration: 450,
             delay: 750,
             scaleY: "0",
             easing: "easeOutExpo",
