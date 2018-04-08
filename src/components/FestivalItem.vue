@@ -35,12 +35,16 @@ import anime from "animejs";
 
 import Columns from "../components/Columns";
 import ImageTransition from "../components/ImageTransition";
+import splitText from "../directives/splitText";
 
 export default {
   name: "FestivalItem",
   components: {
     Columns,
     ImageTransition
+  },
+  directives: {
+    splitText
   },
   props: {
     festival: {
@@ -106,17 +110,29 @@ export default {
           anime({
             targets: [elements],
             duration: 250,
-            delay: 400,
-            height: "100%",
-            easing: "easeOutExpo"
+            delay: 550,
+            scaleY: "1",
+            easing: "easeOutExpo",
+            complete() {
+              [].forEach.call(elements, element => {
+                const span = element;
+                span.style.transformOrigin = "0% 100%";
+              });
+            }
           });
         } else {
           anime({
             targets: [elements],
             duration: 250,
-            delay: 400,
-            height: "0",
-            easing: "easeOutExpo"
+            delay: 750,
+            scaleY: "0",
+            easing: "easeOutExpo",
+            complete() {
+              [].forEach.call(elements, element => {
+                const span = element;
+                span.style.transformOrigin = "100% 0%";
+              });
+            }
           });
         }
       }
