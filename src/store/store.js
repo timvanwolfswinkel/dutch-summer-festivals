@@ -68,6 +68,9 @@ const mutations = {
       }
     });
 
+    // state.festivals = festivalsDividedInMonths;
+    // state.festivalId = festivalId;
+
     state.festivals = festivals;
     state.festivalId = festivals[0].sys.id;
   },
