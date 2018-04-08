@@ -36,6 +36,50 @@ Vue.use(VueScrollReveal, {
   scale: { direction: "up", power: "50%" }
 });
 
+Vue.directive("split-text", {
+  bind(el) {
+    const text = el.innerHTML;
+    const words = text.trim().split(" ");
+    const div = document.createElement("div");
+    div.className = "festival-item__words-container";
+
+    // create spans for every word
+    words.forEach(val => {
+      const span = document.createElement("span");
+      span.className = "festival-item__word";
+      span.style.display = "inline-block";
+      span.innerHTML = val;
+      div.appendChild(span);
+    });
+
+    el.innerHTML = el.innerHTML.replace(el.innerHTML, div.innerHTML);
+
+    const spans = el.childNodes;
+    const newDiv = document.createElement("div");
+
+    setTimeout(() => {
+      let offsetTop = spans[0].getBoundingClientRect().top;
+      let newSpan = document.createElement("span");
+
+      [].forEach.call(spans, span => {
+        if (span.getBoundingClientRect().top === offsetTop) {
+          newSpan.innerHTML += ` ${span.innerHTML}`;
+        } else {
+          newDiv.appendChild(newSpan);
+          newSpan = document.createElement("span");
+          newSpan.innerHTML = "";
+          offsetTop = span.getBoundingClientRect().top;
+          newSpan.innerHTML = ` ${span.innerHTML}`;
+        }
+      });
+
+      console.log(newDiv.childNodes);
+      newDiv.appendChild(newSpan);
+      el.innerHTML = el.innerHTML.replace(el.innerHTML, newDiv.innerHTML);
+    }, 50);
+  }
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: "#app",

@@ -3,7 +3,7 @@
     <columns/>
     <div class="festival-item__container">
       <div
-        :style="imagePosition"
+        :style="getImagePosition"
         class="festival-item__image-container">
         <image-transition>
           <img
@@ -13,14 +13,17 @@
         </image-transition>
       </div>
       <div 
-        :style="elementPosition" 
+        :style="getElementPosition" 
         class="festival-item__content"
         @mouseover="toggleImage"
         @mouseout="toggleImage"
         @click="prepareInfoPanel">
-        <h2 class="festival-item__heading">
+        <div 
+          v-split-text
+          ref="festivalHeading"
+          class="festival-item__heading">
           {{ festival.fields.name }}
-        </h2>
+        </div>
         <p class="festival-item__countdown">In {{ getDaysUntilFestival }} days</p>
       </div>
     </div>
@@ -28,6 +31,8 @@
 </template>
 
 <script>
+import anime from "animejs";
+
 import Columns from "../components/Columns";
 import ImageTransition from "../components/ImageTransition";
 
@@ -72,14 +77,14 @@ export default {
 
       return daysUntilFestival;
     },
-    elementPosition(margin) {
+    getElementPosition(margin) {
       const elementPosition = margin.margin.value
         ? `top: ${this.randomInt}%`
         : `bottom: ${this.randomInt}%`;
 
       return elementPosition;
     },
-    imagePosition(margin) {
+    getImagePosition(margin) {
       const imagePosition = margin.margin.value
         ? `left: 35px; top: calc(${this.randomInt}% + 20px)`
         : `right: 35px; bottom: calc(${this.randomInt}% - 60px)`;
@@ -91,6 +96,26 @@ export default {
     toggleImage() {
       if (!this.$store.state.imageAnimating) {
         this.showImage = !this.showImage;
+
+        const el = this.$refs.festivalHeading;
+
+        if (this.showImage) {
+          console.log("animate in");
+
+          anime({
+            targets: `${el} span`,
+            duration: 250,
+            backgroundColor: "#CCC",
+            easing: "easeOutExpo"
+          });
+        } else {
+          anime({
+            targets: `${el} span`,
+            duration: 250,
+            backgroundColor: "#000",
+            easing: "easeOutExpo"
+          });
+        }
       }
     },
     prepareInfoPanel() {
