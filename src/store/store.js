@@ -29,6 +29,11 @@ const getters = {
 
 const mutations = {
   [LIST_OF_FESTIVALS](state, festivals) {
+    // create an array with months
+    // filter elements in festivals based on months
+    // put them in an new array
+    // set this as state
+
     state.festivals = festivals;
     state.festivalId = festivals[0].sys.id;
   },
