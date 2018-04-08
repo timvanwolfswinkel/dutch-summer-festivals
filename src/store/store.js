@@ -38,8 +38,6 @@ const mutations = {
 
     // filter festivals and separate into months
     months.forEach(month => {
-      const monthArray = [];
-
       const festivalsInMonth = festivals.filter(festival => {
         const festivalMonth = moment(
           festival.fields.startDate,
@@ -48,31 +46,30 @@ const mutations = {
         return festivalMonth === month ? festivalMonth : null;
       });
 
-      monthArray.push({
+      festivalsDividedInMonths.push({
         month,
-        festivalsInMonth
+        festivalsInMonth: festivalsInMonth || []
       });
-
-      festivalsDividedInMonths.push(monthArray);
     });
+
+    console.log(festivalsDividedInMonths);
 
     // get first festival and set festivalId
     festivalsDividedInMonths.forEach(festival => {
       if (!festivalId) {
-        if (
-          festival[0].festivalsInMonth &&
-          festival[0].festivalsInMonth.length > 0
-        ) {
-          festivalId = festival[0].festivalsInMonth[0].sys.id;
+        if (festival.festivalsInMonth && festival.festivalsInMonth.length > 0) {
+          festivalId = festival.festivalsInMonth[0].sys.id;
         }
       }
     });
 
-    // state.festivals = festivalsDividedInMonths;
-    // state.festivalId = festivalId;
+    console.log(festivalsDividedInMonths);
 
-    state.festivals = festivals;
-    state.festivalId = festivals[0].sys.id;
+    state.festivals = festivalsDividedInMonths;
+    state.festivalId = festivalId;
+
+    // state.festivals = festivals;
+    // state.festivalId = festivals[0].sys.id;
   },
   [SET_LOADING](state, loading) {
     state.loading = loading;

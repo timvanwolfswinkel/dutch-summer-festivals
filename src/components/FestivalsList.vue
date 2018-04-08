@@ -10,12 +10,14 @@
       </div>
     </div>
     <div 
-      v-for="(festival, index) in festivals" 
-      :key="festival.name"
+      v-for="month in festivals" 
+      :key="month.monthTitle"
       class="festivals-list__item">
-      <festival-item 
+      <span>{{ month.month }}</span>
+
+      <!-- <festival-item 
         :festival="festival" 
-        :margin="{value: !(index % 2)}"/> <!-- use even/odd for handling left or right margin -->
+        :margin="{value: !(index % 2)}"/> use even/odd for handling left or right margin -->
     </div>
   </div>
 </template>
