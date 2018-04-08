@@ -62,7 +62,10 @@ Vue.directive("split-text", {
       let newSpan = document.createElement("div");
       newSpan.style.position = "relative";
       newSpan.style.display = "inline-block";
-      newSpan.style.zIndex = "2";
+      newSpan.style.marginBottom = "5px";
+      newSpan.style.paddingTop = "10px";
+      newSpan.style.paddingLeft = "10px";
+      newSpan.style.paddingRight = "10px";
 
       [].forEach.call(spans, span => {
         if (span.getBoundingClientRect().top === offsetTop) {
@@ -90,7 +93,10 @@ Vue.directive("split-text", {
           newSpan = document.createElement("div");
           newSpan.style.position = "relative";
           newSpan.style.display = "inline-block";
-          newSpan.style.zIndex = "2";
+          newSpan.style.marginBottom = "5px";
+          newSpan.style.paddingTop = "10px";
+          newSpan.style.paddingLeft = "10px";
+          newSpan.style.paddingRight = "10px";
           newSpan.innerHTML = "";
           offsetTop = span.getBoundingClientRect().top;
           newSpan.innerHTML = ` ${span.innerHTML}`;

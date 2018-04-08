@@ -108,13 +108,7 @@ export default {
             duration: 250,
             delay: 400,
             height: "100%",
-            easing: "easeOutExpo",
-            complete() {
-              [].forEach.call(elements, element => {
-                const span = element;
-                span.style.transformOrigin = "0 100%";
-              });
-            }
+            easing: "easeOutExpo"
           });
         } else {
           anime({
@@ -122,13 +116,7 @@ export default {
             duration: 250,
             delay: 400,
             height: "0",
-            easing: "easeOutExpo",
-            complete() {
-              [].forEach.call(elements, element => {
-                const span = element;
-                span.style.transformOrigin = "100% 0";
-              });
-            }
+            easing: "easeOutExpo"
           });
         }
       }
