@@ -105,8 +105,6 @@ export default {
         const elements = el.getElementsByTagName("span");
 
         if (this.showImage) {
-          console.log("animate in");
-
           anime({
             targets: [elements],
             duration: 450,
