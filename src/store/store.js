@@ -31,13 +31,22 @@ const getters = {
 
 const mutations = {
   [LIST_OF_FESTIVALS](state, festivals) {
-    // create an array with months
-    // filter elements in festivals based on months
-    // put them in an new array
-    // set this as state
-
     moment.locale("en");
-    console.log(moment.months());
+    const months = moment.months();
+    const festivalsDividedInMonths = [];
+
+    months.forEach(month => {
+      const festivalsInMonth = festivals.filter(festival => {
+        const festivalMonth = moment(
+          festival.fields.startDate,
+          "YYYY-MM-DD"
+        ).format("MMMM");
+        return festivalMonth === month ? festivalMonth : null;
+      });
+      festivalsDividedInMonths.push(festivalsInMonth);
+    });
+
+    console.log(festivalsDividedInMonths);
 
     state.festivals = festivals;
     state.festivalId = festivals[0].sys.id;
