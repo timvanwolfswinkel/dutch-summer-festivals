@@ -3,6 +3,8 @@ import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import fetchFestivals from "../api/festivals";
 
+const moment = require("moment");
+
 Vue.use(Vuex);
 
 const LIST_OF_FESTIVALS = "LIST_OF_FESTIVALS";
@@ -33,6 +35,9 @@ const mutations = {
     // filter elements in festivals based on months
     // put them in an new array
     // set this as state
+
+    moment.locale("en");
+    console.log(moment.months());
 
     state.festivals = festivals;
     state.festivalId = festivals[0].sys.id;
