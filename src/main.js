@@ -45,7 +45,7 @@ Vue.directive("split-text", {
 
     // create spans for every word
     words.forEach(val => {
-      const span = document.createElement("span");
+      const span = document.createElement("div");
       span.className = "festival-item__word";
       span.style.display = "inline-block";
       span.innerHTML = val;
@@ -59,14 +59,38 @@ Vue.directive("split-text", {
 
     setTimeout(() => {
       let offsetTop = spans[0].getBoundingClientRect().top;
-      let newSpan = document.createElement("span");
+      let newSpan = document.createElement("div");
+      newSpan.style.position = "relative";
+      newSpan.style.display = "inline-block";
+      newSpan.style.zIndex = "2";
 
       [].forEach.call(spans, span => {
         if (span.getBoundingClientRect().top === offsetTop) {
           newSpan.innerHTML += ` ${span.innerHTML}`;
         } else {
+          const background = document.createElement("span");
+          background.style.position = "absolute";
+          background.style.top = "0";
+          background.style.left = "0";
+          background.style.width = "100%";
+          background.style.height = "0";
+          background.style.backgroundColor = "#F35333";
+          background.style.zIndex = "0";
+
+          const extraDiv = document.createElement("div");
+          extraDiv.style.position = "relative";
+          extraDiv.style.zIndex = "1";
+          extraDiv.innerHTML = newSpan.innerHTML;
+          newSpan.innerHTML = "";
+
+          newSpan.appendChild(extraDiv);
+          newSpan.appendChild(background);
           newDiv.appendChild(newSpan);
-          newSpan = document.createElement("span");
+
+          newSpan = document.createElement("div");
+          newSpan.style.position = "relative";
+          newSpan.style.display = "inline-block";
+          newSpan.style.zIndex = "2";
           newSpan.innerHTML = "";
           offsetTop = span.getBoundingClientRect().top;
           newSpan.innerHTML = ` ${span.innerHTML}`;
@@ -74,7 +98,25 @@ Vue.directive("split-text", {
       });
 
       console.log(newDiv.childNodes);
+      const background = document.createElement("span");
+      background.style.position = "absolute";
+      background.style.top = "0";
+      background.style.left = "0";
+      background.style.width = "100%";
+      background.style.height = "0";
+      background.style.backgroundColor = "#F35333";
+      background.style.zIndex = "0";
+
+      const extraDiv = document.createElement("div");
+      extraDiv.style.position = "relative";
+      extraDiv.style.zIndex = "1";
+      extraDiv.innerHTML = newSpan.innerHTML;
+      newSpan.innerHTML = "";
+
+      newSpan.appendChild(extraDiv);
+      newSpan.appendChild(background);
       newDiv.appendChild(newSpan);
+
       el.innerHTML = el.innerHTML.replace(el.innerHTML, newDiv.innerHTML);
     }, 50);
   }

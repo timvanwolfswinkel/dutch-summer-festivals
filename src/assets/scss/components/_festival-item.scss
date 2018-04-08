@@ -50,6 +50,10 @@
         user-select: none;
     }
 
+    &__words {
+        background-color: $orange;
+    }
+
     &__countdown {
         @include font-heading();
         font-size: 20px;

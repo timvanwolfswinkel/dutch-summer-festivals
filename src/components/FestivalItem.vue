@@ -98,22 +98,37 @@ export default {
         this.showImage = !this.showImage;
 
         const el = this.$refs.festivalHeading;
+        const elements = el.getElementsByTagName("span");
 
         if (this.showImage) {
           console.log("animate in");
 
           anime({
-            targets: `${el} span`,
+            targets: [elements],
             duration: 250,
-            backgroundColor: "#CCC",
-            easing: "easeOutExpo"
+            delay: 400,
+            height: "100%",
+            easing: "easeOutExpo",
+            complete() {
+              [].forEach.call(elements, element => {
+                const span = element;
+                span.style.transformOrigin = "0 100%";
+              });
+            }
           });
         } else {
           anime({
-            targets: `${el} span`,
+            targets: [elements],
             duration: 250,
-            backgroundColor: "#000",
-            easing: "easeOutExpo"
+            delay: 400,
+            height: "0",
+            easing: "easeOutExpo",
+            complete() {
+              [].forEach.call(elements, element => {
+                const span = element;
+                span.style.transformOrigin = "100% 0";
+              });
+            }
           });
         }
       }
