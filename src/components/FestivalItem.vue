@@ -1,6 +1,5 @@
 <template>
   <div class="festival-item">
-    <columns/>
     <div class="festival-item__container">
       <div
         :style="getImagePosition"
@@ -33,14 +32,12 @@
 <script>
 import anime from "animejs";
 
-import Columns from "../components/Columns";
 import ImageTransition from "../components/ImageTransition";
 import splitText from "../directives/splitText";
 
 export default {
   name: "FestivalItem",
   components: {
-    Columns,
     ImageTransition
   },
   directives: {
