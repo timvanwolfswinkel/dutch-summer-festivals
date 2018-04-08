@@ -110,7 +110,7 @@ export default {
           anime({
             targets: [elements],
             duration: 250,
-            delay: 550,
+            delay: 750,
             scaleY: "1",
             easing: "easeOutExpo",
             complete() {
