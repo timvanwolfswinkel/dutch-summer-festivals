@@ -25,8 +25,23 @@ const getters = {
   festivals(state) {
     return state.festivals;
   },
-  getFestivalById: state => id =>
-    state.festivals.filter(festival => festival.sys.id === id)
+  getFestivalById(state) {
+    const temp = [];
+
+    // flatten array
+    state.festivals.forEach(festival => {
+      if (festival.festivalsInMonth.length > 0) {
+        festival.festivalsInMonth.forEach(item => {
+          temp.push(item);
+        });
+      }
+    });
+
+    const festivals = [].concat(...temp);
+
+    return festivalItem =>
+      festivals.filter(festival => festival.sys.id === festivalItem);
+  }
 };
 
 const mutations = {
@@ -60,8 +75,6 @@ const mutations = {
         }
       }
     });
-
-    console.log(festivalsDividedInMonths);
 
     state.festivals = festivalsDividedInMonths;
     state.festivalId = festivalId;
