@@ -7,9 +7,9 @@
     <div 
       v-for="month in festivals" 
       :key="month.monthTitle"
-      class="festivals-list__item">
+      class="festivals-list__month">
       <columns/>
-      <span class="festivals-list__month">{{ month.month | uppercase }}</span>
+      <span class="festivals-list__month-title">{{ month.month | uppercase }}</span>
       <div 
         v-for="(festival, index) in month.festivalsInMonth" 
         :key="festival.name"

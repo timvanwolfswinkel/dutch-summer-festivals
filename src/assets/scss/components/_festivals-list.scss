@@ -2,27 +2,21 @@
 @import "../settings/colors";
 
 .festivals-list {
-    display: flex;
+    display: inline-flex;
 
-    &__item {
+    &__month {
         position: relative;
-        display: flex;
+        display: inline-flex;
         flex-direction: row;
         flex: 1;
         min-width: 520px;
         height: 100vh;
         z-index: 2;
-        align-items: stretch; 
+        align-items: flex-start; 
         justify-content: space-between;
     }
 
-    &__festival {
-        display: block;
-        flex: 0 1 auto;
-        flex-basis: auto;
-    }
-
-    &__month {
+    &__month-title {
         @include font-heading;
         position: absolute;
         bottom: 50px;
@@ -40,5 +34,13 @@
             transform: translateY(-50%);
             left: -40px;
         }
+    }
+
+    &__festival {
+        display: inline-flex;
+        flex: 0 1 auto;
+        flex-basis: auto;
+        width: 300px;
+        height: 100vh;
     }
 }
