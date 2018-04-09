@@ -52,8 +52,6 @@ const mutations = {
       });
     });
 
-    console.log(festivalsDividedInMonths);
-
     // get first festival and set festivalId
     festivalsDividedInMonths.forEach(festival => {
       if (!festivalId) {

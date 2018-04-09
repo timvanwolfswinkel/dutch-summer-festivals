@@ -14,7 +14,7 @@
       :key="month.monthTitle"
       class="festivals-list__item">
       <columns/>
-      <span>{{ month.month }}</span>
+      <span class="festivals-list__month">{{ month.month | uppercase }}</span>
       <div 
         v-for="(festival, index) in month.festivalsInMonth" 
         :key="festival.name">
