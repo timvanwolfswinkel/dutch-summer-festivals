@@ -28,6 +28,7 @@ const getters = {
   getFestivalById(state) {
     const temp = [];
 
+    // TODO: replace this with reduce
     // flatten array
     state.festivals.forEach(festival => {
       if (festival.festivalsInMonth.length > 0) {
