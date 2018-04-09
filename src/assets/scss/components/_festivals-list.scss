@@ -4,43 +4,22 @@
 .festivals-list {
     display: flex;
 
-    &__intro {
-        position: relative;
-        width: 495px;
-        height: 100vh;
-    }
-
-    &__intro-container {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        max-width: 340px;
-        transform: translateX(-50%) translateY(-50%);
-    }
-
-    &__header {
-        @include font-heading();
-        color: $white;
-        font-size: 80px;
-        line-height: 75px;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-    }
-
-    &__description {
-        @include font-heading();
-        color: $white;
-        font-size: 20px;
-        text-transform: uppercase;
-        opacity: 0.3;
-    }
-
     &__item {
         position: relative;
+        display: flex;
+        flex-direction: row;
         flex: 1;
         min-width: 520px;
         height: 100vh;
         z-index: 2;
+        align-items: stretch; 
+        justify-content: space-between;
+    }
+
+    &__festival {
+        display: block;
+        flex: 0 1 auto;
+        flex-basis: auto;
     }
 
     &__month {
