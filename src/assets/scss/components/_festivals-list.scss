@@ -36,9 +36,30 @@
     }
 
     &__item {
+        position: relative;
         flex: 1;
-        width: 520px;
+        min-width: 520px;
         height: 100vh;
         z-index: 2;
+    }
+
+    &__month {
+        @include font-heading;
+        position: absolute;
+        bottom: 50px;
+        left: 28px;
+        font-size: 20px;
+        z-index: 2;
+
+        &:before {
+            content: '';
+            height: 3px;
+            width: 24px;
+            background-color: $white;
+            position: absolute;
+            top: calc(50% - 4px);
+            transform: translateY(-50%);
+            left: -40px;
+        }
     }
 }
