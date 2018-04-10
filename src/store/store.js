@@ -42,6 +42,9 @@ const getters = {
 
     return festivalItem =>
       festivals.filter(festival => festival.sys.id === festivalItem);
+  },
+  getFestivalByUrl() {
+    // TODO:return festival based on given url
   }
 };
 
