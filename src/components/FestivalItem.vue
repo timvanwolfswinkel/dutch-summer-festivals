@@ -1,26 +1,26 @@
 <template>
   <div class="festival-item">
     <div class="festival-item__container">
-      <div
-        :style="getImagePosition"
-        class="festival-item__image-container">
-        <image-transition>
-          <img
-            v-if="showImage" 
-            :src="require(`@/assets/img/${festival.fields.url}/list-item.jpg`)"
-            class="festival-item__image">
-        </image-transition>
-      </div>
       <div 
         :style="getElementPosition" 
-        class="festival-item__content"
-        @mouseover="toggleImage"
-        @mouseout="toggleImage"
-        @click="prepareInfoPanel">
+        class="festival-item__content">
+        <div
+        :style="getImagePosition"
+        class="festival-item__image-container">
+          <image-transition>
+            <img
+              v-if="showImage" 
+              :src="require(`@/assets/img/${festival.fields.url}/list-item.jpg`)"
+              class="festival-item__image">
+          </image-transition>
+        </div>
         <div 
           v-split-text
           ref="festivalHeading"
-          class="festival-item__heading">
+          class="festival-item__heading"
+          @mouseover="toggleImage"
+          @mouseout="toggleImage"
+          @click="prepareInfoPanel">
           {{ festival.fields.name }}
         </div>
         <p class="festival-item__countdown">In {{ getDaysUntilFestival }} days</p>
