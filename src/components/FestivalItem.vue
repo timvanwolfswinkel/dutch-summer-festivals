@@ -96,6 +96,7 @@ export default {
   methods: {
     toggleImage() {
       // TODO: think of better way to fix the hover disabling
+      // TODO: create a state "showOverlay" that controls the animations
       if (!this.$store.state.imageAnimating) {
         this.showImage = !this.showImage;
 
