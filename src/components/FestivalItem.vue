@@ -95,13 +95,14 @@ export default {
   },
   methods: {
     toggleImage() {
-      // this.animateTextBackgrounds();
+      // TODO: think of better way to fix the hover disabling
       if (!this.$store.state.imageAnimating) {
         this.showImage = !this.showImage;
 
         const el = this.$refs.festivalHeading;
         const elements = el.getElementsByTagName("span");
 
+        // TODO: refactor this
         setTimeout(() => {
           if (this.showImage) {
             anime({
@@ -132,9 +133,6 @@ export default {
           }
         }, 500);
       }
-    },
-    animateTextBackgroundsIn(){
-
     },
     prepareInfoPanel() {
       if (!this.$store.state.showInfoPanel) {
