@@ -101,23 +101,29 @@ export default {
     // TODO: disable clicking on element during animation (state)
     // TODO: before route leave set panel to false
     animateInfoPanelIn(el, done) {
+      document.body.style.overflow = "hidden";
+
       anime({
         targets: el,
         duration: 500,
         translateX: 0,
         easing: "easeOutExpo",
         complete() {
+          document.body.style.overflow = "auto";
           done();
         }
       });
     },
     animateInfoPanelOut(el, done) {
+      document.body.style.overflow = "hidden";
+
       anime({
         targets: el,
         duration: 500,
         translateX: 440,
         easing: "easeOutExpo",
         complete() {
+          document.body.style.overflow = "auto";
           done();
         }
       });

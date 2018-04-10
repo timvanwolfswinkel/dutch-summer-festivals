@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <info-panel :show-info-panel="showInfoPanel"/>
     <festivals-list 
       :festivals="festivals" 
       :loading="loading"
@@ -10,13 +11,15 @@
 <script>
 import Vuex from "vuex";
 import FestivalsList from "../components/FestivalsList";
+import InfoPanel from "../components/InfoPanel";
 
 const mapState = Vuex.mapState;
 
 export default {
   name: "Home",
   components: {
-    FestivalsList
+    FestivalsList,
+    InfoPanel
   },
   computed: {
     ...mapState(["loading"]),

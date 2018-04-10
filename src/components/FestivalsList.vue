@@ -2,7 +2,6 @@
   <div
     v-if="!loading" 
     class="festivals-list">
-    <info-panel :show-info-panel="showInfoPanel"/>
     <intro/>
     <div 
       v-for="month in festivals" 
@@ -23,7 +22,6 @@
 
 <script>
 import FestivalItem from "../components/FestivalItem";
-import InfoPanel from "../components/InfoPanel";
 import Intro from "../components/Intro";
 import Columns from "../components/Columns";
 
@@ -31,7 +29,6 @@ export default {
   name: "FestivalsList",
   components: {
     FestivalItem,
-    InfoPanel,
     Intro,
     Columns
   },
