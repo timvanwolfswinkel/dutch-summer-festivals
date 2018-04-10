@@ -37,6 +37,7 @@ export default {
   },
   computed: {
     festival() {
+      this.$store.dispatch("toggleInfoPanel"); // TODO: move this to mounted event
       const storeFestivals = this.$store.getters.festivals;
       const temp = [];
       const festivalId = this.$route.params.festivalId;

@@ -5,8 +5,8 @@
         :style="getElementPosition" 
         class="festival-item__content">
         <div
-        :style="getImagePosition"
-        class="festival-item__image-container">
+          :style="getImagePosition"
+          class="festival-item__image-container">
           <image-transition>
             <img
               v-if="showImage" 
@@ -103,7 +103,11 @@ export default {
         const el = this.$refs.festivalHeading;
         const elements = el.getElementsByTagName("span");
 
-        this.showImage ? this.animateTextBackgroundsIn(elements, 500) : this.animateTextBackgroundsOut(elements, 750);
+        if (this.showImage) {
+          this.animateTextBackgroundsIn(elements, 500);
+        } else {
+          this.animateTextBackgroundsOut(elements, 750);
+        }
       }
     },
     animateTextBackgroundsIn(elements, delay) {
