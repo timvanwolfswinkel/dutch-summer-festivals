@@ -102,37 +102,40 @@ export default {
         const el = this.$refs.festivalHeading;
         const elements = el.getElementsByTagName("span");
 
-        // TODO: refactor this
-        setTimeout(() => {
-          if (this.showImage) {
-            anime({
-              targets: [elements],
-              duration: 450,
-              scaleY: "1",
-              easing: "easeOutExpo",
-              complete() {
-                [].forEach.call(elements, element => {
-                  const span = element;
-                  span.style.transformOrigin = "0% 100%";
-                });
-              }
-            });
-          } else {
-            anime({
-              targets: [elements],
-              duration: 450,
-              scaleY: "0",
-              easing: "easeOutExpo",
-              complete() {
-                [].forEach.call(elements, element => {
-                  const span = element;
-                  span.style.transformOrigin = "100% 0%";
-                });
-              }
+        this.showImage ? this.animateTextBackgroundsIn(elements, 500) : this.animateTextBackgroundsOut(elements, 750);
+      }
+    },
+    animateTextBackgroundsIn(elements, delay) {
+      setTimeout(() => {
+        anime({
+          targets: [elements],
+          duration: 450,
+          scaleY: "1",
+          easing: "easeOutExpo",
+          complete() {
+            [].forEach.call(elements, element => {
+              const span = element;
+              span.style.transformOrigin = "0% 100%";
             });
           }
-        }, 500);
-      }
+        });
+      }, delay);
+    },
+    animateTextBackgroundsOut(elements, delay) {
+      setTimeout(() => {
+        anime({
+          targets: [elements],
+          duration: 450,
+          scaleY: "0",
+          easing: "easeOutExpo",
+          complete() {
+            [].forEach.call(elements, element => {
+              const span = element;
+              span.style.transformOrigin = "100% 0%";
+            });
+          }
+        });
+      }, delay);
     },
     prepareInfoPanel() {
       if (!this.$store.state.showInfoPanel) {
