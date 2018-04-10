@@ -95,42 +95,46 @@ export default {
   },
   methods: {
     toggleImage() {
+      // this.animateTextBackgrounds();
       if (!this.$store.state.imageAnimating) {
         this.showImage = !this.showImage;
 
         const el = this.$refs.festivalHeading;
         const elements = el.getElementsByTagName("span");
 
-        if (this.showImage) {
-          anime({
-            targets: [elements],
-            duration: 450,
-            delay: 750,
-            scaleY: "1",
-            easing: "easeOutExpo",
-            complete() {
-              [].forEach.call(elements, element => {
-                const span = element;
-                span.style.transformOrigin = "0% 100%";
-              });
-            }
-          });
-        } else {
-          anime({
-            targets: [elements],
-            duration: 450,
-            delay: 750,
-            scaleY: "0",
-            easing: "easeOutExpo",
-            complete() {
-              [].forEach.call(elements, element => {
-                const span = element;
-                span.style.transformOrigin = "100% 0%";
-              });
-            }
-          });
-        }
+        setTimeout(() => {
+          if (this.showImage) {
+            anime({
+              targets: [elements],
+              duration: 450,
+              scaleY: "1",
+              easing: "easeOutExpo",
+              complete() {
+                [].forEach.call(elements, element => {
+                  const span = element;
+                  span.style.transformOrigin = "0% 100%";
+                });
+              }
+            });
+          } else {
+            anime({
+              targets: [elements],
+              duration: 450,
+              scaleY: "0",
+              easing: "easeOutExpo",
+              complete() {
+                [].forEach.call(elements, element => {
+                  const span = element;
+                  span.style.transformOrigin = "100% 0%";
+                });
+              }
+            });
+          }
+        }, 500);
       }
+    },
+    animateTextBackgroundsIn(){
+
     },
     prepareInfoPanel() {
       if (!this.$store.state.showInfoPanel) {
