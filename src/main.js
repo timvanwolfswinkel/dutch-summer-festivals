@@ -26,11 +26,14 @@ const dateDay = date =>
 
 const uppercase = message => message.toUpperCase();
 
+const lowercase = message => message.toLowerCase();
+
 Vue.filter("date", dateFormat);
 Vue.filter("dateDayMonth", dateDayMonth);
 Vue.filter("dateDayMonthFull", dateDayMonthFull);
 Vue.filter("dateDay", dateDay);
 Vue.filter("uppercase", uppercase);
+Vue.filter("lowercase", lowercase);
 
 Vue.use(VueScrollReveal, {
   scale: { direction: "up", power: "50%" }
