@@ -7,7 +7,7 @@ const moment = require("moment");
 
 Vue.use(Vuex);
 
-const LIST_OF_FESTIVALS = "LIST_OF_FESTIVALS";
+const LIST_OF_FESTIVALS_BY_MONTH = "LIST_OF_FESTIVALS_BY_MONTH";
 const SET_LOADING = "SET_LOADING";
 const TOGGLE_INFO_PANEL = "TOGGLE_INFO_PANEL";
 const SET_FESTIVAL_ID = "SET_FESTIVAL_ID";
@@ -49,7 +49,7 @@ const getters = {
 };
 
 const mutations = {
-  [LIST_OF_FESTIVALS](state, festivals) {
+  [LIST_OF_FESTIVALS_BY_MONTH](state, festivals) {
     moment.locale("en");
     const months = moment.months();
     const festivalsDividedInMonths = [];
@@ -82,9 +82,6 @@ const mutations = {
 
     state.festivals = festivalsDividedInMonths;
     state.festivalId = festivalId;
-
-    // state.festivals = festivals;
-    // state.festivalId = festivals[0].sys.id;
   },
   [SET_LOADING](state, loading) {
     state.loading = loading;
@@ -104,7 +101,7 @@ const actions = {
   getFestivals({ commit }) {
     commit(SET_LOADING, true);
     fetchFestivals().then(response => {
-      commit(LIST_OF_FESTIVALS, response.data.items);
+      commit(LIST_OF_FESTIVALS_BY_MONTH, response.data.items);
       commit(SET_LOADING, false);
     });
   },
