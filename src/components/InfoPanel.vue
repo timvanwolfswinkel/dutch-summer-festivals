@@ -68,6 +68,7 @@
 </template>
 
 <script>
+// TODO: move content outside of component
 import anime from "animejs";
 
 import ElementTransition from "../components/ElementTransition";
