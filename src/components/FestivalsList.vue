@@ -1,15 +1,16 @@
 <template>
   <div
-    v-if="!loading" 
+    v-if="!loading"
+    :id="'festivals-list'"
     class="festivals-list">
     <intro/>
     <div 
       v-for="month in festivals" 
-      :key="month.monthTitle"
+      :key="month.month"
       class="festivals-list__month">
       <columns/>
       <span 
-        :id="month.month | lowercase" 
+        :id="month.month" 
         class="festivals-list__month-title">{{ month.month | uppercase }}</span>
       <div 
         v-for="(festival, index) in month.festivalsInMonth" 
