@@ -5,7 +5,7 @@
     <span 
       @click="toggleShowMonthsPanel" 
       class="home__show-months">
-      {{ "Show Months" | uppercase }}
+      {{ "Select a month" | uppercase }}
     </span>
     <festivals-list 
       :festivals="festivals" 
