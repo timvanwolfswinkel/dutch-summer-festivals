@@ -1,9 +1,10 @@
 <template>
   <div class="home">
-    <info-panel :show-info-panel="showInfoPanel"/>
-    <months-panel 
+    <months-list 
       :show-months-panel="showMonthsPanel" 
       :festivals="festivals"/>
+    <festival-info :show-info-panel="showInfoPanel"/>
+    
     <span 
       class="home__show-months"
       @click="toggleShowMonthsPanel">
@@ -11,16 +12,15 @@
     </span>
     <festivals-list 
       :festivals="festivals" 
-      :loading="loading"
-      :show-info-panel="showInfoPanel"/>
+      :loading="loading"/>
   </div>
 </template>
 
 <script>
 import Vuex from "vuex";
 import FestivalsList from "../components/FestivalsList";
-import InfoPanel from "../components/InfoPanel";
-import MonthsPanel from "../components/MonthsPanel";
+import MonthsList from "../components/MonthsList";
+import FestivalInfo from "../components/FestivalInfo";
 
 const mapState = Vuex.mapState;
 
@@ -28,8 +28,8 @@ export default {
   name: "Home",
   components: {
     FestivalsList,
-    InfoPanel,
-    MonthsPanel
+    MonthsList,
+    FestivalInfo
   },
   computed: {
     ...mapState(["loading"]),

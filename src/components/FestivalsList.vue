@@ -48,13 +48,6 @@ export default {
       validate(value) {
         return [value];
       }
-    },
-    showInfoPanel: {
-      type: Boolean,
-      required: true,
-      validate(value) {
-        return [value];
-      }
     }
   }
 };

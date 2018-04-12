@@ -1,0 +1,16 @@
+@import "../settings/typography";
+@import "../settings/colors";
+
+.months-list {
+    &__month {
+        display: block;
+    }
+
+    &__title {
+        display: inline-block;
+    }
+
+    &__amount {
+        display: inline-block;
+    }
+}
