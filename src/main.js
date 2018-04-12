@@ -28,12 +28,15 @@ const uppercase = message => message.toUpperCase();
 
 const lowercase = message => message.toLowerCase();
 
+const getLength = data => data.length;
+
 Vue.filter("date", dateFormat);
 Vue.filter("dateDayMonth", dateDayMonth);
 Vue.filter("dateDayMonthFull", dateDayMonthFull);
 Vue.filter("dateDay", dateDay);
 Vue.filter("uppercase", uppercase);
 Vue.filter("lowercase", lowercase);
+Vue.filter("getLength", getLength);
 
 Vue.use(VueScrollReveal, {
   scale: { direction: "up", power: "50%" }
