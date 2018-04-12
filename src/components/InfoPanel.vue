@@ -5,6 +5,7 @@
     @leave="animateInfoPanelOut">
     <div 
       v-if="showInfoPanel"
+      ref="infoPanel"
       class="info-panel"
       style="transform: translateX(440px)">
       <div 
@@ -103,6 +104,7 @@ export default {
     // TODO: before route leave set panel to false
     animateInfoPanelIn(el, done) {
       document.body.style.overflow = "hidden";
+      this.$refs.infoPanel.style.right = "0px";
 
       anime({
         targets: el,
