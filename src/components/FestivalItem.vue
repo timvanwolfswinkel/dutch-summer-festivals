@@ -156,6 +156,11 @@ export default {
       });
     },
     toggleShowInfoPanel() {
+      // close the months list panel if open
+      if (this.$store.state.showMonthsPanel) {
+        this.$store.dispatch("toggleMonthsPanel");
+      }
+
       this.$store.dispatch("toggleInfoPanel");
     }
   }

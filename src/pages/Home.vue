@@ -43,6 +43,11 @@ export default {
   },
   methods: {
     toggleShowMonthsPanel() {
+      // close the festival info panel if open
+      if (this.$store.state.showInfoPanel) {
+        this.$store.dispatch("toggleInfoPanel");
+      }
+
       this.$store.dispatch("toggleMonthsPanel");
     }
   }
