@@ -1,10 +1,12 @@
 <template>
   <div class="home">
     <info-panel :show-info-panel="showInfoPanel"/>
-    <months-panel :show-months-panel="showMonthsPanel" :festivals="festivals"/>
+    <months-panel 
+      :show-months-panel="showMonthsPanel" 
+      :festivals="festivals"/>
     <span 
-      @click="toggleShowMonthsPanel" 
-      class="home__show-months">
+      class="home__show-months"
+      @click="toggleShowMonthsPanel">
       {{ "Select a month" | uppercase }}
     </span>
     <festivals-list 

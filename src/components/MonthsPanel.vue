@@ -20,10 +20,10 @@
           v-for="(month, index) in festivals" 
           :key="month.monthTitle"
           class="info-panel__month">
-        <element-transition :delay="index">
-          <span class="info-panel__heading-small info-panel__heading-small--inline">{{ month.month }}</span>
-          <span class="info-panel__heading-small info-panel__heading-small--inline">{{ month.festivalsInMonth | getLength}}</span>
-        </element-transition>
+          <element-transition :delay="index">
+            <span class="info-panel__heading-small info-panel__heading-small--inline">{{ month.month }}</span>
+            <span class="info-panel__heading-small info-panel__heading-small--inline">{{ month.festivalsInMonth | getLength }}</span>
+          </element-transition>
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@ export default {
       validate(value) {
         return [value];
       }
-    },
+    }
   },
   methods: {
     toggleMonthsPanel() {
