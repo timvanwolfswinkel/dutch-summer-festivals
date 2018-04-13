@@ -13,6 +13,8 @@ moment.locale("en");
 
 Vue.config.productionTip = false;
 
+// TODO: move filters to folder: https://stackoverflow.com/questions/47004702/how-to-add-a-bunch-of-global-filters-in-vue-js
+
 const dateFormat = date =>
   date ? moment(date, "YYYY-MM-DD").format("ll") : "N/A";
 
