@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from "vue";
 import VueScrollReveal from "vue-scroll-reveal";
+import VueDragscroll from "vue-dragscroll";
 import App from "./App";
 import store from "./store/store";
 import router from "./router";
@@ -41,6 +42,8 @@ Vue.filter("getLength", getLength);
 Vue.use(VueScrollReveal, {
   scale: { direction: "up", power: "50%" }
 });
+
+Vue.use(VueDragscroll);
 
 /* eslint-disable no-new */
 new Vue({

@@ -21,7 +21,8 @@
           :margin="{value: !(index % 2)}"/> <!--use even/odd for handling left or right margin-->
       </div>
     </div>
-</div></template>
+  </div>
+</template>
 
 <script>
 import FestivalItem from "../components/FestivalItem";

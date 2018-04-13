@@ -1,5 +1,7 @@
 <template>
-  <div class="home">
+  <div 
+    v-dragscroll.x
+    class="home">
     <months-list 
       :show-months-panel="showMonthsPanel" 
       :festivals="festivals"/>
