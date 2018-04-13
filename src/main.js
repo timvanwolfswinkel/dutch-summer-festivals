@@ -9,7 +9,7 @@ import router from "./router";
 
 const moment = require("moment");
 
-moment.locale("nl-be");
+moment.locale("en");
 
 Vue.config.productionTip = false;
 
