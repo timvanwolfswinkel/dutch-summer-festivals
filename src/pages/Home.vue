@@ -1,6 +1,6 @@
 <template>
   <div 
-    v-dragscroll.x
+    v-drag-scroll
     class="home">
     <months-list 
       :show-months-panel="showMonthsPanel" 
@@ -23,6 +23,7 @@ import Vuex from "vuex";
 import FestivalsList from "../components/FestivalsList";
 import MonthsList from "../components/MonthsList";
 import FestivalInfo from "../components/FestivalInfo";
+import dragScroll from "../directives/dragScroll";
 
 const mapState = Vuex.mapState;
 
@@ -32,6 +33,9 @@ export default {
     FestivalsList,
     MonthsList,
     FestivalInfo
+  },
+  directives: {
+    dragScroll
   },
   computed: {
     ...mapState(["loading"]),
