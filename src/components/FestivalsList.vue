@@ -13,10 +13,10 @@
         :css="false"
         @enter="animateMonthTitleIn">
         <span 
-          v-if="!showIntro"
+          v-show="!showIntro"
           :id="month.month" 
-          class="festivals-list__month-title"
-          style="transform: translateX(-100px); opacity: 0;">{{ month.month | uppercase }}</span>
+          :style="styleMonthTitle"
+          class="festivals-list__month-title">{{ month.month | uppercase }}</span>
       </transition>
       <div 
         v-for="(festival, index) in month.festivalsInMonth" 
@@ -66,6 +66,13 @@ export default {
         return [value];
       }
     }
+  },
+  data() {
+    return {
+      styleMonthTitle: this.showIntro
+        ? "transform: translateX(-100px); opacity: 0;"
+        : "transform: translateX(0); opacity: 1;"
+    };
   },
   methods: {
     animateMonthTitleIn(el, done) {
