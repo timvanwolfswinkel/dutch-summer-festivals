@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import anime from "animejs";
+import anime from "animejs";
 
 import Panel from "../components/Panel";
 import ElementTransition from "../components/ElementTransition";
@@ -49,28 +49,24 @@ export default {
   },
   methods: {
     scrollToElement(month) {
-      console.log(month);
-
+      const container = document.getElementById("home");
       const list = document.getElementById("festivals-list");
       const element = document.getElementById(month);
-      // const scroll = document.documentElement.scrollTop;
-      const position = element.getBoundingClientRect();
-      const listPosition = list.getBoundingClientRect();
 
-      // console.log(element);
-      // console.log(scroll);
-      console.log(position.x);
-      console.log(listPosition.x);
+      // TODO: check if window is not undefined
+      const elementPosition = element.getBoundingClientRect().x;
+      const listPosition = list.getBoundingClientRect().left;
+      const containerPosition = container.getBoundingClientRect().left;
 
-      // anime({
-      //   targets: list,
-      //   x: -2000,
-      //   duration: 350,
-      //   easing: "easeInOutCubic"
-      //   // update: () => window.scroll(0, scroll.x)
-      // });
+      const scrollTo =
+        containerPosition - listPosition + (elementPosition - 500);
 
-      // document.getElementById(month).scrollIntoView();
+      anime({
+        targets: container,
+        scrollLeft: scrollTo,
+        duration: 1000,
+        easing: "easeOutCirc"
+      });
     }
   }
 };
