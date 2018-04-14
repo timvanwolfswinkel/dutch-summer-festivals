@@ -45,17 +45,14 @@ export default {
 
     // add event listeners to element
     if (el.addEventListener) {
-      console.log("add event listeners");
       el.addEventListener("mousedown", onMouseDown);
       el.addEventListener("mousemove", onMouseMove);
       el.addEventListener("mouseup", onMouseUp);
     } else if (el.attachEvent) {
-      console.log("attach events");
       el.attachEvent("onmousedown", onMouseDown);
       el.attachEvent("mousemove", onMouseMove);
       el.attachEvent("mouseup", onMouseUp);
     } else {
-      console.log("set mouse events");
       el.mousedown = onMouseDown;
       el.mousemove = onMouseMove;
       el.mouseup = onMouseUp;
