@@ -28,11 +28,18 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
+
+        &:hover {
+            .panel__close-icon {
+                transform: rotate(180deg);
+            }
+        }
     }
 
     &__close-icon {
         display: block;
         width: 17px;
         height: 17px;
+        transition: transform .4s ease-in-out;
     }
 }
