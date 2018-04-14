@@ -3,7 +3,7 @@
     v-drag-scroll
     :id="'home'"
     class="home">
-    <intro-page v-if="showIntro"/>
+    <intro-page :show-intro="showIntro"/>
     <months-list 
       :show-months-panel="showMonthsPanel" 
       :festivals="festivals"/>

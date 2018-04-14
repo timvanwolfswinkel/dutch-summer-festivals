@@ -33,7 +33,7 @@ export default {
       anime({
         targets: el,
         duration: 500,
-        delay: 500,
+        delay: 1000,
         width: 0,
         easing: "easeOutExpo",
         complete() {

@@ -9,9 +9,15 @@
       :key="month.month"
       class="festivals-list__month">
       <columns :show-intro="showIntro"/>
-      <span 
-        :id="month.month" 
-        class="festivals-list__month-title">{{ month.month | uppercase }}</span>
+      <transition 
+        :css="false"
+        @enter="animateMonthTitleIn">
+        <span 
+          v-if="!showIntro"
+          :id="month.month" 
+          class="festivals-list__month-title"
+          style="transform: translateX(-100px); opacity: 0;">{{ month.month | uppercase }}</span>
+      </transition>
       <div 
         v-for="(festival, index) in month.festivalsInMonth" 
         :key="festival.name"
@@ -25,6 +31,8 @@
 </template>
 
 <script>
+import anime from "animejs";
+
 import FestivalItem from "../components/FestivalItem";
 import Intro from "../components/Intro";
 import Columns from "../components/Columns";
@@ -57,6 +65,21 @@ export default {
       validate(value) {
         return [value];
       }
+    }
+  },
+  methods: {
+    animateMonthTitleIn(el, done) {
+      anime({
+        targets: el,
+        duration: 350,
+        delay: 1500,
+        translateX: 0,
+        opacity: 1,
+        easing: "easeOutExpo",
+        complete() {
+          done();
+        }
+      });
     }
   }
 };
