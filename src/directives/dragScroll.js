@@ -5,8 +5,6 @@ export default {
     el.dragging = false;
   },
   bind(el) {
-    console.log(el);
-
     // mouse down event
     const onMouseDown = e => {
       const event = e || window.event; // check for IE
@@ -14,8 +12,6 @@ export default {
       el.startX = event.clientX + el.scrollLeft;
       el.diffX = 0;
       el.dragging = true;
-
-      console.log("mousedown");
     };
 
     // mouse move event
@@ -25,8 +21,6 @@ export default {
 
         el.diffX = el.startX - (event.clientX + el.scrollLeft);
         el.scrollLeft += el.diffX;
-
-        console.log("mousemove");
       }
     };
 
@@ -47,7 +41,6 @@ export default {
       };
 
       animate();
-      console.log("mouseup");
     };
 
     // add event listeners to element
@@ -69,6 +62,6 @@ export default {
     }
   },
   unbind() {
-    // remove event listeners
+    // TODO: remove event listeners
   }
 };
