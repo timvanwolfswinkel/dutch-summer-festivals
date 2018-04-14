@@ -9,6 +9,7 @@ Vue.use(Vuex);
 
 const LIST_OF_FESTIVALS_BY_MONTH = "LIST_OF_FESTIVALS_BY_MONTH";
 const SET_LOADING = "SET_LOADING";
+const TOGGLE_INTRO = "TOGGLE_INTRO";
 const TOGGLE_INFO_PANEL = "TOGGLE_INFO_PANEL";
 const TOGGLE_MONTHS_PANEL = "TOGGLE_MONTHS_PANEL";
 const SET_FESTIVAL_ID = "SET_FESTIVAL_ID";
@@ -17,6 +18,7 @@ const SET_IMAGE_ANIMATING = "SET_IMAGE_ANIMATING";
 const initialState = {
   festivals: [],
   loading: false,
+  showIntro: true,
   showInfoPanel: false,
   showMonthsPanel: false,
   festivalId: null,
@@ -88,6 +90,9 @@ const mutations = {
   [SET_LOADING](state, loading) {
     state.loading = loading;
   },
+  [TOGGLE_INTRO](state) {
+    state.showIntro = !state.showIntro;
+  },
   [TOGGLE_INFO_PANEL](state) {
     state.showInfoPanel = !state.showInfoPanel;
   },
@@ -109,6 +114,9 @@ const actions = {
       commit(LIST_OF_FESTIVALS_BY_MONTH, response.data.items);
       commit(SET_LOADING, false);
     });
+  },
+  toggleIntro({ commit }) {
+    commit(TOGGLE_INTRO);
   },
   toggleInfoPanel({ commit }) {
     commit(TOGGLE_INFO_PANEL);

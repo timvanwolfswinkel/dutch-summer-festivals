@@ -1,29 +1,81 @@
 <template>
   <div class="columns">
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
-    <div class="columns__column"/>
+    <div class="columns__column">
+      <transition 
+        :css="false"
+        @leave="animateOut">
+        <span 
+          v-if="showIntro" 
+          class="columns__background"/>
+      </transition>
+    </div>
+    <div class="columns__column">
+      <transition 
+        :css="false"
+        @leave="animateOut">
+        <span 
+          v-if="showIntro" 
+          class="columns__background"/>
+      </transition>
+    </div>
+    <div class="columns__column">
+      <transition 
+        :css="false"
+        @leave="animateOut">
+        <span 
+          v-if="showIntro" 
+          class="columns__background"/>
+      </transition>
+    </div>
+    <div class="columns__column">
+      <transition 
+        :css="false"
+        @leave="animateOut">
+        <span 
+          v-if="showIntro" 
+          class="columns__background"/>
+      </transition>
+    </div>
+    <div class="columns__column">
+      <transition 
+        :css="false"
+        @leave="animateOut">
+        <span 
+          v-if="showIntro" 
+          class="columns__background"/>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
+import anime from "animejs";
+
 export default {
-  name: "Columns"
+  name: "Columns",
+  props: {
+    showIntro: {
+      type: Boolean,
+      required: true,
+      validate(value) {
+        return [value];
+      }
+    }
+  },
+  methods: {
+    animateOut(el, done) {
+      anime({
+        targets: el,
+        duration: 500,
+        delay: 500,
+        width: 0,
+        easing: "easeOutExpo",
+        complete() {
+          done();
+        }
+      });
+    }
+  }
 };
 </script>
 

@@ -3,12 +3,12 @@
     v-if="!loading"
     :id="'festivals-list'"
     class="festivals-list">
-    <intro/>
+    <intro :show-intro="showIntro"/>
     <div 
       v-for="month in festivals" 
       :key="month.month"
       class="festivals-list__month">
-      <columns/>
+      <columns :show-intro="showIntro"/>
       <span 
         :id="month.month" 
         class="festivals-list__month-title">{{ month.month | uppercase }}</span>
@@ -45,6 +45,13 @@ export default {
       }
     },
     loading: {
+      type: Boolean,
+      required: true,
+      validate(value) {
+        return [value];
+      }
+    },
+    showIntro: {
       type: Boolean,
       required: true,
       validate(value) {
