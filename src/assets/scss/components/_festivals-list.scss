@@ -20,6 +20,7 @@
         left: 28px;
         font-size: 20px;
         z-index: 2;
+        user-select: none;
 
         &:before {
             content: '';
