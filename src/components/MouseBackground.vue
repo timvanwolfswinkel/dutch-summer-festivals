@@ -25,9 +25,6 @@ export default {
   },
   methods: {
     onMouseDown(e) {
-      this.xPos = e.clientX;
-      this.yPos = e.clientY;
-
       anime({
         targets: this.$el,
         duration: 500,
@@ -37,9 +34,6 @@ export default {
       });
     },
     onMouseUp(e) {
-      this.xPos = e.clientX;
-      this.yPos = e.clientY;
-
       anime({
         targets: this.$el,
         duration: 500,
