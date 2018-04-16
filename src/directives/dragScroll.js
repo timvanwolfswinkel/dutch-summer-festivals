@@ -44,6 +44,7 @@ export default {
     };
 
     // add event listeners to element
+    // TODO: only add mousemove on mousedown event
     if (el.addEventListener) {
       el.addEventListener("mousedown", onMouseDown);
       el.addEventListener("mousemove", onMouseMove);
