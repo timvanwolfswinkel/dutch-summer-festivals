@@ -3,10 +3,17 @@
 </template>
 
 <script>
+import anime from "animejs";
+
 export default {
   name: "MouseBackground",
+  data() {
+    return {
+      xPos: null,
+      yPos: null
+    };
+  },
   mounted() {
-    console.log(this.$el);
     document.body.addEventListener("mousedown", this.onMouseDown);
     document.body.addEventListener("mousemove", this.onMouseMove);
   },
@@ -16,10 +23,32 @@ export default {
   },
   methods: {
     onMouseDown() {
-      console.log("onMouseDown");
+      //   console.log("onMouseDown");
+      //   this.xPos = e.clientX;
+      //   this.yPos = e.clientY;
+      //   console.log(this.xPos);
+      //   console.log(this.yPos);
+      //   console.log(this.$el);
+      //   anime({
+      //     targets: this.$el,
+      //     duration: 250,
+      //     delay: 50,
+      //     left: this.xPos - 50,
+      //     top: this.yPos - 50,
+      //     easing: "easeOutExpo"
+      //   });
     },
-    onMouseMove() {
-      console.log("onMouseMove");
+    onMouseMove(e) {
+      this.xPos = e.clientX;
+      this.yPos = e.clientY;
+
+      anime({
+        targets: this.$el,
+        duration: 250,
+        left: this.xPos - 50,
+        top: this.yPos - 50,
+        easing: "easeOutExpo"
+      });
     }
   }
 };
