@@ -3,6 +3,7 @@
     v-if="!loading"
     :id="'festivals-list'"
     class="festivals-list">
+    <mouse-background/>
     <intro :show-intro="showIntro"/>
     <div 
       v-for="month in festivals" 
@@ -33,6 +34,7 @@
 <script>
 import anime from "animejs";
 
+import MouseBackground from "../components/MouseBackground";
 import FestivalItem from "../components/FestivalItem";
 import Intro from "../components/Intro";
 import Columns from "../components/Columns";
@@ -40,6 +42,7 @@ import Columns from "../components/Columns";
 export default {
   name: "FestivalsList",
   components: {
+    MouseBackground,
     FestivalItem,
     Intro,
     Columns

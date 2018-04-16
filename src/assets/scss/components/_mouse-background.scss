@@ -1,0 +1,10 @@
+@import "../settings/colors";
+
+.mouse-background {
+    display: block;
+    height: 100px;
+    width: 100px;
+    background-color: $white;
+    opacity: 0.6;
+    border-radius: 50%;
+}
