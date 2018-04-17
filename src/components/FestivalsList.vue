@@ -6,7 +6,7 @@
     <mouse-background/>
     <intro :show-intro="showIntro"/>
     <div 
-      v-for="month in festivals" 
+      v-for="month in festivalsList" 
       :key="month.month"
       class="festivals-list__month">
       <columns 
@@ -22,12 +22,10 @@
           class="festivals-list__month-title">{{ month.month | uppercase }}</span>
       </transition>
       <div 
-        v-for="(festival) in month.festivalsInMonth" 
+        v-for="festival in month.festivalsInMonth" 
         :key="festival.name"
         class="festivals-list__festival">
-        <festival-item 
-          :festival="festival" 
-          :margin="togglePosition()"/>
+        <festival-item :festival="festival"/>
       </div>
     </div>
   </div>
@@ -79,6 +77,25 @@ export default {
         : "transform: translateX(0); opacity: 1;"
     };
   },
+  computed: {
+    festivalsList() {
+      // const festivalsList = this.$props.festivals;
+      let position = "odd";
+
+      const festivalsList = this.$props.festivals.map(months => {
+        if (months.festivalsInMonth.length > 0) {
+          months.festivalsInMonth.map(festival => {
+            position = position === "even" ? "odd" : "even";
+            festival.fields.position = position; // eslint-disable-line no-param-reassign
+            return festival;
+          });
+        }
+        return months;
+      });
+
+      return festivalsList;
+    }
+  },
   methods: {
     animateMonthTitleIn(el, done) {
       anime({
@@ -92,9 +109,6 @@ export default {
           done();
         }
       });
-    },
-    togglePosition() {
-      return true;
     }
   }
 };

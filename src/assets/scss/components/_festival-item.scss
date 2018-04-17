@@ -38,6 +38,14 @@
         width: 340px;
         text-align: right;
         z-index: 2;
+
+        &--even {
+            top: 15%;
+        }
+
+        &--odd {
+            bottom: 15%;
+        }
     }
 
     &__heading {

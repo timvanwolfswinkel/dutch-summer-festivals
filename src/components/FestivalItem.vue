@@ -1,9 +1,7 @@
 <template>
   <div class="festival-item">
     <div class="festival-item__container">
-      <div 
-        :style="getElementPosition" 
-        class="festival-item__content">
+      <div :class="'festival-item__content festival-item__content--' + festival.fields.position">
         <div
           :style="getImagePosition"
           class="festival-item__image-container">
@@ -50,13 +48,6 @@ export default {
       validate(value) {
         return [value];
       }
-    },
-    margin: {
-      type: Boolean,
-      required: true,
-      validate(value) {
-        return [value];
-      }
     }
   },
   data() {
@@ -77,16 +68,8 @@ export default {
 
       return daysUntilFestival;
     },
-    getElementPosition(margin) {
-      const elementPosition = margin ? `top: 30%` : `bottom: 35%`;
-      return elementPosition;
-    },
-    getImagePosition(margin) {
-      const imagePosition = margin
-        ? `left: 35px; top: 35%`
-        : `right: 35px; bottom: 35%`;
-
-      return imagePosition;
+    getImagePosition() {
+      return "right: 35px; bottom: 35%";
     }
   },
   methods: {
