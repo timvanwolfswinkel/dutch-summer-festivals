@@ -52,15 +52,12 @@ export default {
       }
     },
     margin: {
-      type: Object,
+      type: Boolean,
       required: true,
       validate(value) {
         return [value];
       }
     }
-  },
-  mounted() {
-    this.$store.dispatch('toggleImagePosition'); // TODO: not working like this
   },
   data() {
     return {
@@ -81,15 +78,12 @@ export default {
 
       return daysUntilFestival;
     },
-    getElementPosition() {
-      const elementPosition = this.$store.state.imagePosition
-        ? `top: 30%`
-        : `bottom: 35%`;
-
+    getElementPosition(margin) {
+      const elementPosition = margin ? `top: 30%` : `bottom: 35%`;
       return elementPosition;
     },
     getImagePosition(margin) {
-      const imagePosition = margin.margin.value
+      const imagePosition = margin
         ? `left: 35px; top: 35%`
         : `right: 35px; bottom: 35%`;
 

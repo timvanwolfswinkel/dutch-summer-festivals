@@ -22,12 +22,12 @@
           class="festivals-list__month-title">{{ month.month | uppercase }}</span>
       </transition>
       <div 
-        v-for="(festival, index) in month.festivalsInMonth" 
+        v-for="(festival) in month.festivalsInMonth" 
         :key="festival.name"
         class="festivals-list__festival">
         <festival-item 
           :festival="festival" 
-          :margin="{value: !(index % 2)}"/> <!--use even/odd for handling left or right margin-->
+          :margin="togglePosition"/>
       </div>
     </div>
   </div>
@@ -76,7 +76,8 @@ export default {
     return {
       styleMonthTitle: this.showIntro
         ? "transform: translateX(-100px); opacity: 0;"
-        : "transform: translateX(0); opacity: 1;"
+        : "transform: translateX(0); opacity: 1;",
+      position: true,
     };
   },
   methods: {
@@ -92,6 +93,11 @@ export default {
           done();
         }
       });
+    },
+    togglePosition() {
+      this.data.position = !this.data.position;
+
+      return this.data.position;
     }
   }
 };
