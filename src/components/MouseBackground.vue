@@ -49,6 +49,7 @@ export default {
       });
     },
     onMouseMove(e) {
+      // TODO: Fix stuttering in firefox with lodash throttle: https://medium.com/vuejs-tips/lodash-throttle-b9baf3213f70
       this.xPos = e.clientX;
       this.yPos = e.clientY;
       
