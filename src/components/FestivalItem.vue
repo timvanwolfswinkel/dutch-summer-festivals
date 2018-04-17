@@ -52,7 +52,7 @@ export default {
       }
     },
     margin: {
-      type: Object,
+      type: Boolean,
       required: true,
       validate(value) {
         return [value];
@@ -79,11 +79,9 @@ export default {
       return daysUntilFestival;
     },
     getElementPosition(margin) {
-      const elementPosition = this.$store.state.imagePosition
+      const elementPosition = margin
         ? `top: 30%`
         : `bottom: 35%`;
-
-      //this.$store.dispatch("toggleImagePosition"); // causes infinite loop
 
       return elementPosition;
     },
