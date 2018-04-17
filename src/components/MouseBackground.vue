@@ -24,7 +24,9 @@ export default {
     document.body.removeEventListener("mousemove", this.onMouseMove);
   },
   methods: {
-    onMouseDown(e) {
+    onMouseDown() {
+      anime.remove(this.$el);
+      
       anime({
         targets: this.$el,
         duration: 500,
@@ -33,7 +35,9 @@ export default {
         easing: "easeOutExpo"
       });
     },
-    onMouseUp(e) {
+    onMouseUp() {
+      anime.remove(this.$el);
+
       anime({
         targets: this.$el,
         duration: 500,
