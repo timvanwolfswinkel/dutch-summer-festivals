@@ -22,12 +22,12 @@
           class="festivals-list__month-title">{{ month.month | uppercase }}</span>
       </transition>
       <div 
-        v-for="(festival) in month.festivalsInMonth" 
+        v-for="(festival, index) in month.festivalsInMonth" 
         :key="festival.name"
         class="festivals-list__festival">
         <festival-item 
           :festival="festival" 
-          :margin="elementPosition()"/> <!--use even/odd for handling left or right margin-->
+          :margin="{value: !(index % 2)}"/> <!--use even/odd for handling left or right margin-->
       </div>
     </div>
   </div>
@@ -92,11 +92,6 @@ export default {
           done();
         }
       });
-    },
-    elementPosition() {
-      // TODO: Causes infinite loop
-      this.$store.dispatch("toggleImagePosition");
-      return this.$store.state.imagePosition;
     }
   }
 };

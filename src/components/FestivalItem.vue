@@ -52,12 +52,15 @@ export default {
       }
     },
     margin: {
-      type: Boolean,
+      type: Object,
       required: true,
       validate(value) {
         return [value];
       }
     }
+  },
+  mounted() {
+    this.$store.dispatch('toggleImagePosition'); // TODO: not working like this
   },
   data() {
     return {
@@ -78,8 +81,8 @@ export default {
 
       return daysUntilFestival;
     },
-    getElementPosition(margin) {
-      const elementPosition = margin
+    getElementPosition() {
+      const elementPosition = this.$store.state.imagePosition
         ? `top: 30%`
         : `bottom: 35%`;
 
