@@ -10,9 +10,7 @@ export default {
   data() {
     return {
       xPos: null,
-      yPos: null,
-      elementXPos: null,
-      elementYPos: null
+      yPos: null
     };
   },
   mounted() {
@@ -53,22 +51,11 @@ export default {
       this.xPos = e.clientX;
       this.yPos = e.clientY;
 
-      // set element position only within boundaries of screen
-      // TODO: check if window !== undefined
-      this.elementXPos =
-        this.xPos > window.innerWidth - 50 || this.xPos < 50
-          ? this.elementXPos
-          : this.xPos - 50;
-      this.elementYPos =
-        this.yPos > window.innerHeight - 50 || this.yPos < 50
-          ? this.elementYPos
-          : this.yPos - 50;
-
       anime({
         targets: this.$el,
         duration: 250,
-        left: this.elementXPos,
-        top: this.elementYPos,
+        left: this.xPos - 50,
+        top: this.yPos - 50,
         easing: "easeOutExpo"
       });
     }
