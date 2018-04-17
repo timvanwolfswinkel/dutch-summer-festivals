@@ -52,6 +52,7 @@ export default {
       this.xPos = e.clientX;
       this.yPos = e.clientY;
       
+      // check with mouse position rather then element position
       // this.elementYPos = !(this.elementYPos > window.innerHeight - 100) && !(this.elementYPos < window.screenY) ? this.yPos - 50 : this.elementYPos;
 
       // console.log("innerheight: " + window.innerHeight);
