@@ -47,6 +47,7 @@ export default {
       });
     },
     onMouseMove(e) {
+      // TODO: Do not allow element to go outside of window (causing scrollbars)
       this.xPos = e.clientX;
       this.yPos = e.clientY;
 
