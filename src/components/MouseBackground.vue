@@ -28,7 +28,7 @@ export default {
   methods: {
     onMouseDown() {
       anime.remove(this.$el);
-      
+
       anime({
         targets: this.$el,
         duration: 500,
@@ -52,11 +52,17 @@ export default {
       // TODO: Fix stuttering in firefox with lodash throttle: https://medium.com/vuejs-tips/lodash-throttle-b9baf3213f70
       this.xPos = e.clientX;
       this.yPos = e.clientY;
-      
+
       // set element position only within boundaries of screen
       // TODO: check if window !== undefined
-      this.elementXPos = (this.xPos > window.innerWidth - 50) || (this.xPos < 50) ? this.elementXPos : this.xPos - 50;
-      this.elementYPos = (this.yPos > window.innerHeight - 50) || (this.yPos < 50) ? this.elementYPos : this.yPos - 50;
+      this.elementXPos =
+        this.xPos > window.innerWidth - 50 || this.xPos < 50
+          ? this.elementXPos
+          : this.xPos - 50;
+      this.elementYPos =
+        this.yPos > window.innerHeight - 50 || this.yPos < 50
+          ? this.elementYPos
+          : this.yPos - 50;
 
       anime({
         targets: this.$el,

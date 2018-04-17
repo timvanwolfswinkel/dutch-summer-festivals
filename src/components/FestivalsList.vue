@@ -27,7 +27,7 @@
         class="festivals-list__festival">
         <festival-item 
           :festival="festival" 
-          :margin="togglePosition"/>
+          :margin="togglePosition()"/>
       </div>
     </div>
   </div>
@@ -76,8 +76,7 @@ export default {
     return {
       styleMonthTitle: this.showIntro
         ? "transform: translateX(-100px); opacity: 0;"
-        : "transform: translateX(0); opacity: 1;",
-      position: true,
+        : "transform: translateX(0); opacity: 1;"
     };
   },
   methods: {
@@ -95,9 +94,7 @@ export default {
       });
     },
     togglePosition() {
-      this.data.position = !this.data.position;
-
-      return this.data.position;
+      return true;
     }
   }
 };

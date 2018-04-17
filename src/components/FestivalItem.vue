@@ -62,8 +62,7 @@ export default {
   data() {
     return {
       showImage: false,
-      infoPanelIsOpen: this.$store.state.showInfoPanel,
-      randomInt: Math.floor(Math.random() * (30 - 15 + 1)) + 15
+      infoPanelIsOpen: this.$store.state.showInfoPanel
     };
   },
   computed: {
