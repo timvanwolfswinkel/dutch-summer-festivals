@@ -12,7 +12,12 @@
     overflow-y: hidden;
     z-index: 1;
     pointer-events: none;
+    overflow-x: hidden;
     user-select: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     &__column {
         position: relative;
