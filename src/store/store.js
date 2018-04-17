@@ -71,10 +71,13 @@ const mutations = {
         return festivalMonth === month ? festivalMonth : null;
       });
 
-      festivalsDividedInMonths.push({
-        month,
-        festivalsInMonth: festivalsInMonth || []
-      });
+      // only push when there are festivals in the months
+      if (festivalsInMonth.length > 0) {
+        festivalsDividedInMonths.push({
+          month,
+          festivalsInMonth: festivalsInMonth || []
+        });
+      }
     });
 
     // get first festival and set festivalId
