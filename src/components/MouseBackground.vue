@@ -10,7 +10,8 @@ export default {
   data() {
     return {
       xPos: null,
-      yPos: null
+      yPos: null,
+      elementYPos: null,
     };
   },
   mounted() {
@@ -50,6 +51,16 @@ export default {
       // TODO: Do not allow element to go outside of window (causing scrollbars)
       this.xPos = e.clientX;
       this.yPos = e.clientY;
+      
+      // this.elementYPos = !(this.elementYPos > window.innerHeight - 100) && !(this.elementYPos < window.screenY) ? this.yPos - 50 : this.elementYPos;
+
+      // console.log("innerheight: " + window.innerHeight);
+      // console.log("elementpos: " + this.elementYPos);
+      // console.log(!(this.elementYPos > window.innerHeight - 100));
+      // console.log("screentop: " + window.screenTop);
+      // console.log(!(this.elementYPos < 0));
+
+      // if bigger then window height or smaller then window height + 100
 
       anime({
         targets: this.$el,
