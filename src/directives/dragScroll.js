@@ -5,6 +5,11 @@ export default {
     el.dragging = false;
   },
   bind(el) {
+    // TODO: Fix stuttering with lodash throttle: https://medium.com/vuejs-tips/lodash-throttle-b9baf3213f70
+    // TODO: Consider moving this to a component
+    // TODO: Remove event listeners on unbind
+    // TODO: Only add mousemove event on mousedown (performance improvement)
+
     // mouse down event
     const onMouseDown = e => {
       const event = e || window.event; // check for IE
@@ -44,7 +49,6 @@ export default {
     };
 
     // add event listeners to element
-    // TODO: only add mousemove on mousedown event
     if (el.addEventListener) {
       el.addEventListener("mousedown", onMouseDown);
       el.addEventListener("mousemove", onMouseMove);
@@ -58,8 +62,5 @@ export default {
       el.mousemove = onMouseMove;
       el.mouseup = onMouseUp;
     }
-  },
-  unbind() {
-    // TODO: remove event listeners
   }
 };
