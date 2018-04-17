@@ -9,7 +9,7 @@
       v-for="month in festivals" 
       :key="month.month"
       class="festivals-list__month">
-      <columns :show-intro="showIntro"/>
+      <columns :festivals="month.festivalsInMonth" :show-intro="showIntro"/>
       <transition 
         :css="false"
         @enter="animateMonthTitleIn">
