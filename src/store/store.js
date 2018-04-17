@@ -12,6 +12,7 @@ const SET_LOADING = "SET_LOADING";
 const TOGGLE_INTRO = "TOGGLE_INTRO";
 const TOGGLE_INFO_PANEL = "TOGGLE_INFO_PANEL";
 const TOGGLE_MONTHS_PANEL = "TOGGLE_MONTHS_PANEL";
+const TOGGLE_IMAGE_POSITION = "TOGGLE_IMAGE_POSITION";
 const SET_FESTIVAL_ID = "SET_FESTIVAL_ID";
 const SET_IMAGE_ANIMATING = "SET_IMAGE_ANIMATING";
 
@@ -22,7 +23,8 @@ const initialState = {
   showInfoPanel: false,
   showMonthsPanel: false,
   festivalId: null,
-  imageAnimating: false
+  imageAnimating: false,
+  imagePosition: true
 };
 
 const getters = {
@@ -99,6 +101,9 @@ const mutations = {
   [TOGGLE_MONTHS_PANEL](state) {
     state.showMonthsPanel = !state.showMonthsPanel;
   },
+  [TOGGLE_IMAGE_POSITION](state) {
+    state.imagePosition = !state.imagePosition;
+  },
   [SET_FESTIVAL_ID](state, festivalId) {
     state.festivalId = festivalId.festivalId;
   },
@@ -123,6 +128,9 @@ const actions = {
   },
   toggleMonthsPanel({ commit }) {
     commit(TOGGLE_MONTHS_PANEL);
+  },
+  toggleImagePosition({ commit }) {
+    commit(TOGGLE_IMAGE_POSITION);
   },
   setFestivalId({ commit }, festivalId) {
     commit(SET_FESTIVAL_ID, festivalId);

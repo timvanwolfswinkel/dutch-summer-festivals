@@ -11,7 +11,7 @@ export default {
     return {
       xPos: null,
       yPos: null,
-      elementYPos: null,
+      elementYPos: null
     };
   },
   mounted() {

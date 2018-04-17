@@ -79,16 +79,18 @@ export default {
       return daysUntilFestival;
     },
     getElementPosition(margin) {
-      const elementPosition = margin.margin.value
-        ? `top: ${this.randomInt}%`
-        : `bottom: ${this.randomInt}%`;
+      const elementPosition = this.$store.state.imagePosition
+        ? `top: 30%`
+        : `bottom: 35%`;
+
+      //this.$store.dispatch("toggleImagePosition"); // causes infinite loop
 
       return elementPosition;
     },
     getImagePosition(margin) {
       const imagePosition = margin.margin.value
-        ? `left: 35px; top: calc(${this.randomInt}% + 20px)`
-        : `right: 35px; bottom: calc(${this.randomInt}% - 60px)`;
+        ? `left: 35px; top: 35%`
+        : `right: 35px; bottom: 35%`;
 
       return imagePosition;
     }
