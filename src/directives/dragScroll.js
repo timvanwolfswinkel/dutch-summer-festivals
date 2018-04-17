@@ -9,6 +9,7 @@ export default {
     // TODO: Consider moving this to a component
     // TODO: Remove event listeners on unbind
     // TODO: Only add mousemove event on mousedown (performance improvement)
+    // TODO: Add movement right or left when dragging
 
     // mouse down event
     const onMouseDown = e => {
