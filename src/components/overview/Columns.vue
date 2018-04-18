@@ -54,5 +54,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/scss/components/columns.scss";
+@import "src/assets/scss/components/overview/columns.scss";
 </style>

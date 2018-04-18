@@ -37,7 +37,7 @@ import anime from "animejs";
 import MouseFollower from "../MouseFollower";
 import FestivalItem from "../FestivalItem";
 import Intro from "../Intro";
-import Columns from "../Columns";
+import Columns from "./Columns";
 
 export default {
   name: "List",
