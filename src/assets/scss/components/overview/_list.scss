@@ -1,7 +1,7 @@
-@import "../settings/typography";
-@import "../settings/colors";
+@import "../../settings/typography";
+@import "../../settings/colors";
 
-.festivals-list {
+.list {
     display: inline-flex;
 
     &__month {

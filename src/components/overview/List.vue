@@ -1,14 +1,14 @@
 <template>
   <div
     v-if="!loading"
-    :id="'festivals-list'"
-    class="festivals-list">
+    :id="'list'"
+    class="list">
     <mouse-follower/>
     <intro :show-intro="showIntro"/>
     <div 
       v-for="month in festivalsList" 
       :key="month.month"
-      class="festivals-list__month">
+      class="list__month">
       <columns 
         :festivals="month.festivalsInMonth" 
         :show-intro="showIntro"/>
@@ -19,12 +19,12 @@
           v-show="!showIntro"
           :id="month.month" 
           :style="styleMonthTitle"
-          class="festivals-list__month-title">{{ month.month | uppercase }}</span>
+          class="list__month-title">{{ month.month | uppercase }}</span>
       </transition>
       <div 
         v-for="festival in month.festivalsInMonth" 
         :key="festival.name"
-        class="festivals-list__festival">
+        class="list__festival">
         <festival-item :festival="festival"/>
       </div>
     </div>
@@ -34,13 +34,13 @@
 <script>
 import anime from "animejs";
 
-import MouseFollower from "../components/MouseFollower";
-import FestivalItem from "../components/FestivalItem";
-import Intro from "../components/Intro";
-import Columns from "../components/Columns";
+import MouseFollower from "../MouseFollower";
+import FestivalItem from "../FestivalItem";
+import Intro from "../Intro";
+import Columns from "../Columns";
 
 export default {
-  name: "FestivalsList",
+  name: "List",
   components: {
     MouseFollower,
     FestivalItem,
@@ -115,5 +115,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/scss/components/festivals-list.scss";
+@import "src/assets/scss/components/overview/list.scss";
 </style>

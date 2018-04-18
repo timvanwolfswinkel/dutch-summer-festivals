@@ -14,7 +14,7 @@
       @click="toggleShowMonthsPanel">
       {{ "Select a month" | uppercase }}
     </span>
-    <festivals-list 
+    <list 
       :festivals="festivals" 
       :loading="loading"
       :show-intro="showIntro"/>
@@ -24,7 +24,7 @@
 <script>
 import Vuex from "vuex";
 import IntroPage from "../components/IntroPage";
-import FestivalsList from "../components/FestivalsList";
+import List from "../components/overview/List";
 import MonthsList from "../components/MonthsList";
 import FestivalInfo from "../components/FestivalInfo";
 import dragScroll from "../directives/dragScroll";
@@ -35,7 +35,7 @@ export default {
   name: "Overview",
   components: {
     IntroPage,
-    FestivalsList,
+    List,
     MonthsList,
     FestivalInfo
   },
