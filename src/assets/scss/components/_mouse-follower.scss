@@ -1,11 +1,10 @@
 @import "../settings/colors";
 
-.mouse-background {
+.mouse-follower {
     position: absolute;
     height: 100px;
     width: 100px;
     background-color: $white;
     opacity: 0.6;
     border-radius: 50%;
-    overflow: hidden;
 }
