@@ -25,7 +25,7 @@
         v-for="festival in month.festivalsInMonth" 
         :key="festival.name"
         class="list__festival">
-        <festival-item :festival="festival"/>
+        <list-item :festival="festival"/>
       </div>
     </div>
   </div>
@@ -35,15 +35,15 @@
 import anime from "animejs";
 
 import MouseFollower from "../MouseFollower";
-import FestivalItem from "../FestivalItem";
 import Intro from "../Intro";
+import ListItem from "./ListItem";
 import Columns from "./Columns";
 
 export default {
   name: "List",
   components: {
     MouseFollower,
-    FestivalItem,
+    ListItem,
     Intro,
     Columns
   },

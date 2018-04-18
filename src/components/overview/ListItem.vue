@@ -1,27 +1,27 @@
 <template>
-  <div class="festival-item">
-    <div class="festival-item__container">
-      <div :class="'festival-item__content festival-item__content--' + festival.fields.position">
+  <div class="list-item">
+    <div class="list-item__container">
+      <div :class="'list-item__content list-item__content--' + festival.fields.position">
         <div
           :style="getImagePosition"
-          class="festival-item__image-container">
+          class="list-item__image-container">
           <image-transition>
             <img
               v-if="showImage" 
               :src="require(`@/assets/img/${festival.fields.url}/list-item.jpg`)"
-              class="festival-item__image">
+              class="list-item__image">
           </image-transition>
         </div>
         <div 
           v-split-text
           ref="festivalHeading"
-          class="festival-item__heading"
+          class="list-item__heading"
           @mouseover="toggleImage"
           @mouseout="toggleImage"
           @click="prepareInfoPanel">
           {{ festival.fields.name }}
         </div>
-        <p class="festival-item__countdown">In {{ getDaysUntilFestival }} days</p>
+        <p class="list-item__countdown">In {{ getDaysUntilFestival }} days</p>
       </div>
     </div>
   </div>
@@ -30,11 +30,11 @@
 <script>
 import anime from "animejs";
 
-import ImageTransition from "../components/ImageTransition";
-import splitText from "../directives/splitText";
+import ImageTransition from "../../components/ImageTransition";
+import splitText from "../../directives/splitText";
 
 export default {
-  name: "FestivalItem",
+  name: "ListItem",
   components: {
     ImageTransition
   },
@@ -147,5 +147,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/scss/components/festival-item.scss";
+@import "src/assets/scss/components/overview/list-item.scss";
 </style>
