@@ -35,7 +35,7 @@
 import anime from "animejs";
 
 import MouseFollower from "../MouseFollower";
-import Intro from "../Intro";
+import Intro from "./Intro";
 import ListItem from "./ListItem";
 import Columns from "./Columns";
 
