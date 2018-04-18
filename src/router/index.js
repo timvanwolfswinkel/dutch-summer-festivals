@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "@/pages/Home";
+import Overview from "@/pages/Overview";
 import Festival from "@/pages/Festival";
 
 Vue.use(Router);
@@ -10,8 +10,8 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "Home",
-      component: Home
+      name: "Overview",
+      component: Overview
     },
     {
       path: "/festival/:festivalId",

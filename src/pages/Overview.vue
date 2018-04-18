@@ -1,8 +1,8 @@
 <template>
   <div 
     v-drag-scroll
-    :id="'home'"
-    class="home">
+    :id="'overview'"
+    class="overview">
     <intro-page :show-intro="showIntro"/>
     <months-list 
       :show-months-panel="showMonthsPanel" 
@@ -10,7 +10,7 @@
     <festival-info :show-info-panel="showInfoPanel"/>
     
     <span 
-      class="home__show-months"
+      class="overview__show-months"
       @click="toggleShowMonthsPanel">
       {{ "Select a month" | uppercase }}
     </span>
@@ -32,7 +32,7 @@ import dragScroll from "../directives/dragScroll";
 const mapState = Vuex.mapState;
 
 export default {
-  name: "Home",
+  name: "Overview",
   components: {
     IntroPage,
     FestivalsList,
@@ -67,5 +67,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/scss/pages/home.scss";
+@import "src/assets/scss/pages/overview.scss";
 </style>
