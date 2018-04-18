@@ -25,14 +25,12 @@
 
 <script>
 import store from "../store/store";
-import PageTransition from "../components/PageTransition";
 import BackButton from "../components/BackButton";
 
 export default {
   store,
   name: "Festival",
   components: {
-    PageTransition,
     BackButton
   },
   computed: {

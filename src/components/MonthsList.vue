@@ -23,7 +23,7 @@
 import anime from "animejs";
 
 import Panel from "../components/Panel";
-import ElementTransition from "../components/ElementTransition";
+import ElementTransition from "../components/transitions/ElementTransition";
 
 export default {
   name: "MonthsList",

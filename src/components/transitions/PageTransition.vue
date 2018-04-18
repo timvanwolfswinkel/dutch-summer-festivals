@@ -1,7 +1,7 @@
 <template>
   <div class="page-transition">
     <div 
-      ref="purpleOverlay" 
+      ref="overlay" 
       class="page-transition__overlay" 
       style="transform:scaleX(0)"/>
     <transition 
@@ -28,27 +28,27 @@ export default {
     },
     animateOverlay(el, done) {
       const animatedTransition = anime.timeline();
-      const purpleOverlay = this.$refs.purpleOverlay;
+      const overlay = this.$refs.overlay;
 
       animatedTransition
         .add({
-          targets: purpleOverlay,
+          targets: overlay,
           duration: 500,
           delay: 500,
           scaleX: 1,
           easing: "easeOutExpo",
           complete() {
-            purpleOverlay.style.transformOrigin = "0 100%";
+            overlay.style.transformOrigin = "0 100%";
           }
         })
         .add({
-          targets: purpleOverlay,
+          targets: overlay,
           duration: 500,
           delay: 50,
           scaleX: 0,
           easing: "easeOutExpo",
           complete() {
-            purpleOverlay.style.transformOrigin = "100% 0";
+            overlay.style.transformOrigin = "100% 0";
             done();
           }
         });
@@ -78,5 +78,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/scss/components/page-transition.scss";
+@import "src/assets/scss/components/transitions/page-transition.scss";
 </style>

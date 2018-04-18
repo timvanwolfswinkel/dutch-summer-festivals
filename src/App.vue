@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import PageTransition from "./components/PageTransition";
+import PageTransition from "./components/transitions/PageTransition";
 
 export default {
   name: "App",

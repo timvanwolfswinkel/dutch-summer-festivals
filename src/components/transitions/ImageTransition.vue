@@ -20,9 +20,9 @@
 <script>
 import anime from "animejs";
 
-// on enter fire a event to set a value which disables mouse over
-// after leave fire a event to set the default value which enables mouse over again
-// in parent fire event on mouse over only if value is false
+// TODO: on enter fire a event to set a value which disables mouse over
+// TODO: after leave fire a event to set the default value which enables mouse over again
+// TODO: in parent fire event on mouse over only if value is false
 
 export default {
   name: "ImageTransition",
@@ -106,5 +106,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/scss/components/image-transition.scss";
+@import "src/assets/scss/components/transitions/image-transition.scss";
 </style>

@@ -30,7 +30,7 @@
 <script>
 import anime from "animejs";
 
-import ImageTransition from "../../components/ImageTransition";
+import ImageTransition from "../../components/transitions/ImageTransition";
 import splitText from "../../directives/splitText";
 
 export default {
