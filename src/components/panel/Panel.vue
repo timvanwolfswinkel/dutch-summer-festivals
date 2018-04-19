@@ -105,5 +105,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/scss/components/panel.scss";
+@import "src/assets/scss/components/panel/panel.scss";
 </style>

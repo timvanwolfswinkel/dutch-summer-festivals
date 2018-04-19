@@ -25,8 +25,8 @@
 import Vuex from "vuex";
 import IntroPage from "../components/IntroPage";
 import List from "../components/overview/List";
-import MonthsList from "../components/MonthsList";
-import FestivalInfo from "../components/FestivalInfo";
+import MonthsList from "../components/panel/MonthsList";
+import FestivalInfo from "../components/panel/FestivalInfo";
 import dragScroll from "../directives/dragScroll";
 
 const mapState = Vuex.mapState;

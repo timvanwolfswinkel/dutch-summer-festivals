@@ -56,8 +56,8 @@
 </template>
 
 <script>
-import Panel from "../components/Panel";
-import ElementTransition from "../components/transitions/ElementTransition";
+import Panel from "./Panel";
+import ElementTransition from "../../components/transitions/ElementTransition";
 
 export default {
   name: "FestivalInfo",
@@ -87,5 +87,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/scss/components/festival-info.scss";
+@import "src/assets/scss/components/panel/festival-info.scss";
 </style>

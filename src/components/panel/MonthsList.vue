@@ -22,8 +22,8 @@
 <script>
 import anime from "animejs";
 
-import Panel from "../components/Panel";
-import ElementTransition from "../components/transitions/ElementTransition";
+import Panel from "./Panel";
+import ElementTransition from "../../components/transitions/ElementTransition";
 
 export default {
   name: "MonthsList",
@@ -73,5 +73,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/scss/components/months-list.scss";
+@import "src/assets/scss/components/panel/months-list.scss";
 </style>
