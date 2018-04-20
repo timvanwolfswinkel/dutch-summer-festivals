@@ -49,8 +49,8 @@ export default {
   },
   methods: {
     scrollToElement(month) {
-      const container = document.getElementById("home");
-      const list = document.getElementById("festivals-list");
+      const container = document.getElementById("overview");
+      const list = document.getElementById("list");
       const element = document.getElementById(month);
 
       // TODO: check if window is not undefined

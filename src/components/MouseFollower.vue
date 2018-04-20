@@ -70,7 +70,7 @@ export default {
         duration: 250,
         left: this.elementXPos,
         top: this.elementYPos,
-        easing: "easeOutExpo"
+        easing: "easeOutElastic"
       });
     }
   }
