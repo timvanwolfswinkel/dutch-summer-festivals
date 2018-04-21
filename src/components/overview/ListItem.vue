@@ -69,7 +69,7 @@ export default {
       return daysUntilFestival;
     },
     getImagePosition() {
-      return "right: 35px; bottom: 35%";
+      return "right: 30px; top: 30px";
     }
   },
   methods: {

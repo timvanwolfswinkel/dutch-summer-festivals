@@ -40,11 +40,12 @@
         z-index: 2;
 
         &--even {
-            top: 15%;
+            top: 25%;
         }
 
         &--odd {
-            bottom: 15%;
+            bottom: 25%;
+            z-index: 3;
         }
     }
 
