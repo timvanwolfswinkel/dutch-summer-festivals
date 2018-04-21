@@ -80,7 +80,7 @@ export default {
       const festivalId = this.$store.state.festivalId;
       const festival = this.$store.getters.getFestivalById(festivalId);
 
-      return festival[0].fields;
+      return festival.length > 0 ? festival[0].fields : [];
     }
   }
 };
