@@ -90,6 +90,8 @@ export default {
       }
     },
     animateTextBackgroundsIn(elements, delay) {
+      anime.remove([elements]);
+
       setTimeout(() => {
         anime({
           targets: [elements],
@@ -106,6 +108,8 @@ export default {
       }, delay);
     },
     animateTextBackgroundsOut(elements, delay) {
+      anime.remove([elements]);
+
       setTimeout(() => {
         anime({
           targets: [elements],
