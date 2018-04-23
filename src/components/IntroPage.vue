@@ -16,6 +16,7 @@
 </template>
 
 <script>
+// TODO: Add more (different) animations, introduction
 import anime from "animejs";
 
 export default {
