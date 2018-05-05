@@ -19,11 +19,15 @@ export default {
     document.body.addEventListener("mousedown", this.onMouseDown);
     document.body.addEventListener("mouseup", this.onMouseUp);
     document.body.addEventListener("mousemove", this.onMouseMove);
+    document.body.addEventListener("mouseleave", this.onMouseLeave);
+    document.body.addEventListener("mouseenter", this.onMouseEnter);
   },
   beforeDestroy() {
     document.body.removeEventListener("mousedown", this.onMouseDown);
     document.body.removeEventListener("mouseup", this.onMouseUp);
     document.body.removeEventListener("mousemove", this.onMouseMove);
+    document.body.removeEventListener("mouseleave", this.onMouseLeave);
+    document.body.removeEventListener("mouseenter", this.onMouseEnter);
   },
   methods: {
     onMouseDown() {
@@ -69,8 +73,31 @@ export default {
         targets: this.$el,
         duration: 250,
         left: this.elementXPos,
-        top: this.elementYPos,
-        easing: "easeOutElastic"
+        top: this.elementYPos
+      });
+    },
+    onMouseLeave() {
+      anime.remove(this.$el);
+
+      anime({
+        targets: this.$el,
+        duration: 500,
+        delay: 100,
+        opacity: 0,
+        scale: 0,
+        easing: "easeOutExpo"
+      });
+    },
+    onMouseEnter() {
+      anime.remove(this.$el);
+
+      anime({
+        targets: this.$el,
+        duration: 500,
+        delay: 100,
+        opacity: 0.6,
+        scale: 1,
+        easing: "easeOutExpo"
       });
     }
   }
