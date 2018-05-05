@@ -31,6 +31,17 @@ export default {
 
       // check top for each word, combine words with same top into one span
       [].forEach.call(spans, span => {
+        const letters = span.innerHTML.split("");
+        console.log(letters);
+
+        // create spans for each letter
+        span.innerHTML = ""; /* eslint no-param-reassign: "error" */
+        [].forEach.call(letters, letter => {
+          const letterSpan = document.createElement("span");
+          letterSpan.innerHTML = letter;
+          span.appendChild(letterSpan);
+        });
+
         if (span.getBoundingClientRect().top === offsetTop) {
           parentDiv.innerHTML += ` ${span.innerHTML}`;
         } else {
