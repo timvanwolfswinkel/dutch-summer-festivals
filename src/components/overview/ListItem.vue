@@ -72,6 +72,11 @@ export default {
       return "right: 30px; top: 30px";
     }
   },
+  mounted() {
+    setTimeout(() => {
+      this.animateTitleIn();
+    }, 100);
+  },
   methods: {
     toggleImage() {
       if (!this.$store.state.listItemAnimating) {
@@ -79,13 +84,38 @@ export default {
         this.$store.dispatch("setListItemAnimating");
 
         const el = this.$refs.festivalHeading;
-        const elements = el.getElementsByTagName("span");
+        const elements = el.getElementsByClassName("festival-item__bg");
 
         if (this.showImage) {
           this.animateTextBackgroundsIn(elements, 500, this);
         } else {
           this.animateTextBackgroundsOut(elements, 750, this);
         }
+      }
+    },
+    animateTitleIn() {
+      const parent = this.$el.getElementsByClassName("festival-item__word");
+      let test = [];
+
+      for (let i = 0; i < parent.length; i += 1) {
+        const childs = parent[i].children;
+
+        for (let x = 0; x < childs.length; x += 1) {
+          test.push(childs[x]);
+        }
+
+        anime({
+          targets: [test],
+          duration: 250,
+          delay(target, index) {
+            return 500 + index * 25;
+          },
+          opacity: 1,
+          translateY: 0,
+          easing: "easeOutExpo"
+        });
+
+        test = [];
       }
     },
     animateTextBackgroundsIn(elements, delay, context) {

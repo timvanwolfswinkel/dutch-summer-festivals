@@ -7,8 +7,6 @@ export default {
     // create spans for every word
     words.forEach(val => {
       const span = document.createElement("div");
-      span.className = "festival-item__word";
-      span.style.display = "inline-block";
       span.innerHTML = val;
       div.appendChild(span);
     });
@@ -32,13 +30,16 @@ export default {
       // check top for each word, combine words with same top into one span
       [].forEach.call(spans, span => {
         const letters = span.innerHTML.split("");
-        console.log(letters);
+        // console.log(letters);
 
         // create spans for each letter
         span.innerHTML = ""; /* eslint no-param-reassign: "error" */
         [].forEach.call(letters, letter => {
           const letterSpan = document.createElement("span");
           letterSpan.innerHTML = letter;
+          letterSpan.style.display = "inline-block";
+          letterSpan.style.opacity = "0";
+          letterSpan.style.transform = "translateY(20px)";
           span.appendChild(letterSpan);
         });
 
@@ -47,6 +48,7 @@ export default {
         } else {
           // background element (needed for hover animation)
           const background = document.createElement("span");
+          background.className = "festival-item__bg";
           background.style.position = "absolute";
           background.style.top = "0";
           background.style.left = "0";
@@ -58,6 +60,7 @@ export default {
           background.style.zIndex = "0";
 
           const extraDiv = document.createElement("div");
+          extraDiv.className = "festival-item__word";
           extraDiv.style.position = "relative";
           extraDiv.style.zIndex = "1";
           extraDiv.innerHTML = parentDiv.innerHTML;
@@ -82,6 +85,7 @@ export default {
       });
 
       const background = document.createElement("span");
+      background.className = "festival-item__bg";
       background.style.position = "absolute";
       background.style.top = "0";
       background.style.left = "0";
@@ -93,6 +97,7 @@ export default {
       background.style.zIndex = "0";
 
       const extraDiv = document.createElement("div");
+      extraDiv.className = "festival-item__word";
       extraDiv.style.position = "relative";
       extraDiv.style.zIndex = "1";
       extraDiv.innerHTML = parentDiv.innerHTML;
