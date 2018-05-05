@@ -99,7 +99,7 @@ export default {
         });
     },
     updateImageAnimating() {
-      this.$store.dispatch("setImageAnimating"); // TODO: move this to the animating text background, change name to listElementAnimating
+      this.$store.dispatch("setImageAnimating");
     }
   }
 };
