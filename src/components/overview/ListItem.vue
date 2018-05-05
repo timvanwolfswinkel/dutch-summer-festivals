@@ -72,24 +72,53 @@ export default {
       return "right: 30px; top: 30px";
     }
   },
+  mounted() {
+    setTimeout(() => {
+      this.animateTitleIn();
+    }, 100);
+  },
   methods: {
     toggleImage() {
-      // TODO: think of better way to fix the hover disabling
-      // TODO: create a state "showOverlay" that controls the animations
-      if (!this.$store.state.imageAnimating) {
+      if (!this.$store.state.listItemAnimating) {
         this.showImage = !this.showImage;
+        this.$store.dispatch("setListItemAnimating");
 
         const el = this.$refs.festivalHeading;
-        const elements = el.getElementsByTagName("span");
+        const elements = el.getElementsByClassName("festival-item__bg");
 
         if (this.showImage) {
-          this.animateTextBackgroundsIn(elements, 500);
+          this.animateTextBackgroundsIn(elements, 500, this);
         } else {
-          this.animateTextBackgroundsOut(elements, 750);
+          this.animateTextBackgroundsOut(elements, 750, this);
         }
       }
     },
-    animateTextBackgroundsIn(elements, delay) {
+    animateTitleIn() {
+      const parent = this.$el.getElementsByClassName("festival-item__word");
+      let test = [];
+
+      for (let i = 0; i < parent.length; i += 1) {
+        const childs = parent[i].children;
+
+        for (let x = 0; x < childs.length; x += 1) {
+          test.push(childs[x]);
+        }
+
+        anime({
+          targets: [test],
+          duration: 250,
+          delay(target, index) {
+            return 500 + index * 25;
+          },
+          opacity: 1,
+          translateY: 0,
+          easing: "easeOutExpo"
+        });
+
+        test = [];
+      }
+    },
+    animateTextBackgroundsIn(elements, delay, context) {
       anime.remove([elements]);
 
       setTimeout(() => {
@@ -103,11 +132,13 @@ export default {
               const span = element;
               span.style.transformOrigin = "0% 100%";
             });
+
+            context.$store.dispatch("setListItemAnimating");
           }
         });
       }, delay);
     },
-    animateTextBackgroundsOut(elements, delay) {
+    animateTextBackgroundsOut(elements, delay, context) {
       anime.remove([elements]);
 
       setTimeout(() => {
@@ -121,6 +152,8 @@ export default {
               const span = element;
               span.style.transformOrigin = "100% 0%";
             });
+
+            context.$store.dispatch("setListItemAnimating");
           }
         });
       }, delay);
