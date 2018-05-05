@@ -1,0 +1,43 @@
+@import "../../settings/typography";
+@import "../../settings/colors";
+
+.list {
+    display: inline-flex;
+
+    &__month {
+        position: relative;
+        display: inline-flex;
+        flex-wrap: nowrap;
+        min-width: 260px;
+        height: 100vh;
+        z-index: 2;
+    }
+
+    &__month-title {
+        @include font-heading;
+        position: absolute;
+        bottom: 50px;
+        left: 28px;
+        font-size: 20px;
+        z-index: 2;
+        user-select: none;
+
+        &:before {
+            content: '';
+            height: 3px;
+            width: 24px;
+            background-color: $white;
+            position: absolute;
+            top: calc(50% - 4px);
+            transform: translateY(-50%);
+            left: -40px;
+        }
+    }
+
+    &__festival {
+        display: inline-flex;
+        flex: 1;
+        width: 260px;
+        z-index: 6;
+    }
+}

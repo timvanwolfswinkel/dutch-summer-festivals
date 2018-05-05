@@ -25,20 +25,32 @@
 
 <script>
 import store from "../store/store";
-import PageTransition from "../components/PageTransition";
 import BackButton from "../components/BackButton";
 
 export default {
   store,
   name: "Festival",
   components: {
-    PageTransition,
     BackButton
   },
   computed: {
     festival() {
-      const festivals = this.$store.getters.festivals;
+      this.$store.dispatch("toggleInfoPanel"); // TODO: move this to mounted event
+      const storeFestivals = this.$store.getters.festivals;
+      const temp = [];
       const festivalId = this.$route.params.festivalId;
+
+      // TODO: replace this with reduce
+      // flatten array
+      storeFestivals.forEach(festival => {
+        if (festival.festivalsInMonth.length > 0) {
+          festival.festivalsInMonth.forEach(item => {
+            temp.push(item);
+          });
+        }
+      });
+
+      const festivals = [].concat(...temp);
       const festival = festivals.filter(key => key.fields.url === festivalId);
 
       return festival.length !== 0 ? festival[0].fields : {};

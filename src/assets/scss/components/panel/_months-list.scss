@@ -1,0 +1,29 @@
+@import "../../settings/typography";
+@import "../../settings/colors";
+
+.months-list {
+    &__month {
+        display: block;
+        width: 300px;
+        margin: 12px 0;
+        cursor: pointer;
+
+        &:first-child {
+            margin-top: 50px;
+        }
+    }
+
+    &__title {
+        @include font-heading;
+        display: inline-block;
+        font-size: 27px;
+        color: $black;
+    }
+
+    &__amount {
+        @include font-heading();
+        font-size: 27px;
+        color: $black;
+        float: right;
+    }
+}

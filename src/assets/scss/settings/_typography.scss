@@ -1,21 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
-@import url('//fast.fonts.net/cssapi/52ab2e00-a6db-4d35-8f32-8ba53c86881c.css');
-
 $font_path: '~@/assets/fonts/';
-
-@font-face {
-    font-family: KorolevMedium;
-    src: url($font_path + 'KorolevMedium.otf');
-}
-
-@font-face {
-    font-family: KorolevBold;
-    src: url('/fonts/KorolevBold.otf');
-}
 
 @font-face {
     font-family: KorolevHeavy;
     src: url($font_path + 'KorolevHeavy.otf');
+}
+
+@font-face {
+    font-family: KorolevMedium;
+    src: url($font_path + 'KorolevMedium.otf');
 }
 
 // Font stacks
@@ -29,14 +21,4 @@ $font_path: '~@/assets/fonts/';
     font-family: 'KorolevMedium', sans-serif;
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
-}
-
-@mixin font-body-italic() {
-    font-family: 'Avenir Next Cyr W00 Italic', sans-serif;
-    font-weight: normal;
-}
-
-@mixin font-body-bold() {
-    font-family: 'Avenir Next Cyr W00 Bold', sans-serif;
-    font-weight: normal;
 }
