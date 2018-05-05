@@ -74,22 +74,21 @@ export default {
   },
   methods: {
     toggleImage() {
-      // TODO: think of better way to fix the hover disabling
-      // TODO: create a state "showOverlay" that controls the animations
-      if (!this.$store.state.imageAnimating) {
+      if (!this.$store.state.listItemAnimating) {
         this.showImage = !this.showImage;
+        this.$store.dispatch("setListItemAnimating");
 
         const el = this.$refs.festivalHeading;
         const elements = el.getElementsByTagName("span");
 
         if (this.showImage) {
-          this.animateTextBackgroundsIn(elements, 500);
+          this.animateTextBackgroundsIn(elements, 500, this);
         } else {
-          this.animateTextBackgroundsOut(elements, 750);
+          this.animateTextBackgroundsOut(elements, 750, this);
         }
       }
     },
-    animateTextBackgroundsIn(elements, delay) {
+    animateTextBackgroundsIn(elements, delay, context) {
       anime.remove([elements]);
 
       setTimeout(() => {
@@ -103,11 +102,13 @@ export default {
               const span = element;
               span.style.transformOrigin = "0% 100%";
             });
+
+            context.$store.dispatch("setListItemAnimating");
           }
         });
       }, delay);
     },
-    animateTextBackgroundsOut(elements, delay) {
+    animateTextBackgroundsOut(elements, delay, context) {
       anime.remove([elements]);
 
       setTimeout(() => {
@@ -121,6 +122,8 @@ export default {
               const span = element;
               span.style.transformOrigin = "100% 0%";
             });
+
+            context.$store.dispatch("setListItemAnimating");
           }
         });
       }, delay);

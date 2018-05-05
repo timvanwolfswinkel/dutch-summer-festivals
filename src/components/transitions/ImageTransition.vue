@@ -8,10 +8,7 @@
       :css="false"
       @beforeEnter="prepareAnimation"
       @enter="animateIn"
-      @afterEnter="updateImageAnimating"
-      @beforeLeave="updateImageAnimating"
-      @leave="animateOut"
-      @afterLeave="updateImageAnimating">
+      @leave="animateOut">
       <slot/>
     </transition>
   </div>
@@ -28,8 +25,6 @@ export default {
   name: "ImageTransition",
   methods: {
     prepareAnimation(el) {
-      this.updateImageAnimating();
-
       const overlay = this.$refs.overlay;
       const element = el;
 
@@ -97,9 +92,6 @@ export default {
             done();
           }
         });
-    },
-    updateImageAnimating() {
-      this.$store.dispatch("setImageAnimating");
     }
   }
 };
