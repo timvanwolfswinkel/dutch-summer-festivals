@@ -9,12 +9,17 @@
     </transition>
     <div class="intro__container">
       <h1 class="intro__header">
-        <text-transition>
+        <text-transition padding-left="0px">
           Your complete festival overview.
         </text-transition>
       </h1>
       <span class="intro__description" >
-        <text-transition padding="0px">
+        <text-transition
+          :delay="250"
+          padding-top="0px" 
+          padding-left="0px" 
+          padding-right="5px" 
+          margin-bottom="0px">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </text-transition>
       </span>

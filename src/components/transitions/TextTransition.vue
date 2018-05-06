@@ -1,6 +1,10 @@
 <template>
   <div 
-    v-split-text="{background: background, padding: padding}"
+    v-split-text="{background: background, 
+                   paddingTop: paddingTop, 
+                   paddingLeft: paddingLeft, 
+                   paddingRight: paddingRight, 
+                   marginBottom: marginBottom}"
     v-observe-visibility="visibilityChanged" 
     ref="text">
     <slot/>
@@ -28,31 +32,52 @@ export default {
         return [value];
       }
     },
-    padding: {
+    paddingTop: {
       type: String,
       default: "10px",
       required: false,
       validate(value) {
         return [value];
       }
+    },
+    paddingLeft: {
+      type: String,
+      default: "10px",
+      required: false,
+      validate(value) {
+        return [value];
+      }
+    },
+    paddingRight: {
+      type: String,
+      default: "10px",
+      required: false,
+      validate(value) {
+        return [value];
+      }
+    },
+    marginBottom: {
+      type: String,
+      default: "5px",
+      required: false,
+      validate(value) {
+        return [value];
+      }
+    },
+    delay: {
+      type: Number,
+      default: 0,
+      required: false,
+      validate(value) {
+        return [value];
+      }
     }
   },
-  data() {
-    return {
-      isVisible: true
-    };
-  },
-  mounted() {
-    // give some extra time for DOM manipulations
-    // setTimeout(() => {
-    //   this.animateTextIn();
-    // }, 100);
-  },
   methods: {
-    visibilityChanged(isVisible, entry) {
+    visibilityChanged(isInViewport, entry) {
       console.log(entry);
 
-      if (isVisible) {
+      if (isInViewport) {
         this.animateTextIn();
       }
     },
@@ -61,6 +86,7 @@ export default {
         "text-transition__word"
       );
       let letters = [];
+      const delay = this.$props.delay;
 
       // iterate through all words within text
       for (let i = 0; i < words.length; i += 1) {
@@ -76,7 +102,7 @@ export default {
           targets: [letters],
           duration: 250,
           delay(target, index) {
-            return 500 + index * 25;
+            return 500 + delay + index * 25;
           },
           opacity: 1,
           translateY: 0,

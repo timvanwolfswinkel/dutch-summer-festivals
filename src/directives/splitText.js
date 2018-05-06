@@ -23,10 +23,10 @@ export default {
 
       parentDiv.style.position = "relative";
       parentDiv.style.display = "inline-block";
-      parentDiv.style.marginBottom = "5px";
-      parentDiv.style.paddingTop = binding.value.padding;
-      parentDiv.style.paddingLeft = binding.value.padding;
-      parentDiv.style.paddingRight = binding.value.padding;
+      parentDiv.style.marginBottom = binding.value.marginBottom;
+      parentDiv.style.paddingTop = binding.value.paddingTop;
+      parentDiv.style.paddingLeft = binding.value.paddingLeft;
+      parentDiv.style.paddingRight = binding.value.paddingRight;
       // check top for each word, combine words with same top into one span
       [].forEach.call(spans, span => {
         const letters = span.innerHTML.split("");
@@ -75,10 +75,10 @@ export default {
           parentDiv = document.createElement("div");
           parentDiv.style.position = "relative";
           parentDiv.style.display = "inline-block";
-          parentDiv.style.marginBottom = "5px";
-          parentDiv.style.paddingTop = binding.value.padding;
-          parentDiv.style.paddingLeft = binding.value.padding;
-          parentDiv.style.paddingRight = binding.value.padding;
+          parentDiv.style.marginBottom = binding.value.marginBottom;
+          parentDiv.style.paddingTop = binding.value.paddingTop;
+          parentDiv.style.paddingLeft = binding.value.paddingLeft;
+          parentDiv.style.paddingRight = binding.value.paddingRight;
           parentDiv.innerHTML = "";
           offsetTop = span.getBoundingClientRect().top;
           parentDiv.innerHTML = ` ${span.innerHTML}`;

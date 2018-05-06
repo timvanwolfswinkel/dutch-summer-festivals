@@ -22,7 +22,16 @@
             {{ festival.fields.name }}
           </text-transition>
         </div>
-        <p class="list-item__countdown">In {{ getDaysUntilFestival }} days</p>
+        <p class="list-item__countdown">
+          <text-transition 
+            :delay="250"
+            padding-top="0px" 
+            padding-left="0px" 
+            padding-right="5px" 
+            margin-bottom="0px">
+            In {{ getDaysUntilFestival }} days
+          </text-transition>
+        </p>
       </div>
     </div>
   </div>
