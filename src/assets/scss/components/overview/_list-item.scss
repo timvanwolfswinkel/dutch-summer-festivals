@@ -28,14 +28,15 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%; 
+        width: 100%;
+        user-select: none; 
     }
 
     &__content {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        width: 340px;
+        width: 400px;
         text-align: right;
         z-index: 2;
 
@@ -68,7 +69,8 @@
         font-size: 20px;
         color: $grey;
         text-transform: uppercase;
-        transform: translateX(-10px)
+        transform: translateX(-10px);
+        user-select: none;
     }
 
     &__start-date {

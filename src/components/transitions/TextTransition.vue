@@ -13,6 +13,7 @@
 
 <script>
 import anime from "animejs";
+// TODO: Add polyfill for Intersection Observer API
 import { ObserveVisibility } from "vue-observe-visibility";
 
 import splitText from "../../directives/splitText";
