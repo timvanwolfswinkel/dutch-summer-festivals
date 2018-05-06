@@ -10,6 +10,7 @@
 </template>
 
 <script>
+// TODO: organise delay within this component rather then hardcoded on the child elements
 import anime from "animejs";
 
 export default {
@@ -24,7 +25,6 @@ export default {
     }
   },
   methods: {
-    // TODO: Disable toggle image when animating the elements in/out (state)
     setStyles(el) {
       const element = el;
       element.style.opacity = 0;
