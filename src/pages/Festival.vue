@@ -5,19 +5,21 @@
       <div 
         v-if="festival"
         class="festival__item">
-        <div class="festival__header">
-          <img 
-            :src="require(`@/assets/img/${festival.url}/art-header.jpg`)"
-            class="festival__art-header">
-          <span class="festival__date">{{ festival.startDate | dateDay }} - {{ festival.endDate | dateDayMonth | uppercase }}</span>
-        </div>
-        <p class="festival__short-description">{{ festival.shortDescription }}</p>
-        <img 
-          :src="require(`@/assets/img/${festival.url}/header-image.jpg`)"
-          class="festival__header-image">
-        <p 
-          class="festival__description"
-          v-html="festival.description">{{ festival.description }}</p>
+        <h1 class="festival__title">{{ festival.name }}</h1>
+        <!-- <span class="festival__date">{{ festival.startDate | dateDay }} - {{ festival.endDate | dateDayMonth | uppercase }}</span> -->
+        <p class="festival__description">{{ festival.description }}</p>
+        <button-link 
+          :url="festival.ticketUrl"
+          text="buy tickets" 
+          emoji="💸"/>
+        <button-link 
+          :url="festival.ticketUrl"
+          text="view aftermovie" 
+          emoji="👀"/>
+        <button-link 
+          :url="festival.ticketUrl"
+          text="open on google maps" 
+          emoji="🗺"/>
       </div>
     </div>
   </div>
@@ -25,13 +27,16 @@
 
 <script>
 import store from "../store/store";
+
 import BackButton from "../components/BackButton";
+import ButtonLink from "../components/ButtonLink";
 
 export default {
   store,
   name: "Festival",
   components: {
-    BackButton
+    BackButton,
+    ButtonLink
   },
   computed: {
     festival() {
@@ -52,6 +57,8 @@ export default {
 
       const festivals = [].concat(...temp);
       const festival = festivals.filter(key => key.fields.url === festivalId);
+
+      console.log(festival);
 
       return festival.length !== 0 ? festival[0].fields : {};
     }

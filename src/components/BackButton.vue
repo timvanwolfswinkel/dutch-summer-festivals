@@ -1,5 +1,5 @@
 <template>
-  <router-link :to=" {name: 'Home' }">
+  <router-link :to=" {name: 'Overview' }">
     <span class="back-button">Go Back</span>
   </router-link>
 </template>

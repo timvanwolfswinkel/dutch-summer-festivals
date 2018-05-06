@@ -6,7 +6,7 @@
     width: calc(100% - 150px);
     padding: 50px 115px 0;
     box-sizing: border-box;
-    max-width: 1000px;
+    max-width: 1060px;
     left: calc(50% + 75px);
     transform: translateX(-50%);
 
@@ -14,20 +14,13 @@
         padding: 5px;
     }
 
-    &__header {
-        display: block;
-        position: relative;
-        width: 100%;
-        margin-bottom: 30px;
-    }
-
-    &__art-header {
-        display: block;
-        position: relative;
-        max-width: 550px;
-        transform: translateX(-50%);
-        left: 50%;
-        margin-bottom: 60px;
+    &__title {
+        @include font-heading();
+        font-size: 4em;
+        line-height: 1em;
+        text-transform: uppercase;
+        color: $white;
+        margin: 0;
     }
 
     &__date {
@@ -39,38 +32,9 @@
         font-weight: bold;
     }
 
-    &__short-description {
-        position: relative;
-        max-width: 550px;
-        margin-bottom: 60px;
-        text-align: center;
-        transform: translateX(-50%);
-        left: 50%;
-    }
-
-    &__header-image {
-        width: 100%;
-        margin-bottom: 60px;
-    }
-
     &__description {
         position: relative;
         max-width: 550px;
         margin-bottom: 60px;
-        padding: 0 48px;
-        left: 50%;
-        transform: translateX(-50%);
-
-        &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 3px;
-            margin: 0 22px;
-            background-color: $purple;
-        }
     }
 }
