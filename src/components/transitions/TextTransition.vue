@@ -1,6 +1,7 @@
 <template>
   <div 
-    v-split-text="{background: background, padding: padding}" 
+    v-split-text="{background: background, padding: padding}"
+    v-observe-visibility="visibilityChanged" 
     ref="text">
     <slot/>
   </div>
@@ -8,13 +9,15 @@
 
 <script>
 import anime from "animejs";
+import { ObserveVisibility } from "vue-observe-visibility";
 
 import splitText from "../../directives/splitText";
 
 export default {
   name: "TextTransition",
   directives: {
-    splitText
+    splitText,
+    ObserveVisibility
   },
   props: {
     background: {
@@ -34,13 +37,25 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      isVisible: true
+    };
+  },
   mounted() {
     // give some extra time for DOM manipulations
-    setTimeout(() => {
-      this.animateTextIn();
-    }, 100);
+    // setTimeout(() => {
+    //   this.animateTextIn();
+    // }, 100);
   },
   methods: {
+    visibilityChanged(isVisible, entry) {
+      console.log(entry);
+
+      if (isVisible) {
+        this.animateTextIn();
+      }
+    },
     animateTextIn() {
       const words = this.$refs.text.getElementsByClassName(
         "text-transition__word"
