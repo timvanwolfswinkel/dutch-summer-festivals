@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     visibilityChanged(isInViewport, entry) {
-      // console.log(entry);
+      console.log(entry);
 
       if (isInViewport) {
         this.animateTextIn();
@@ -101,7 +101,7 @@ export default {
       // animate letters with a stagger effect
       anime({
         targets: [letters],
-        duration: 250,
+        duration: 250, // TODO: create calculation based on amount of letters (so longer sentences animate faster)
         delay(target, index) {
           return 500 + delay + index * 25;
         },
