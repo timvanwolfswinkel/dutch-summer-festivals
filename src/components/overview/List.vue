@@ -79,7 +79,6 @@ export default {
   },
   computed: {
     festivalsList() {
-      // const festivalsList = this.$props.festivals;
       let position = "odd";
 
       const festivalsList = this.$props.festivals.map(months => {
