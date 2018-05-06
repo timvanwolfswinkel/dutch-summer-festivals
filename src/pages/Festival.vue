@@ -1,6 +1,6 @@
 <template>
   <div>
-    <back-button/>
+    <button-back-to-overview/>
     <div class="festival">
       <div 
         v-if="festival"
@@ -28,14 +28,14 @@
 <script>
 import store from "../store/store";
 
-import BackButton from "../components/BackButton";
+import ButtonBackToOverview from "../components/ButtonBackToOverview";
 import ButtonLink from "../components/ButtonLink";
 
 export default {
   store,
   name: "Festival",
   components: {
-    BackButton,
+    ButtonBackToOverview,
     ButtonLink
   },
   computed: {

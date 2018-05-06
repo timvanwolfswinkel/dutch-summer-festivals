@@ -22,24 +22,26 @@ export default {
       let parentDiv = document.createElement("div");
 
       parentDiv.style.position = "relative";
-      parentDiv.style.display = "inline-block";
+      parentDiv.style.display = binding.value.wordDisplay;
       parentDiv.style.marginBottom = binding.value.marginBottom;
       parentDiv.style.paddingTop = binding.value.paddingTop;
       parentDiv.style.paddingLeft = binding.value.paddingLeft;
       parentDiv.style.paddingRight = binding.value.paddingRight;
+
       // check top for each word, combine words with same top into one span
       [].forEach.call(spans, span => {
         const letters = span.innerHTML.split("");
-        // console.log(letters);
 
         // create spans for each letter
         span.innerHTML = ""; /* eslint no-param-reassign: "error" */
         [].forEach.call(letters, letter => {
           const letterSpan = document.createElement("span");
           letterSpan.innerHTML = letter;
-          letterSpan.style.display = "inline-block";
-          letterSpan.style.opacity = "0";
-          letterSpan.style.transform = "translateY(20px)";
+          letterSpan.style.display = binding.value.letterDisplay;
+          letterSpan.style.opacity = binding.value.opacity;
+          letterSpan.style.transform = `translateY(${
+            binding.value.translateY
+          })`;
           span.appendChild(letterSpan);
         });
 
@@ -74,7 +76,7 @@ export default {
 
           parentDiv = document.createElement("div");
           parentDiv.style.position = "relative";
-          parentDiv.style.display = "inline-block";
+          parentDiv.style.display = binding.value.wordDisplay;
           parentDiv.style.marginBottom = binding.value.marginBottom;
           parentDiv.style.paddingTop = binding.value.paddingTop;
           parentDiv.style.paddingLeft = binding.value.paddingLeft;

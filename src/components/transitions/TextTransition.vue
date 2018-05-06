@@ -1,6 +1,10 @@
 <template>
   <div 
     v-split-text="{background: background, 
+                   opacity: '0',
+                   translateY: '20px',
+                   wordDisplay: 'inline-block',
+                   letterDisplay: 'inline-block',
                    paddingTop: paddingTop, 
                    paddingLeft: paddingLeft, 
                    paddingRight: paddingRight, 

@@ -1,0 +1,35 @@
+@import "../settings/colors";
+@import "../settings/typography";
+
+.button-back-to-overview {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 100%;
+    background-color: $orange;
+    z-index: 9999;
+
+    &__container {
+        user-select: none;
+        text-align: center;
+    }
+
+    &__arrow {
+        margin-left: -10px;
+        font-size: 0.5em;
+        margin-bottom: 5px;
+    }
+
+    &__text {
+        @include font-heading();
+        display: block;
+        text-transform: uppercase;
+        font-size: 1.2em;
+        line-height: 1em;
+        color: $white;
+    }
+}
