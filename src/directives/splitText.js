@@ -1,14 +1,14 @@
 export default {
-  bind(el) {
+  bind(el, binding) {
     const text = el.innerHTML;
     const words = text.trim().split(" ");
     const div = document.createElement("div");
 
-    // create spans for every word
+    // create element for every word
     words.forEach(val => {
-      const span = document.createElement("div");
-      span.innerHTML = val;
-      div.appendChild(span);
+      const word = document.createElement("div");
+      word.innerHTML = val;
+      div.appendChild(word);
     });
 
     // replace element with new div (including spans for every word)
@@ -20,13 +20,13 @@ export default {
     setTimeout(() => {
       let offsetTop = spans[0].getBoundingClientRect().top;
       let parentDiv = document.createElement("div");
+
       parentDiv.style.position = "relative";
       parentDiv.style.display = "inline-block";
       parentDiv.style.marginBottom = "5px";
-      parentDiv.style.paddingTop = "10px";
-      parentDiv.style.paddingLeft = "10px";
-      parentDiv.style.paddingRight = "10px";
-
+      parentDiv.style.paddingTop = binding.value.padding;
+      parentDiv.style.paddingLeft = binding.value.padding;
+      parentDiv.style.paddingRight = binding.value.padding;
       // check top for each word, combine words with same top into one span
       [].forEach.call(spans, span => {
         const letters = span.innerHTML.split("");
@@ -48,7 +48,7 @@ export default {
         } else {
           // background element (needed for hover animation)
           const background = document.createElement("span");
-          background.className = "festival-item__bg";
+          background.className = "text-transition__bg";
           background.style.position = "absolute";
           background.style.top = "0";
           background.style.left = "0";
@@ -60,32 +60,33 @@ export default {
           background.style.zIndex = "0";
 
           const extraDiv = document.createElement("div");
-          extraDiv.className = "festival-item__word";
+          extraDiv.className = "text-transition__word";
           extraDiv.style.position = "relative";
           extraDiv.style.zIndex = "1";
           extraDiv.innerHTML = parentDiv.innerHTML;
           parentDiv.innerHTML = "";
 
           parentDiv.appendChild(extraDiv);
-          parentDiv.appendChild(background);
+          if (binding.value.background) {
+            parentDiv.appendChild(background);
+          }
           newParentElement.appendChild(parentDiv);
 
           parentDiv = document.createElement("div");
           parentDiv.style.position = "relative";
           parentDiv.style.display = "inline-block";
           parentDiv.style.marginBottom = "5px";
-          parentDiv.style.paddingTop = "10px";
-          parentDiv.style.paddingLeft = "10px";
-          parentDiv.style.paddingRight = "10px";
+          parentDiv.style.paddingTop = binding.value.padding;
+          parentDiv.style.paddingLeft = binding.value.padding;
+          parentDiv.style.paddingRight = binding.value.padding;
           parentDiv.innerHTML = "";
-
           offsetTop = span.getBoundingClientRect().top;
           parentDiv.innerHTML = ` ${span.innerHTML}`;
         }
       });
 
       const background = document.createElement("span");
-      background.className = "festival-item__bg";
+      background.className = "text-transition__bg";
       background.style.position = "absolute";
       background.style.top = "0";
       background.style.left = "0";
@@ -97,14 +98,16 @@ export default {
       background.style.zIndex = "0";
 
       const extraDiv = document.createElement("div");
-      extraDiv.className = "festival-item__word";
+      extraDiv.className = "text-transition__word";
       extraDiv.style.position = "relative";
       extraDiv.style.zIndex = "1";
       extraDiv.innerHTML = parentDiv.innerHTML;
       parentDiv.innerHTML = "";
 
       parentDiv.appendChild(extraDiv);
-      parentDiv.appendChild(background);
+      if (binding.value.background) {
+        parentDiv.appendChild(background);
+      }
       newParentElement.appendChild(parentDiv);
 
       el.innerHTML = el.innerHTML.replace(

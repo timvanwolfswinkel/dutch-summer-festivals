@@ -34,7 +34,7 @@
     
     &__description {
         @include font-heading();
-        color: $white;
+        color: $grey;
         font-size: 20px;
         text-transform: uppercase;
         opacity: 0.3;

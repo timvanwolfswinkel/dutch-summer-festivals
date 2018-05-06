@@ -13,13 +13,14 @@
           </image-transition>
         </div>
         <div 
-          v-split-text
           ref="festivalHeading"
           class="list-item__heading"
           @mouseover="toggleImage"
           @mouseout="toggleImage"
           @click="prepareInfoPanel">
-          {{ festival.fields.name }}
+          <text-transition :background="true">
+            {{ festival.fields.name }}
+          </text-transition>
         </div>
         <p class="list-item__countdown">In {{ getDaysUntilFestival }} days</p>
       </div>
@@ -31,15 +32,13 @@
 import anime from "animejs";
 
 import ImageTransition from "../../components/transitions/ImageTransition";
-import splitText from "../../directives/splitText";
+import TextTransition from "../../components/transitions/TextTransition";
 
 export default {
   name: "ListItem",
   components: {
-    ImageTransition
-  },
-  directives: {
-    splitText
+    ImageTransition,
+    TextTransition
   },
   props: {
     festival: {
@@ -72,11 +71,6 @@ export default {
       return "right: 30px; top: 30px";
     }
   },
-  mounted() {
-    setTimeout(() => {
-      this.animateTitleIn();
-    }, 100);
-  },
   methods: {
     toggleImage() {
       if (!this.$store.state.listItemAnimating) {
@@ -84,38 +78,13 @@ export default {
         this.$store.dispatch("setListItemAnimating");
 
         const el = this.$refs.festivalHeading;
-        const elements = el.getElementsByClassName("festival-item__bg");
+        const elements = el.getElementsByClassName("text-transition__bg");
 
         if (this.showImage) {
           this.animateTextBackgroundsIn(elements, 500, this);
         } else {
           this.animateTextBackgroundsOut(elements, 750, this);
         }
-      }
-    },
-    animateTitleIn() {
-      const parent = this.$el.getElementsByClassName("festival-item__word");
-      let test = [];
-
-      for (let i = 0; i < parent.length; i += 1) {
-        const childs = parent[i].children;
-
-        for (let x = 0; x < childs.length; x += 1) {
-          test.push(childs[x]);
-        }
-
-        anime({
-          targets: [test],
-          duration: 250,
-          delay(target, index) {
-            return 500 + index * 25;
-          },
-          opacity: 1,
-          translateY: 0,
-          easing: "easeOutExpo"
-        });
-
-        test = [];
       }
     },
     animateTextBackgroundsIn(elements, delay, context) {

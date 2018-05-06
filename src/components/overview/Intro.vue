@@ -8,17 +8,15 @@
         class="intro__background"/>
     </transition>
     <div class="intro__container">
-      <h1  
-        v-split-text
-        ref="header" 
-        class="intro__header">
-        Your complete festival overview.
+      <h1 class="intro__header">
+        <text-transition>
+          Your complete festival overview.
+        </text-transition>
       </h1>
-      <span 
-        v-split-text
-        ref="description"
-        class="intro__description" >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <span class="intro__description" >
+        <text-transition padding="0px">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </text-transition>
       </span>
     </div>
   </div>
@@ -27,12 +25,12 @@
 <script>
 import anime from "animejs";
 
-import splitText from "../../directives/splitText";
+import TextTransition from "../../components/transitions/TextTransition";
 
 export default {
   name: "Intro",
-  directives: {
-    splitText
+  components: {
+    TextTransition
   },
   props: {
     showIntro: {
@@ -43,67 +41,7 @@ export default {
       }
     }
   },
-  mounted() {
-    setTimeout(() => {
-      this.animateHeaderIn();
-      this.animateDescriptionIn();
-    }, 100);
-  },
   methods: {
-    animateHeaderIn() {
-      const parent = this.$refs.header.getElementsByClassName(
-        "festival-item__word"
-      );
-      let test = [];
-
-      for (let i = 0; i < parent.length; i += 1) {
-        const childs = parent[i].children;
-
-        for (let x = 0; x < childs.length; x += 1) {
-          test.push(childs[x]);
-        }
-
-        anime({
-          targets: [test],
-          duration: 250,
-          delay(target, index) {
-            return 500 + index * 25;
-          },
-          opacity: 1,
-          translateY: 0,
-          easing: "easeOutExpo"
-        });
-
-        test = [];
-      }
-    },
-    animateDescriptionIn() {
-      const parent = this.$refs.description.getElementsByClassName(
-        "festival-item__word"
-      );
-      let test = [];
-
-      for (let i = 0; i < parent.length; i += 1) {
-        const childs = parent[i].children;
-
-        for (let x = 0; x < childs.length; x += 1) {
-          test.push(childs[x]);
-        }
-
-        anime({
-          targets: [test],
-          duration: 250,
-          delay(target, index) {
-            return 500 + index * 25;
-          },
-          opacity: 1,
-          translateY: 0,
-          easing: "easeOutExpo"
-        });
-
-        test = [];
-      }
-    },
     animateOut(el, done) {
       anime({
         targets: el,
