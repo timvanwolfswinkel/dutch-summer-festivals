@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     visibilityChanged(isInViewport, entry) {
-      console.log(entry);
+      // console.log(entry);
 
       if (isInViewport) {
         this.animateTextIn();
@@ -96,21 +96,21 @@ export default {
         for (let x = 0; x < lettersInWords.length; x += 1) {
           letters.push(lettersInWords[x]);
         }
-
-        // animate letters with a stagger effect
-        anime({
-          targets: [letters],
-          duration: 250,
-          delay(target, index) {
-            return 500 + delay + index * 25;
-          },
-          opacity: 1,
-          translateY: 0,
-          easing: "easeOutExpo"
-        });
-
-        letters = [];
       }
+
+      // animate letters with a stagger effect
+      anime({
+        targets: [letters],
+        duration: 250,
+        delay(target, index) {
+          return 500 + delay + index * 25;
+        },
+        opacity: 1,
+        translateY: 0,
+        easing: "easeOutExpo"
+      });
+
+      letters = [];
     }
   }
 };
