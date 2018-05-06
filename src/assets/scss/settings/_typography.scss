@@ -10,9 +10,20 @@ $font_path: '~@/assets/fonts/';
     src: url($font_path + 'KorolevMedium.otf');
 }
 
+@font-face {
+    font-family: KorolevBold;
+    src: url($font_path + 'KorolevBold.otf');
+}
+
 // Font stacks
 @mixin font-heading() {
     font-family: 'KorolevHeavy', sans-serif;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+}
+
+@mixin font-bold() {
+    font-family: 'KorolevBold', sans-serif;
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
 }

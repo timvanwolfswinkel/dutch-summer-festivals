@@ -9,7 +9,7 @@
 
     &__heading {
         @include font-heading();
-        font-size: 2em;
+        font-size: 20px;
         line-height: 1em;
         color: $white;
         text-transform: uppercase;
@@ -26,6 +26,6 @@
         left: calc(50% + 10px);
         top: 50%;
         transform: translateY(-50%) translateX(-50%);
-        font-size: 2em;
+        font-size: 25px;
     }
 }

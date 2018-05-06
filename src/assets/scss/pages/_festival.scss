@@ -11,16 +11,28 @@
     transform: translateX(-50%);
 
     &__item {
+        margin-top: 150px;
         padding: 5px;
+        margin-bottom: 150px;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 105px;
     }
 
     &__title {
         @include font-heading();
-        font-size: 4em;
+        font-size: 120px;
         line-height: 1em;
         text-transform: uppercase;
         color: $white;
-        margin: 0;
+        max-width: 520px;
+    }
+
+    &__buy-tickets {
+        margin-left: auto;
     }
 
     &__date {
@@ -33,8 +45,27 @@
     }
 
     &__description {
+        @include font-bold();
+        font-size: 25px;
         position: relative;
-        max-width: 550px;
+        max-width: 420px;
         margin-bottom: 60px;
+    }
+
+    &__where-title,
+    &__when-title {
+        @include font-heading();
+        text-transform: uppercase;
+        font-size: 20px;
+        color: $orange;
+    }
+
+    &__where-location,
+    &__where-country,
+    &__when-date {
+        @include font-heading();
+        text-transform: uppercase;
+        font-size: 60px;
+        color: $white;
     }
 }
