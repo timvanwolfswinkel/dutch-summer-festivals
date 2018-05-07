@@ -53,6 +53,14 @@
           />
 
           <artist/>
+        </div>
+      </div>
+
+      <gallery/>
+
+      <div class="festival__container">
+        <div class="festival__item">
+          <artist/>
 
           <content-block
             :content="getAmountOfVisitors()"
@@ -74,6 +82,7 @@ import ButtonLink from "../components/ButtonLink";
 import Aftermovie from "../components/festival/Aftermovie";
 import ContentBlock from "../components/festival/ContentBlock";
 import Artist from "../components/festival/Artist";
+import Gallery from "../components/festival/Gallery";
 
 export default {
   store,
@@ -83,7 +92,8 @@ export default {
     ButtonLink,
     Aftermovie,
     ContentBlock,
-    Artist
+    Artist,
+    Gallery
   },
   data() {
     return {

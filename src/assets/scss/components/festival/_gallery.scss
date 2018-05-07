@@ -1,0 +1,39 @@
+@import "../../settings/colors";
+@import "../../settings/typography";
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        display: flex;
+        position: relative;
+        width: calc(100% - 150px);
+        padding: 50px 115px 0;
+        box-sizing: border-box;
+        max-width: 1060px;
+        left: calc(50% + 75px);
+        transform: translateX(-50%);
+        align-items: center;
+        justify-content: space-between; 
+        margin-bottom: 40px;
+    }
+
+    &__title {
+        @include font-heading();
+        text-transform: uppercase;
+        font-size: 80px;
+        color: $white;        
+    }
+
+    &__counter {
+        @include font-heading();
+        font-size: 40px;
+        color: $grey;
+    }
+
+    &__carousel {
+        display: flex;
+        flex-direction: row;
+    }
+}
