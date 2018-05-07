@@ -1,0 +1,33 @@
+@import "../../settings/colors";
+@import "../../settings/typography";
+
+.footer-block {
+    display: flex;
+    flex-direction: column;
+
+    &__header,
+    &__buttons {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__header {
+        margin-bottom: 70px;
+    }
+
+    &__title {
+        @include font-heading();
+        display: block;
+        text-transform: uppercase;
+        font-size: 90px;
+        line-height: 95px;
+        color: $white;
+        max-width: 680px;
+    }
+
+    &__button {
+        &--margin {
+            margin-right: 50px;
+        }
+    }
+}

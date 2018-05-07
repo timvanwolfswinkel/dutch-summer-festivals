@@ -73,23 +73,9 @@
 
       <div class="festival__container">
         <div class="festival__item">
-          <div class="festival__footer">
-            <div class="festival__footer-header">
-              <span class="festival__footer-title">Awesome, I’m gonna be there.</span>
-            </div>
-            <div class="festival__footer-buttons">
-              <div class="festival__footer-button">
-                <button-link 
-                  :url="festival.facebookEventUrl"
-                  text="attend on facebook"
-                  emoji="🙌🏻"/>
-              </div>
-              <button-link 
-                :url="festival.ticketUrl"
-                text="buy tickets" 
-                emoji="💸"/>
-            </div>
-          </div>
+          <footer-block 
+            :facebook-event-url="festival.facebookEventUrl"
+            :ticket-url="festival.ticketUrl"/>
         </div>
       </div>
     </div>
@@ -108,6 +94,7 @@ import ContentBlock from "../components/festival/ContentBlock";
 import Artist from "../components/festival/Artist";
 import Gallery from "../components/festival/Gallery";
 import ArtistsTicker from "../components/festival/ArtistsTicker";
+import FooterBlock from "../components/festival/FooterBlock";
 
 export default {
   store,
@@ -119,7 +106,8 @@ export default {
     ContentBlock,
     Artist,
     Gallery,
-    ArtistsTicker
+    ArtistsTicker,
+    FooterBlock
   },
   data() {
     return {
@@ -170,7 +158,7 @@ export default {
       return `${city} ${country}`;
     },
     getAmountOfVisitors() {
-      const amountOfVisitors = Math.floor(this.festival.amountOfVisitors); // TODO: Add seperator on thousands
+      const amountOfVisitors = Math.floor(this.festival.amountOfVisitors);
       const lastYear = moment()
         .subtract(1, "year")
         .format("YYYY");
