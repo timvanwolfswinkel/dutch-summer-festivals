@@ -14,12 +14,13 @@
               emoji="💸"/>
           </div>
         </div>
-        <p class="festival__description">{{ festival.description }}</p>
-
-        <aftermovie 
-          :festival-id="festival.url" 
-          :video-url="festival.youtubeAftermovieUrl"/>
-
+        <div class="festival__description-container">
+          <p class="festival__description">{{ festival.description }}</p>
+          <aftermovie 
+            :festival-id="festival.url" 
+            :video-url="festival.youtubeAftermovieUrl"
+            class="festival__aftermovie"/>
+        </div>
         <content-block
           :content="getLocation()"
           :show-button="true"

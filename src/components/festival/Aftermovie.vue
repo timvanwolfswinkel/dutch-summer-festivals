@@ -3,11 +3,12 @@
     <img
       :src="require(`@/assets/img/${festivalId}/list-item.jpg`)"
       class="aftermovie__image">
-    <button-link
-      text="view aftermovie" 
-      emoji="👀"
-      class="aftermovie__button"
-      @click="openModal()"/>
+    <div @click="openModal()">
+      <button-link
+        text="view aftermovie" 
+        emoji="👀"
+        class="aftermovie__button"/>
+    </div>
   </div>
 </template>
 

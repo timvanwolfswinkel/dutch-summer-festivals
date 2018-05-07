@@ -1,3 +1,10 @@
 .aftermovie {
     display: block;
+
+    &__button {
+        position: absolute;
+        bottom: -37px;
+        right: 0;
+        cursor: pointer;
+    }
 }
