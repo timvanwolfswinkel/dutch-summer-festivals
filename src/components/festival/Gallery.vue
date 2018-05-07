@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { listen, value, pointer, styler, decay } from "popmotion";
+
 export default {
   name: "Gallery",
   props: {
@@ -25,8 +27,8 @@ export default {
       type: Object,
       required: false,
       default: () => {},
-      validate(value) {
-        return [value];
+      validate(propValue) {
+        return [propValue];
       }
     }
   },
@@ -39,7 +41,9 @@ export default {
         { url: "4" },
         { url: "5" },
         { url: "6" }
-      ]
+      ],
+      minXPosition: 0,
+      maxXPosition: 1000
     };
   },
   mounted() {
@@ -47,7 +51,32 @@ export default {
   },
   methods: {
     initSlider() {
-      console.log("initialising slider");
+      const slider = this.$el.querySelector(".gallery__carousel");
+      const sliderX = value(0, styler(slider).set("x"));
+
+      listen(slider, "mousedown touchstart").start(() => {
+        pointer({ x: sliderX.get() })
+          .pipe(({ x }) => this.getMinMaxPosition(x))
+          .start(sliderX);
+      });
+
+      listen(document, "mouseup touchend").start(() => {
+        decay({
+          from: sliderX.get(),
+          velocity: sliderX.getVelocity()
+        }).start(sliderX);
+      });
+    },
+    getMinMaxPosition(x) {
+      if (x > this.maxXPosition) {
+        return this.maxXPosition;
+      }
+
+      if (x < this.minXPosition) {
+        return this.minXPosition;
+      }
+
+      return x;
     }
   }
 };
