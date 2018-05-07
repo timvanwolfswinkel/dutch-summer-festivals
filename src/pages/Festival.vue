@@ -16,6 +16,10 @@
         </div>
         <p class="festival__description">{{ festival.description }}</p>
 
+        <aftermovie 
+          :festival-id="festival.url" 
+          :video-url="festival.youtubeAftermovieUrl"/>
+
         <content-block
           :content="getLocation()"
           :show-button="true"
@@ -56,6 +60,7 @@ import store from "../store/store";
 
 import ButtonBackToOverview from "../components/ButtonBackToOverview";
 import ButtonLink from "../components/ButtonLink";
+import Aftermovie from "../components/festival/Aftermovie";
 import ContentBlock from "../components/festival/ContentBlock";
 
 export default {
@@ -64,6 +69,7 @@ export default {
   components: {
     ButtonBackToOverview,
     ButtonLink,
+    Aftermovie,
     ContentBlock
   },
   data() {

@@ -1,16 +1,30 @@
 <template>
-  <a 
-    :href="url"
-    target="_blank" 
-    class="button-link">
-    <span class="button-link__heading">{{ text }}</span>
-    <div class="button-link__container">
-      <span class="button-link__emoji">{{ emoji }}</span>
-      <img
-        :src="require(`@/assets/img/icons/circle-yellow.svg`)"
-        class="button-link__circle">
+  <span>
+    <a 
+      v-if="url"
+      :href="url"
+      target="_blank" 
+      class="button-link">
+      <span class="button-link__heading">{{ text }}</span>
+      <div class="button-link__container">
+        <span class="button-link__emoji">{{ emoji }}</span>
+        <img
+          :src="require(`@/assets/img/icons/circle-yellow.svg`)"
+          class="button-link__circle">
+      </div>
+    </a>
+    <div 
+      v-if="!url" 
+      class="button-link">
+      <span class="button-link__heading">{{ text }}</span>
+      <div class="button-link__container">
+        <span class="button-link__emoji">{{ emoji }}</span>
+        <img
+          :src="require(`@/assets/img/icons/circle-yellow.svg`)"
+          class="button-link__circle">
+      </div>
     </div>
-  </a>
+  </span>
 </template>
 
 <script>
@@ -33,7 +47,8 @@ export default {
     },
     url: {
       type: String,
-      required: true,
+      required: false,
+      default: null,
       validate(value) {
         return [value];
       }
