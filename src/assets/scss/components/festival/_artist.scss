@@ -1,0 +1,52 @@
+@import "../../settings/colors";
+@import "../../settings/typography";
+
+.artist {
+    display: flex;
+    justify-content: space-between;
+    margin: 110px 0;
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__info {
+        z-index: 2;
+        text-align: right;
+        padding-right: 50px;
+        box-sizing: border-box;
+    }
+
+    &__song {
+        @include font-heading();
+        display: block;
+        font-size: 40px;
+        text-transform: uppercase;
+        color: $white;
+    }
+
+    &__name {
+        @include font-heading();
+        display: block;
+        max-width: 415px;
+        font-size: 100px;
+        line-height: 80px;
+        text-transform: uppercase;
+        color: $white;
+    }
+
+    &__title {
+        @include font-heading();
+        display: block;
+        font-size: 20px;
+        text-transform: uppercase;
+        color: $orange;
+    }
+
+    &__image-container {
+        margin-left: -80px;
+        z-index: 1;
+    }
+}

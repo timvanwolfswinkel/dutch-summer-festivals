@@ -38,6 +38,8 @@
           margin-top="-20"
         />
 
+        <artist/>
+
         <content-block
           :content="festival.mood"
           title="genres"
@@ -67,6 +69,7 @@ import ButtonBackToOverview from "../components/ButtonBackToOverview";
 import ButtonLink from "../components/ButtonLink";
 import Aftermovie from "../components/festival/Aftermovie";
 import ContentBlock from "../components/festival/ContentBlock";
+import Artist from "../components/festival/Artist";
 
 export default {
   store,
@@ -75,7 +78,8 @@ export default {
     ButtonBackToOverview,
     ButtonLink,
     Aftermovie,
-    ContentBlock
+    ContentBlock,
+    Artist
   },
   data() {
     return {
