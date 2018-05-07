@@ -2,7 +2,13 @@
 @import "../../settings/typography";
 
 .content-block {
-    display: block;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+
+    &__container {
+        max-width: 395px;
+    }
 
     &__title {
         @include font-heading();
@@ -14,7 +20,7 @@
     &__content {
         @include font-heading();
         text-transform: uppercase;
-        font-size: 60px;
+        font-size: 50px;
         color: $white;
     }
 }

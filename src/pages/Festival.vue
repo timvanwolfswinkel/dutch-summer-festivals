@@ -33,6 +33,9 @@
         <content-block
           :content="getDate()"
           title="when"
+          align="flex-end"
+          padding-right="75"
+          margin-top="-20"
         />
 
         <content-block
@@ -43,6 +46,7 @@
         <content-block
           :content="festival.funfact"
           title="funfact"
+          align="flex-end"
         />
 
         <content-block
