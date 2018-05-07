@@ -41,6 +41,14 @@ export default {
         { url: "6" }
       ]
     };
+  },
+  mounted() {
+    this.initSlider();
+  },
+  methods: {
+    initSlider() {
+      console.log("initialising slider");
+    }
   }
 };
 </script>

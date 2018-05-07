@@ -4,6 +4,7 @@
 .gallery {
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 
     &__header {
         display: flex;
@@ -33,7 +34,18 @@
     }
 
     &__carousel {
+        position: relative;
         display: flex;
         flex-direction: row;
+        align-items: stretch;
+        cursor: pointer;
+    }
+
+    &__item {
+        margin-right: 120px;
+    }
+
+    &__image {
+        user-select: none;
     }
 }
