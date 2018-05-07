@@ -68,6 +68,30 @@
           />
         </div>
       </div>
+
+      <artists-ticker/>
+
+      <div class="festival__container">
+        <div class="festival__item">
+          <div class="festival__footer">
+            <div class="festival__footer-header">
+              <span class="festival__footer-title">Awesome, I’m gonna be there.</span>
+            </div>
+            <div class="festival__footer-buttons">
+              <div class="festival__footer-button">
+                <button-link 
+                  :url="festival.facebookEventUrl"
+                  text="attend on facebook"
+                  emoji="🙌🏻"/>
+              </div>
+              <button-link 
+                :url="festival.ticketUrl"
+                text="buy tickets" 
+                emoji="💸"/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -83,6 +107,7 @@ import Aftermovie from "../components/festival/Aftermovie";
 import ContentBlock from "../components/festival/ContentBlock";
 import Artist from "../components/festival/Artist";
 import Gallery from "../components/festival/Gallery";
+import ArtistsTicker from "../components/festival/ArtistsTicker";
 
 export default {
   store,
@@ -93,7 +118,8 @@ export default {
     Aftermovie,
     ContentBlock,
     Artist,
-    Gallery
+    Gallery,
+    ArtistsTicker
   },
   data() {
     return {

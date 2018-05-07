@@ -56,4 +56,32 @@
         right: 0;
         z-index: 1;
     }
+
+    &__footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__footer-header,
+    &__footer-buttons {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__footer-header {
+        margin-bottom: 70px;
+    }
+
+    &__footer-title {
+        @include font-heading();
+        text-transform: uppercase;
+        display: inline-block;
+        font-size: 90px;
+        line-height: 95px;
+        max-width: 680px;
+    }
+
+    &__footer-button {
+        margin-right: 50px;
+    }
 }
