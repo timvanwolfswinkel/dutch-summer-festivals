@@ -2,13 +2,15 @@
 @import "../settings/typography";
 
 .festival {
-    position: relative;
-    width: calc(100% - 150px);
-    padding: 50px 115px 0;
-    box-sizing: border-box;
-    max-width: 1060px;
-    left: calc(50% + 75px);
-    transform: translateX(-50%);
+    &__container {
+        position: relative;
+        width: calc(100% - 150px);
+        padding: 50px 115px 0;
+        box-sizing: border-box;
+        max-width: 1060px;
+        left: calc(50% + 75px);
+        transform: translateX(-50%);
+    }
 
     &__item {
         margin-top: 150px;

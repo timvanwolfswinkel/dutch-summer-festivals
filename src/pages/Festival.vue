@@ -2,59 +2,63 @@
   <div>
     <button-back-to-overview/>
     <div class="festival">
-      <div 
-        v-if="festival"
-        class="festival__item">
-        <div class="festival__header">
-          <h1 class="festival__title">{{ festival.name }}</h1>
-          <div class="festival__buy-tickets">
-            <button-link 
-              :url="festival.ticketUrl"
-              text="buy tickets" 
-              emoji="💸"/>
+      <div class="festival__container">
+        <div 
+          v-if="festival"
+          class="festival__item">
+          <div class="festival__header">
+            <h1 class="festival__title">{{ festival.name }}</h1>
+            <div class="festival__buy-tickets">
+              <button-link 
+                :url="festival.ticketUrl"
+                text="buy tickets" 
+                emoji="💸"/>
+            </div>
           </div>
+          <div class="festival__description-container">
+            <p class="festival__description">{{ festival.description }}</p>
+            <aftermovie 
+              :festival-id="festival.url" 
+              :video-url="festival.youtubeAftermovieUrl"
+              class="festival__aftermovie"/>
+          </div>
+          <content-block
+            :content="getLocation()"
+            :show-button="true"
+            :button-url="festival.ticketUrl"
+            title="where"
+            button-text="open on google maps"
+            button-emoji="🗺"
+          />
+
+          <content-block
+            :content="getDate()"
+            title="when"
+            align="flex-end"
+            padding-right="75"
+            margin-top="-20"
+          />
+
+          <artist/>
+
+          <content-block
+            :content="festival.mood"
+            title="genres"
+          />
+
+          <content-block
+            :content="festival.funfact"
+            title="funfact"
+            align="flex-end"
+          />
+
+          <artist/>
+
+          <content-block
+            :content="getAmountOfVisitors()"
+            title="crowdsurfing"
+          />
         </div>
-        <div class="festival__description-container">
-          <p class="festival__description">{{ festival.description }}</p>
-          <aftermovie 
-            :festival-id="festival.url" 
-            :video-url="festival.youtubeAftermovieUrl"
-            class="festival__aftermovie"/>
-        </div>
-        <content-block
-          :content="getLocation()"
-          :show-button="true"
-          :button-url="festival.ticketUrl"
-          title="where"
-          button-text="open on google maps"
-          button-emoji="🗺"
-        />
-
-        <content-block
-          :content="getDate()"
-          title="when"
-          align="flex-end"
-          padding-right="75"
-          margin-top="-20"
-        />
-
-        <artist/>
-
-        <content-block
-          :content="festival.mood"
-          title="genres"
-        />
-
-        <content-block
-          :content="festival.funfact"
-          title="funfact"
-          align="flex-end"
-        />
-
-        <content-block
-          :content="getAmountOfVisitors()"
-          title="crowdsurfing"
-        />
       </div>
     </div>
   </div>
