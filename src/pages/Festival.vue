@@ -16,8 +16,8 @@
         </div>
         <p class="festival__description">{{ festival.description }}</p>
 
-        <content-block 
-          :content="festival.locationName"
+        <content-block
+          :content="getLocation()"
           :show-button="true"
           :button-url="festival.ticketUrl"
           title="where"
@@ -25,23 +25,33 @@
           button-emoji="🗺"
         />
 
-        <content-block 
-          content="8juni"
+        <content-block
+          :content="getDate()"
           title="when"
         />
 
-        <div class="festival__when">
-          <p class="festival__when-title">When</p>
-          <p class="festival__where-location">
-            {{ festival.startDate | dateDay }} - {{ festival.endDate | dateDayMonthFull | uppercase }}
-          </p>
-        </div>
+        <content-block
+          :content="festival.mood"
+          title="genres"
+        />
+
+        <content-block
+          :content="festival.funfact"
+          title="funfact"
+        />
+
+        <content-block
+          :content="getAmountOfVisitors()"
+          title="crowdsurfing"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import moment from "moment";
+
 import store from "../store/store";
 
 import ButtonBackToOverview from "../components/ButtonBackToOverview";
@@ -58,12 +68,16 @@ export default {
   },
   data() {
     return {
-      date: ""
+      festival: this.getFestival(),
+      date: null,
+      location: null
     };
   },
-  computed: {
-    festival() {
-      this.$store.dispatch("toggleInfoPanel"); // TODO: move this to mounted event
+  mounted() {
+    this.$store.dispatch("toggleInfoPanel");
+  },
+  methods: {
+    getFestival() {
       const storeFestivals = this.$store.getters.festivals;
       const temp = [];
       const festivalId = this.$route.params.festivalId;
@@ -83,13 +97,30 @@ export default {
 
       console.log(festival);
 
-      // moment.locale("en");
-      // const endDate = moment(festival.EndDate, "YYYY-MM-DD").format("DD MMMM");
-      // const startDate = moment(festival.startDate, "YYYY-MM-DD").format("DD");
-
-      // this.date = `${startDate} - ${endDate}`;
-
       return festival.length !== 0 ? festival[0].fields : {};
+    },
+    getDate() {
+      const start = this.festival.startDate;
+      const end = this.festival.endDate;
+
+      const startDate = moment(start, "YYYY-MM-DD").format("DD");
+      const endDate = moment(end, "YYYY-MM-DD").format("DD MMMM");
+
+      return `${startDate} - ${endDate}`;
+    },
+    getLocation() {
+      const city = this.festival.locationName;
+      const country = this.festival.country;
+
+      return `${city} ${country}`;
+    },
+    getAmountOfVisitors() {
+      const amountOfVisitors = Math.floor(this.festival.amountOfVisitors); // TODO: Add seperator on thousands
+      const lastYear = moment()
+        .subtract(1, "year")
+        .format("YYYY");
+
+      return `${amountOfVisitors} party people attended in ${lastYear}`;
     }
   }
 };
