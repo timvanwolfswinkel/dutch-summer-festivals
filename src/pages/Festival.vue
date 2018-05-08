@@ -76,7 +76,7 @@
             :ticket-url="festival.ticketUrl"/>
         </div>
       </div>
-      
+
     </div>
   </div>
 </template>
@@ -119,6 +119,7 @@ export default {
     this.$store.dispatch("toggleInfoPanel");
   },
   methods: {
+    // TODO: move these to computed
     getFestival() {
       const storeFestivals = this.$store.getters.festivals;
       const temp = [];
