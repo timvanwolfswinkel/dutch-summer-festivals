@@ -5,9 +5,9 @@
         :key="`artists-row-${index}`"  
         :class="`artists-ticker__row artists-ticker__row--${index}`">
         <span
-        v-for="(artist, index) in row"
-        :key="`artist-${index}`"  
-        :class="`artists-ticker__artist`">
+          v-for="(artist, index) in row"
+          :key="`artist-${index}`"  
+          :class="`artists-ticker__artist`">
           {{ artist.name }}
         </span>
       </div>
@@ -83,9 +83,12 @@ export default {
 
       // Duplicate the row
       // When x exceeds width of row append new row
+      // When x is minus window - prepend from row
       // Animate rows (middle row should go in opposite direction)
 
+      // loop trough rows and add animations
       [].forEach.call(rows, row => {
+        // reverse animation on first row
         if(row.className === "artists-ticker__row artists-ticker__row--1") {
           console.log("reverse");
           anime({
