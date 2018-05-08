@@ -1,16 +1,16 @@
 <template>
   <div class="artists-ticker">
     <div
-        v-for="(row, index) in artistsInChunks"
-        :key="`artists-row-${index}`"  
-        :class="`artists-ticker__row artists-ticker__row--${index}`">
-        <span
-          v-for="(artist, index) in row"
-          :key="`artist-${index}`"  
-          :class="`artists-ticker__artist`">
-          {{ artist.name }}
-        </span>
-      </div>
+      v-for="(row, index) in artistsInChunks"
+      :key="`artists-row-${index}`"  
+      :class="`artists-ticker__row artists-ticker__row--${index}`">
+      <span
+        v-for="(artist, index) in row"
+        :key="`artist-${index}`"  
+        :class="`artists-ticker__artist`">
+        {{ artist.name }}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -77,7 +77,7 @@ export default {
         }
       }
     },
-    animateRows(){
+    animateRows() {
       const rows = this.$el.querySelectorAll(".artists-ticker__row");
       console.log(rows);
 
@@ -89,7 +89,7 @@ export default {
       // loop trough rows and add animations
       [].forEach.call(rows, row => {
         // reverse animation on first row
-        if(row.className === "artists-ticker__row artists-ticker__row--1") {
+        if (row.className === "artists-ticker__row artists-ticker__row--1") {
           console.log("reverse");
           anime({
             targets: row,
