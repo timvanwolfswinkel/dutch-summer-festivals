@@ -4,19 +4,19 @@
         v-for="(row, index) in artistsInChunks"
         :key="`artists-row-${index}`"  
         :class="`artists-ticker__row artists-ticker__row--${index}`">
-        <div
+        <span
         v-for="(artist, index) in row"
         :key="`artist-${index}`"  
         :class="`artists-ticker__artist`">
-          <span>
-            {{ artist.name }}
-          </span>
-        </div>
+          {{ artist.name }}
+        </span>
       </div>
   </div>
 </template>
 
 <script>
+import anime from "animejs";
+
 export default {
   name: "ArtistsTicker",
   props: {
@@ -60,17 +60,51 @@ export default {
   beforeMount() {
     this.divideArtistsInChunks(this.artistsTemp);
   },
+  mounted() {
+    this.animateRows();
+  },
   methods: {
     divideArtistsInChunks(artists) {
       const splitSize = Math.floor(artists.length / 3);
       const maxSize = 2;
       let i;
 
+      // loop trough artists array and divide them into chunks
       for (i = 0; i < artists.length; i += splitSize) {
+        // only allow 3 arrays into the chunks array (for 3 rows)
         if (!(this.artistsInChunks.length > maxSize)) {
           this.artistsInChunks.push(artists.slice(i, i + splitSize));
         }
       }
+    },
+    animateRows(){
+      const rows = this.$el.querySelectorAll(".artists-ticker__row");
+      console.log(rows);
+
+      // Duplicate the row
+      // When x exceeds width of row append new row
+      // Animate rows (middle row should go in opposite direction)
+
+      [].forEach.call(rows, row => {
+        if(row.className === "artists-ticker__row artists-ticker__row--1") {
+          console.log("reverse");
+          anime({
+            targets: row,
+            duration: 5000,
+            translateX: -500,
+            easing: "easeOutExpo",
+            loop: true
+          });
+        } else {
+          anime({
+            targets: row,
+            duration: 5000,
+            translateX: 500,
+            easing: "easeOutExpo",
+            loop: true
+          });
+        }
+      });
     }
   }
 };
