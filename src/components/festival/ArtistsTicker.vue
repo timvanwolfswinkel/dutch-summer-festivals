@@ -4,12 +4,22 @@
       v-for="(row, index) in artistsInChunks"
       :key="`artists-row-${index}`"  
       :class="`artists-ticker__row artists-ticker__row--${index}`">
-      <span
-        v-for="(artist, index) in row"
-        :key="`artist-${index}`"  
-        :class="`artists-ticker__artist`">
-        {{ artist.name }}
-      </span>
+      <div class="artists-ticker__container">
+        <span
+          v-for="(artist, index) in row"
+          :key="`artist-${index}`"  
+          :class="`artists-ticker__artist`">
+          {{ artist.name }}
+        </span>
+      </div>
+      <div class="artists-ticker__container">
+        <span
+          v-for="(artist, index) in row"
+          :key="`artist-${index}`"  
+          :class="`artists-ticker__artist`">
+          {{ artist.name }}
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -60,9 +70,6 @@ export default {
   beforeMount() {
     this.divideArtistsInChunks(this.artistsTemp);
   },
-  mounted() {
-    this.animateRows();
-  },
   methods: {
     divideArtistsInChunks(artists) {
       const splitSize = Math.floor(artists.length / 3);
@@ -76,42 +83,6 @@ export default {
           this.artistsInChunks.push(artists.slice(i, i + splitSize));
         }
       }
-    },
-    animateRows() {
-      const rows = this.$el.querySelectorAll(".artists-ticker__row");
-
-      // Duplicate the row
-      // When x exceeds width of row append new row
-      // When x is minus window - prepend from row
-      // Animate rows (middle row should go in opposite direction)
-
-      // loop trough rows and add animations
-      [].forEach.call(rows, row => {
-        const rowWidth = row.offsetWidth;
-        console.log(rowWidth);
-
-        // reverse animation on first row
-        if (row.className === "artists-ticker__row artists-ticker__row--1") {
-          anime({
-            targets: row,
-            duration: 5000,
-            translateX: -500,
-            easing: "easeOutExpo",
-            loop: true,
-            update: function(anim) {
-              // console.log(anim);
-            }
-          });
-        } else {
-          anime({
-            targets: row,
-            duration: 5000,
-            translateX: 500,
-            easing: "easeOutExpo",
-            loop: true
-          });
-        }
-      });
     }
   }
 };
