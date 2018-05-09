@@ -79,7 +79,6 @@ export default {
     },
     animateRows() {
       const rows = this.$el.querySelectorAll(".artists-ticker__row");
-      console.log(rows);
 
       // Duplicate the row
       // When x exceeds width of row append new row
@@ -88,15 +87,20 @@ export default {
 
       // loop trough rows and add animations
       [].forEach.call(rows, row => {
+        const rowWidth = row.offsetWidth;
+        console.log(rowWidth);
+
         // reverse animation on first row
         if (row.className === "artists-ticker__row artists-ticker__row--1") {
-          console.log("reverse");
           anime({
             targets: row,
             duration: 5000,
             translateX: -500,
             easing: "easeOutExpo",
-            loop: true
+            loop: true,
+            update: function(anim) {
+              // console.log(anim);
+            }
           });
         } else {
           anime({
