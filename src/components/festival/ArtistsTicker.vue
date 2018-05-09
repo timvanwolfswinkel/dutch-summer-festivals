@@ -4,7 +4,7 @@
       v-for="(row, index) in artistsInChunks"
       :key="`artists-row-${index}`"  
       :class="`artists-ticker__row artists-ticker__row--${index}`">
-      <div class="artists-ticker__container">
+      <div :class="{'artists-ticker__container artists-ticker__container--odd': index % 2 === 0, 'artists-ticker__container artists-ticker__container--even': index % 2 !== 0 }">
         <span
           v-for="(artist, index) in row"
           :key="`artist-${index}`"  
@@ -12,7 +12,7 @@
           {{ artist.name }}
         </span>
       </div>
-      <div class="artists-ticker__container">
+      <div :class="{'artists-ticker__container artists-ticker__container--odd': index % 2 === 0, 'artists-ticker__container artists-ticker__container--even': index % 2 !== 0 }">
         <span
           v-for="(artist, index) in row"
           :key="`artist-${index}`"  

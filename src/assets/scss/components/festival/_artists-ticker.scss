@@ -16,18 +16,18 @@
     &__row {
         display: block;
         white-space: nowrap;
-
-        &:nth-child(even) {
-            animation: slide-reverse 30s infinite linear;
-        }
-
-        &:nth-child(odd) {
-            animation: slide 30s infinite linear;
-        }
     }
 
     &__container {
         display: inline-block;
+
+        &--even {
+            animation: slide-reverse 20s infinite linear;
+        }
+
+        &--odd {
+            animation: slide 20s infinite linear;
+        }
     }
 
     &__artist {
