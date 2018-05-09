@@ -87,7 +87,7 @@ export default {
     this.divideArtistsInChunks(this.artistsTemp);
   },
   created() {
-    this.timer = setInterval(this.randomizeImage, 10000 / 2);
+    this.timer = setInterval(this.randomizeImage, 5000);
   },
   methods: {
     divideArtistsInChunks(artists) {
