@@ -5,12 +5,22 @@
     display: block;
     position: relative;
     overflow-x: hidden;
+    height: 420px;
 
-    &__image {
+    &__container {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translateX(-50%) translateY(-50%);
+    }
+
+    &__image {
+        height: 420px;
+    }
+
+    &__rows {
+        display: block;
+        padding-top: 50px;
     }
 
     &__row {
@@ -18,7 +28,7 @@
         white-space: nowrap;
     }
 
-    &__container {
+    &__artists {
         display: inline-block;
 
         &--even {
