@@ -74,6 +74,7 @@ export default {
       const divStyler = styler(slider);
       const sliderX = value(0, divStyler.set("x"));
       const carouselSize = slider.scrollWidth;
+      let activeAnimation;
 
       const carouselConstrain =
         carouselSize - (window.innerWidth - slider.offsetLeft) + 500;
@@ -90,9 +91,9 @@ export default {
 
       listen(slider, "mousedown touchstart").start(e => {
         this.scaleItems("down");
-        console.log(carouselConstrain);
         e.preventDefault();
-        pointerX(sliderX.get())
+        if (activeAnimation) activeAnimation.stop();
+        activeAnimation = pointerX(sliderX.get())
           .pipe(springRange(-carouselConstrain, 0, 3))
           .start(sliderX);
       });
@@ -110,7 +111,8 @@ export default {
             damping: 25
           }).start(sliderX);
         } else {
-          decay({
+          if (activeAnimation) activeAnimation.stop();
+          activeAnimation = decay({
             from: sliderX.get(),
             velocity: sliderX.getVelocity()
           })
@@ -124,7 +126,15 @@ export default {
               }
               return v;
             })
-            .start(sliderX);
+            .start({
+              update: v => {
+                sliderX.update(v);
+              },
+              complete: () => {
+                // TODO: update the counter here
+                console.log("completed animation");
+              }
+            });
         }
       });
     },
