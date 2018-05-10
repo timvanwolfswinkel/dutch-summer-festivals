@@ -4,21 +4,31 @@
       <span class="gallery__title">Gallery</span>
       <span class="gallery__counter"> 1 / {{ amountOfImages }} </span>
     </div>
-    <div class="gallery__carousel">
-      <div
-        v-for="image in imagesList"
-        :key="image.url"  
-        class="gallery__item">
-        <img
-          :src="require(`@/assets/img/best-kept-secret/gallery/${image.url}.jpg`)"
-          class="gallery__image">
+    <div class="gallery__container">
+      <div class="gallery__carousel">
+        <div
+          v-for="image in imagesList"
+          :key="image.url"  
+          class="gallery__item">
+          <img
+            :src="require(`@/assets/img/best-kept-secret/gallery/${image.url}.jpg`)"
+            class="gallery__image">
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { listen, styler, pointer, value, transform, spring } from "popmotion";
+import {
+  listen,
+  styler,
+  pointer,
+  value,
+  transform,
+  spring,
+  decay
+} from "popmotion";
 
 export default {
   name: "Gallery",
@@ -42,8 +52,7 @@ export default {
         { url: "5" },
         { url: "6" }
       ],
-      minXPosition: 0,
-      maxXPosition: 0
+      carouselSize: 0
     };
   },
   computed: {
@@ -52,21 +61,22 @@ export default {
     }
   },
   mounted() {
-    this.maxXPosition = -(
-      this.imagesList.length *
-      this.$el.querySelector(".gallery__item").getBoundingClientRect().width
-    ); // TODO: consider margins of elements
-    this.initSlider();
+    // timeout needed to get correct scrollwidth (might be a better way to do this)
+    setTimeout(() => {
+      this.initSlider();
+    }, 50);
   },
   methods: {
     initSlider() {
-      // TODO: Add velocity
       // TODO: Update counter on mouseup (check which image/index is in the viewport)
-
       const { nonlinearSpring, conditional, pipe } = transform;
-      const handle = this.$el.querySelector(".gallery__carousel");
-      const handleStyler = styler(handle);
-      const handleX = value(0, handleStyler.set("x"));
+      const slider = this.$el.querySelector(".gallery__carousel");
+      const divStyler = styler(slider);
+      const sliderX = value(0, divStyler.set("x"));
+      const carouselSize = slider.scrollWidth;
+
+      const carouselConstrain =
+        carouselSize - (window.innerWidth - slider.offsetLeft) + 500;
 
       const pointerX = x => pointer({ x }).pipe(v => v.x);
 
@@ -76,28 +86,45 @@ export default {
           conditional(v => v > to, nonlinearSpring(strength, to))
         );
 
-      listen(handle, "mousedown touchstart").start(e => {
+      const isOutOfRange = x => x < -carouselConstrain || x > 0;
+
+      listen(slider, "mousedown touchstart").start(e => {
         this.scaleItems("down");
+        console.log(carouselConstrain);
         e.preventDefault();
-        pointerX(handleX.get())
-          .pipe(springRange(this.maxXPosition, this.minXPosition, 3))
-          .start(handleX);
+        pointerX(sliderX.get())
+          .pipe(springRange(-carouselConstrain, 0, 3))
+          .start(sliderX);
       });
 
       listen(document, "mouseup touchend").start(() => {
         this.scaleItems("up");
-        const x = handleX.get();
+        const x = sliderX.get();
 
-        if (x < this.maxXPosition || x > this.minXPosition) {
+        if (isOutOfRange(x)) {
           spring({
             from: x,
-            to: x < this.maxXPosition ? this.maxXPosition : this.minXPosition,
-            velocity: handleX.getVelocity(),
+            to: x < -carouselConstrain ? -carouselConstrain : 0,
+            velocity: sliderX.getVelocity(),
             stiffness: 900,
             damping: 25
-          }).start(handleX);
+          }).start(sliderX);
         } else {
-          handleX.stop();
+          decay({
+            from: sliderX.get(),
+            velocity: sliderX.getVelocity()
+          })
+            .pipe(v => {
+              if (isOutOfRange(v)) {
+                return spring({
+                  from: v,
+                  to: v < -carouselConstrain ? -carouselConstrain : 0,
+                  velocity: sliderX.getVelocity()
+                }).start(sliderX);
+              }
+              return v;
+            })
+            .start(sliderX);
         }
       });
     },

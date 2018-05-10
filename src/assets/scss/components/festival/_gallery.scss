@@ -33,12 +33,21 @@
         color: $grey;
     }
 
+    &__container {
+        position: relative;
+        max-width: 1060px;
+        width: calc(100% - 150px);
+        padding: 0 115px 0;
+        left: calc(50% + 75px);
+        transform: translateX(-50%);
+        box-sizing: border-box;
+    }
+
     &__carousel {
         position: relative;
         display: flex;
         flex-direction: row;
         align-items: stretch;
-        margin-left: 310px;
         cursor: pointer;
     }
 
