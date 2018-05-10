@@ -2,7 +2,7 @@
   <div class="gallery">
     <div class="gallery__header">
       <span class="gallery__title">Gallery</span>
-      <span class="gallery__counter"> 1 / 10 </span>
+      <span class="gallery__counter"> 1 / {{ amountOfImages }} </span>
     </div>
     <div class="gallery__carousel">
       <div
@@ -19,7 +19,6 @@
 
 <script>
 import { listen, styler, pointer, value, transform, spring } from "popmotion";
-import anime from "animejs";
 
 export default {
   name: "Gallery",
@@ -51,6 +50,11 @@ export default {
     this.maxXPosition = -(this.imagesList.length * this.$el.querySelector('.gallery__item').getBoundingClientRect().width);
     this.initSlider();
   },
+  computed: {
+    amountOfImages() {
+      return this.imagesList.length;
+    }
+  },
   methods: {
     initSlider() {
       const { nonlinearSpring, linearSpring, conditional, pipe } = transform;
@@ -74,7 +78,7 @@ export default {
 
       listen(handle, 'mousedown touchstart')
         .start((e) => {
-          this.scaleItemsCss("down");
+          this.scaleItems("down");
           e.preventDefault();
           pointerX(handleX.get())
             .pipe(springRange(this.maxXPosition, this.minXPosition, 3))
@@ -83,7 +87,7 @@ export default {
 
       listen(document, 'mouseup touchend')
         .start(() => {
-          this.scaleItemsCss("up");
+          this.scaleItems("up");
           const x = handleX.get()
 
           if (x < this.maxXPosition || x > this.minXPosition) {
@@ -99,7 +103,7 @@ export default {
           }
         });
     },
-    scaleItemsCss(direction){
+    scaleItems(direction){
       const items = this.$el.querySelectorAll('.gallery__item');
 
       if(direction === 'down') {
@@ -109,31 +113,6 @@ export default {
       } else {
         [].forEach.call(items, item => {
           item.className = "gallery__item";
-        });
-      }
-    },
-    scaleItems(direction) {
-      const items = this.$el.querySelectorAll('.gallery__item');
-
-      if(direction === 'down') {
-        anime({
-          targets: [items],
-          duration: 250,
-          delay(target, index) {
-            return index * 200;
-          },
-          scale: 0.95,
-          easing: "linear"
-        });
-      } else {
-          anime({
-          targets: [items],
-          duration: 250,
-          delay(target, index) {
-            return index * 200;
-          },
-          scale: 1,
-          easing: "linear"
         });
       }
     }
