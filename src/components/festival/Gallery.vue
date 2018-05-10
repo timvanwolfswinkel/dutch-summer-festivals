@@ -132,6 +132,7 @@ export default {
               },
               complete: () => {
                 // TODO: update the counter here
+                // TODO: fix bug not ending the animations on fast scroll
                 console.log("completed animation");
               }
             });
@@ -152,9 +153,7 @@ export default {
       }
     },
     updateCounter() {
-      // loop trough items and push items that are in the viewport into an array
-      // get the item with the biggest width inside viewport
-      // check if counter != same as current counter -> then update
+      // calculate the position of the item based on scrollX
     }
   }
 };
