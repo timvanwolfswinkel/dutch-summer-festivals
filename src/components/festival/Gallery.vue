@@ -150,6 +150,11 @@ export default {
           item.className = "gallery__item"; // eslint-disable-line no-param-reassign
         });
       }
+    },
+    updateCounter() {
+      // loop trough items and push items that are in the viewport into an array
+      // get the item with the biggest width inside viewport
+      // check if counter != same as current counter -> then update
     }
   }
 };
