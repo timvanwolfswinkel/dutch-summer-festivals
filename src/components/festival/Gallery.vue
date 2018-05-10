@@ -47,7 +47,7 @@ export default {
     };
   },
   mounted() {
-    this.maxXPosition = -(this.imagesList.length * this.$el.querySelector('.gallery__item').getBoundingClientRect().width);
+    this.maxXPosition = -(this.imagesList.length * this.$el.querySelector('.gallery__item').getBoundingClientRect().width); // TODO: consider margins of elements
     this.initSlider();
   },
   computed: {
@@ -62,7 +62,6 @@ export default {
       const handleStyler = styler(handle);
       const handleX = value(0, handleStyler.set('x'));
 
-      // Single-axis pointer
       const pointerX = (x) => pointer({ x }).pipe(v => v.x);
 
       const springRange = (from, to, strength) => pipe(
