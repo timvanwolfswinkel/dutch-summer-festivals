@@ -57,6 +57,9 @@ export default {
   },
   methods: {
     initSlider() {
+      // TODO: Add velocity
+      // TODO: Update counter on mouseup (check which image/index is in the viewport)
+
       const { nonlinearSpring, linearSpring, conditional, pipe } = transform;
       const handle = this.$el.querySelector('.gallery__carousel');
       const handleStyler = styler(handle);
