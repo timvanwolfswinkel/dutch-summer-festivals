@@ -18,7 +18,8 @@
 </template>
 
 <script>
-import { listen, value, pointer, styler, decay } from "popmotion";
+import { listen, styler, pointer, value, transform, spring } from "popmotion";
+import anime from "animejs";
 
 export default {
   name: "Gallery",
@@ -43,40 +44,98 @@ export default {
         { url: "6" }
       ],
       minXPosition: 0,
-      maxXPosition: 1000
+      maxXPosition: 0
     };
   },
   mounted() {
+    this.maxXPosition = -(this.imagesList.length * this.$el.querySelector('.gallery__item').getBoundingClientRect().width);
     this.initSlider();
   },
   methods: {
     initSlider() {
-      const slider = this.$el.querySelector(".gallery__carousel");
-      const sliderX = value(0, styler(slider).set("x"));
+      const { nonlinearSpring, linearSpring, conditional, pipe } = transform;
+      const handle = this.$el.querySelector('.gallery__carousel');
+      const handleStyler = styler(handle);
+      const handleX = value(0, handleStyler.set('x'));
 
-      listen(slider, "mousedown touchstart").start(() => {
-        pointer({ x: sliderX.get() })
-          .pipe(({ x }) => this.getMinMaxPosition(x))
-          .start(sliderX);
-      });
+      // Single-axis pointer
+      const pointerX = (x) => pointer({ x }).pipe(v => v.x);
 
-      listen(document, "mouseup touchend").start(() => {
-        decay({
-          from: sliderX.get(),
-          velocity: sliderX.getVelocity()
-        }).start(sliderX);
-      });
+      const springRange = (from, to, strength) => pipe(
+        conditional(
+          v => v < from,
+          nonlinearSpring(strength, from)
+        ),
+        conditional(
+          v => v > to,
+          nonlinearSpring(strength, to)
+        )
+      );
+
+      listen(handle, 'mousedown touchstart')
+        .start((e) => {
+          this.scaleItemsCss("down");
+          e.preventDefault();
+          pointerX(handleX.get())
+            .pipe(springRange(this.maxXPosition, this.minXPosition, 3))
+            .start(handleX)
+        })
+
+      listen(document, 'mouseup touchend')
+        .start(() => {
+          this.scaleItemsCss("up");
+          const x = handleX.get()
+
+          if (x < this.maxXPosition || x > this.minXPosition) {
+            spring({
+              from: x,
+              to: x < this.maxXPosition ? this.maxXPosition : this.minXPosition,
+              velocity: handleX.getVelocity(),
+              stiffness: 900,
+              damping: 25
+            }).start(handleX);
+          } else {
+            handleX.stop();
+          }
+        });
     },
-    getMinMaxPosition(x) {
-      if (x > this.maxXPosition) {
-        return this.maxXPosition;
-      }
+    scaleItemsCss(direction){
+      const items = this.$el.querySelectorAll('.gallery__item');
 
-      if (x < this.minXPosition) {
-        return this.minXPosition;
+      if(direction === 'down') {
+        [].forEach.call(items, item => {
+          item.className += " gallery__item--active";
+        });
+      } else {
+        [].forEach.call(items, item => {
+          item.className = "gallery__item";
+        });
       }
+    },
+    scaleItems(direction) {
+      const items = this.$el.querySelectorAll('.gallery__item');
 
-      return x;
+      if(direction === 'down') {
+        anime({
+          targets: [items],
+          duration: 250,
+          delay(target, index) {
+            return index * 200;
+          },
+          scale: 0.95,
+          easing: "linear"
+        });
+      } else {
+          anime({
+          targets: [items],
+          duration: 250,
+          delay(target, index) {
+            return index * 200;
+          },
+          scale: 1,
+          easing: "linear"
+        });
+      }
     }
   }
 };
