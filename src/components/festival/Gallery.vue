@@ -46,75 +46,71 @@ export default {
       maxXPosition: 0
     };
   },
-  mounted() {
-    this.maxXPosition = -(this.imagesList.length * this.$el.querySelector('.gallery__item').getBoundingClientRect().width); // TODO: consider margins of elements
-    this.initSlider();
-  },
   computed: {
     amountOfImages() {
       return this.imagesList.length;
     }
+  },
+  mounted() {
+    this.maxXPosition = -(
+      this.imagesList.length *
+      this.$el.querySelector(".gallery__item").getBoundingClientRect().width
+    ); // TODO: consider margins of elements
+    this.initSlider();
   },
   methods: {
     initSlider() {
       // TODO: Add velocity
       // TODO: Update counter on mouseup (check which image/index is in the viewport)
 
-      const { nonlinearSpring, linearSpring, conditional, pipe } = transform;
-      const handle = this.$el.querySelector('.gallery__carousel');
+      const { nonlinearSpring, conditional, pipe } = transform;
+      const handle = this.$el.querySelector(".gallery__carousel");
       const handleStyler = styler(handle);
-      const handleX = value(0, handleStyler.set('x'));
+      const handleX = value(0, handleStyler.set("x"));
 
-      const pointerX = (x) => pointer({ x }).pipe(v => v.x);
+      const pointerX = x => pointer({ x }).pipe(v => v.x);
 
-      const springRange = (from, to, strength) => pipe(
-        conditional(
-          v => v < from,
-          nonlinearSpring(strength, from)
-        ),
-        conditional(
-          v => v > to,
-          nonlinearSpring(strength, to)
-        )
-      );
+      const springRange = (from, to, strength) =>
+        pipe(
+          conditional(v => v < from, nonlinearSpring(strength, from)),
+          conditional(v => v > to, nonlinearSpring(strength, to))
+        );
 
-      listen(handle, 'mousedown touchstart')
-        .start((e) => {
-          this.scaleItems("down");
-          e.preventDefault();
-          pointerX(handleX.get())
-            .pipe(springRange(this.maxXPosition, this.minXPosition, 3))
-            .start(handleX)
-        })
+      listen(handle, "mousedown touchstart").start(e => {
+        this.scaleItems("down");
+        e.preventDefault();
+        pointerX(handleX.get())
+          .pipe(springRange(this.maxXPosition, this.minXPosition, 3))
+          .start(handleX);
+      });
 
-      listen(document, 'mouseup touchend')
-        .start(() => {
-          this.scaleItems("up");
-          const x = handleX.get()
+      listen(document, "mouseup touchend").start(() => {
+        this.scaleItems("up");
+        const x = handleX.get();
 
-          if (x < this.maxXPosition || x > this.minXPosition) {
-            spring({
-              from: x,
-              to: x < this.maxXPosition ? this.maxXPosition : this.minXPosition,
-              velocity: handleX.getVelocity(),
-              stiffness: 900,
-              damping: 25
-            }).start(handleX);
-          } else {
-            handleX.stop();
-          }
-        });
+        if (x < this.maxXPosition || x > this.minXPosition) {
+          spring({
+            from: x,
+            to: x < this.maxXPosition ? this.maxXPosition : this.minXPosition,
+            velocity: handleX.getVelocity(),
+            stiffness: 900,
+            damping: 25
+          }).start(handleX);
+        } else {
+          handleX.stop();
+        }
+      });
     },
-    scaleItems(direction){
-      const items = this.$el.querySelectorAll('.gallery__item');
+    scaleItems(direction) {
+      const items = this.$el.querySelectorAll(".gallery__item");
 
-      if(direction === 'down') {
+      if (direction === "down") {
         [].forEach.call(items, item => {
-          item.className += " gallery__item--active";
+          item.className += " gallery__item--active"; // eslint-disable-line no-param-reassign
         });
       } else {
         [].forEach.call(items, item => {
-          item.className = "gallery__item";
+          item.className = "gallery__item"; // eslint-disable-line no-param-reassign
         });
       }
     }
