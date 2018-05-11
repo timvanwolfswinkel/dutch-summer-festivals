@@ -2,8 +2,8 @@
 @import "../../settings/typography";
 
 .modal {
+    position: fixed;
     display: flex;
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;

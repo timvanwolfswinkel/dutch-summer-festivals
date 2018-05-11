@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :style="showModal ? 'overflow:hidden' : 'overflow:scroll'">
     <button-back-to-overview/>
     <Modal 
       :show-modal="showModal" 
@@ -148,8 +148,6 @@ export default {
 
       const festivals = [].concat(...temp);
       const festival = festivals.filter(key => key.fields.url === festivalId);
-
-      console.log(festival);
 
       return festival.length !== 0 ? festival[0].fields : {};
     },

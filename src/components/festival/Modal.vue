@@ -43,6 +43,7 @@ export default {
   methods: {
     closeModal() {
       this.$store.dispatch("toggleModal");
+      document.body.style.overflow = "auto";
     },
     getId() {
       return this.$youtube.getIdFromUrl(this.$props.videoUrl);

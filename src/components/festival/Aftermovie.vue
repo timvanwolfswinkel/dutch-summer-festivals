@@ -39,6 +39,7 @@ export default {
   methods: {
     openModal() {
       this.$store.dispatch("toggleModal");
+      document.body.style.overflow = "hidden";
     }
   }
 };
