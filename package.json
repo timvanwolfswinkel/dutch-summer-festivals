@@ -20,6 +20,7 @@
     "vue-observe-visibility": "^0.3.1",
     "vue-router": "^3.0.1",
     "vue-scroll-reveal": "^1.0.5",
+    "vue-youtube": "^1.2.5",
     "vuex": "^3.0.1",
     "vuex-persistedstate": "^2.4.2"
   },

@@ -1,3 +1,6 @@
+@import "../../settings/colors";
+@import "../../settings/typography";
+
 .aftermovie {
     display: block;
 
@@ -6,5 +9,34 @@
         bottom: -37px;
         right: 0;
         cursor: pointer;
+    }
+
+    &__overlay {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        align-content: center;
+        justify-content: center;
+    }
+
+    &__close {
+        @include font-heading();
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        text-transform: uppercase;
+        color: $white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    &__youtube {
+        display: block;
+        width: 400px;
+        height: 500px;
     }
 }

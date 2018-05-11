@@ -1,6 +1,10 @@
 <template>
   <div>
     <button-back-to-overview/>
+    <Modal 
+      :show-modal="showModal" 
+      :video-url="festival.youtubeAftermovieUrl"/>
+
     <div class="festival">
       <div class="festival__container">
         <div 
@@ -21,7 +25,6 @@
             <p class="festival__description">{{ festival.description }}</p>
             <aftermovie 
               :festival-id="festival.url" 
-              :video-url="festival.youtubeAftermovieUrl"
               class="festival__aftermovie"/>
           </div>
 
@@ -84,16 +87,20 @@
 <script>
 import moment from "moment";
 
+import Vuex from "vuex";
 import store from "../store/store";
 
 import ButtonBackToOverview from "../components/ButtonBackToOverview";
 import ButtonLink from "../components/ButtonLink";
 import Aftermovie from "../components/festival/Aftermovie";
+import Modal from "../components/festival/Modal";
 import ContentBlock from "../components/festival/ContentBlock";
 import Artist from "../components/festival/Artist";
 import Gallery from "../components/festival/Gallery";
 import ArtistsTicker from "../components/festival/ArtistsTicker";
 import FooterBlock from "../components/festival/FooterBlock";
+
+const mapState = Vuex.mapState;
 
 export default {
   store,
@@ -102,6 +109,7 @@ export default {
     ButtonBackToOverview,
     ButtonLink,
     Aftermovie,
+    Modal,
     ContentBlock,
     Artist,
     Gallery,
@@ -114,6 +122,9 @@ export default {
       date: null,
       location: null
     };
+  },
+  computed: {
+    ...mapState(["showModal"])
   },
   mounted() {
     this.$store.dispatch("toggleInfoPanel");

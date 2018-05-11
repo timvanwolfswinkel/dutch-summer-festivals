@@ -15,6 +15,7 @@ const TOGGLE_MONTHS_PANEL = "TOGGLE_MONTHS_PANEL";
 const TOGGLE_IMAGE_POSITION = "TOGGLE_IMAGE_POSITION";
 const SET_FESTIVAL_ID = "SET_FESTIVAL_ID";
 const SET_LIST_ITEM_ANIMATING = "SET_LIST_ITEM_ANIMATING";
+const TOGGLE_MODAL = "TOGGLE_MODAL";
 
 const initialState = {
   festivals: [],
@@ -24,7 +25,8 @@ const initialState = {
   showMonthsPanel: false,
   festivalId: null,
   listItemAnimating: false,
-  imagePosition: true
+  imagePosition: true,
+  showModal: false
 };
 
 const getters = {
@@ -112,6 +114,9 @@ const mutations = {
   },
   [SET_LIST_ITEM_ANIMATING](state) {
     state.listItemAnimating = !state.listItemAnimating;
+  },
+  [TOGGLE_MODAL](state) {
+    state.showModal = !state.showModal;
   }
 };
 
@@ -140,6 +145,9 @@ const actions = {
   },
   setListItemAnimating({ commit }) {
     commit(SET_LIST_ITEM_ANIMATING);
+  },
+  toggleModal({ commit }) {
+    commit(TOGGLE_MODAL);
   }
 };
 

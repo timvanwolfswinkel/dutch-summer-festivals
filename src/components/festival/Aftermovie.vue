@@ -29,18 +29,16 @@ export default {
       validate(value) {
         return [value];
       }
-    },
-    videoUrl: {
-      type: String,
-      required: true,
-      validate(value) {
-        return [value];
-      }
     }
+  },
+  data() {
+    return {
+      showVideoOverlay: false
+    };
   },
   methods: {
     openModal() {
-      console.log("open modal");
+      this.$store.dispatch("toggleModal");
     }
   }
 };
